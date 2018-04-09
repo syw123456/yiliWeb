@@ -1,0 +1,40 @@
+.qb_tabe tbody td {
+	border-right: none;
+	position: relative;
+}
+.d_cpT tbody tr td:nth-child(3),.d_cpT tbody tr td:nth-child(6){
+	text-align:left;
+}
+.selecteds{ position:relative; }
+.selecteds .isNY{ position:absolute;width:300px; }
+.selecteds .isNY input.inp_val { 
+	width:100px;
+	background-color:#808080;
+	outline:none;
+	border:1px solid #ccc;
+	cursor:pointer; 
+	color: #fff;
+	font-size:11px;
+	margin-left:10px;
+}
+.selecteds .isNY .selectBox{ 
+	position:absolute;
+	left:51px;
+	top:19px;
+	background-color:#808080;
+	width:100px;
+	padding:0 10px;
+	z-index:10; 
+	border:1px solid #ccc;
+	display:none;
+}
+.selecteds .isNY .selectBox input{
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.selecteds .isNY .selectBox b{ display:block; }
+.selecteds #isZP{ margin-left:200px; }
+.selecteds .pxyj{ margin-left:400px; }
+#h_top,#h_middle,#h_bottom{
+	position:relative;
+}

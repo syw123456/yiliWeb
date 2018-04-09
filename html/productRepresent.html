@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>数据分析</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/productRepresent.css">
+		<script src="../js/init.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src='../My97DatePicker/WdatePicker.js'></script>
+	</head>
+	<body>
+		<div id='h_top' class="w100b over-hide">
+			<p class="bule1 margin-top5 paddinglr5">集团月报</p>
+			<ul class="w100b ulborder margin-top5" style="background-color: #2B2C2E;color: #fff;">
+				<li><a href="saleSuccess.html">销售达成</a></li>
+				<li><a href="saleIncrease.html">销售增长</a></li>
+				<li class="text-2382d1"><a class="text-2382d1" href="productRepresent.html">产品表现</a></li>
+				<li><a href="brandOverview.html">品牌总览</a></li>
+			</ul>
+			<div class="w100b over-hide line25 paddinglr5 padding-top5 ">
+				<div class="fn-left">
+					<span class="text-fff">日期</span>
+					<input type="text" id="startTime" class="startTime bg-808080" onfocus="this.blur()"/>
+				</div>
+				<div class="fn-right text-fff"><span class="newyearday"></span>集团产品表现月报</div>
+			</div>
+			<!--基本数据-->
+			<ul class="ulpf4 w100b over-hide text-fff font14 margin-top10">
+				<li>
+					<span>重点产品收入</span>
+					<span><b class="A_amt_main_dis_bef">0亿</b></span>
+				</li>
+				<li>
+					<span>重点产品达成</span>
+					<span><b class="A_amt_main_dis_bef_rate">0%</b></span>
+				</li>
+				<li>
+					<span>新品收入</span>
+					<span><b class="A_amt_new_dis_bef">0亿</b></span>
+				</li>
+				<li>
+					<span>新品销售贡献</span>
+					<span><b class="A_amt_new_dis_bef_val">0%</b></span>
+				</li>
+			</ul>
+		</div>
+		<div id='h_middle' class="w100b over-hide">
+			<div class="border-dff w50left height400 relative">
+				<div id="main" class="height400"></div>
+			</div>
+			<div class="border-dff w50right height400 relative">
+				<div id="main1" class="height400"></div>
+			</div>
+		</div>
+		<div id='h_bottom' class="w100b margin-top10 over-hide">
+			<div class="text-fff over-hide w100b line25 padding-top5" style="overflow-y:auto; ">
+				<div class="w100b margin-top20">
+					<p>
+						<span class="font16 font_w700" >产品销量与增长明细&nbsp;&nbsp;&nbsp;单位:万元</span>
+						<span class="margin-left100 selecteds">							
+							<span class='isNY' id='isXP'>
+								<label>是否新品</label>
+								<input id="XP_btn" class='inp_val' type="text" value='(全部)' readonly/>
+								<span id="XP_box" class="selectBox">
+									<b><input class='inp_A' type="checkbox" checked="checked"  value="0#1#3" />(全部)</b>
+									<b><input class='inp_b' type="checkbox" checked="checked"  value="3"/>null</b>
+									<b><input class='inp_b' type="checkbox" checked="checked" value="1"/>真</b>
+									<b><input class='inp_b' type="checkbox" checked="checked" value="0"/>伪</b>
+								</span>
+							</span>							
+							<span class='isNY' id='isZP'>
+								<label>是否重品</label>
+								<input id="ZP_btn" class='inp_val' type="text" value='(全部)' readonly/>
+								<span id="ZP_box" class="selectBox">
+									<b><input class='inp_A' type="checkbox" checked="checked" value="0#1#3"/>(全部)</b>
+									<b><input class='inp_b' type="checkbox" checked="checked" value="3" />null</b>
+									<b><input class='inp_b' type="checkbox" checked="checked" value="1"/>真</b>
+									<b><input class='inp_b' type="checkbox" checked="checked" value="0"/>伪</b>
+								</span>
+							</span>
+							<label class='pxyj' for="pxYJ">排序依据</label>
+							<select name="" id="pxYJ" class="bg-808080 font11">
+								<option value="年累计">年累计</option>
+								<option value="年达成率">年达成率</option>
+								<option value="年同比增长率">年同比增长率</option>
+								<option value="增长贡献">增长贡献</option>
+							</select>
+						</span>						
+					</p>
+					<table class="d_cpT w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0" cellpadding="0">
+						<thead>
+							<tr>
+								<th>事业部名称</th>
+								<th class="hide">SKU</th>
+								<th>月度折前收入</th>
+								<th>月达成率</th>
+								<th>同比增长率</th>
+								<th>年累计</th>
+								<th>年达成率</th>
+								<th>年同比增长率</th>
+								<th>SKU个数</th>
+								<th>每个SKU销售金额</th>
+								<th>销售贡献</th>
+								<th>增长贡献</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td onclick="cause_click($(this),'1')">液态奶事业部</td>
+								<td class="hide">0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">奶粉事业部</td>
+								<td class="hide">0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">酸奶事业部</td>
+								<td class="hide">0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">冷饮事业部</td>
+								<td class="hide">0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">电商</td>
+								<td class="hide">0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td><span class="table_bg4A7EBE width0"></span>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<script src="../js/echarts.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/productRepresent.js"></script>
+	</body>
+
+</html>

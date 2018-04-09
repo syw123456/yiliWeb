@@ -1,0 +1,109 @@
+.ulpf6 li {
+	width: 16.6%;
+	margin-bottom: 10px;
+}
+.ulpf6 li div{
+	text-align: center;
+	overflow: hidden;
+	background-color: #2D63A1;
+}
+.ulpf6 li div:first-child {	
+	width: 40%;
+	float: left;	
+}
+.ulpf6 li div:last-child {
+	width: 58%;	
+	height:100px;
+	float: right;
+	font-size: 28px;
+	border: 2px solid #2D63A1;
+	background: #4893db;
+}
+.ulpf6 li div p{
+	height: 44px;
+	vertical-align: middle;
+}
+.ulpf6 li div:last-child p {
+	border: 1px solid #fff;
+	height:46px;
+	line-height: 46px;
+	/*font-weight: 900;*/
+	background:#2D63A1;
+}
+.ulpf6 li div:first-child p {
+	padding: 0 5px;
+	height: 50px;
+	line-height: 50px;
+}
+
+
+.ulpf6 li {
+	padding-right: 5px;
+}
+.ulpf6 li:nth-child(2) div:last-child,
+.ulpf6 li:nth-child(5) div:last-child {
+	/*background-color: #6AC953 !important;*/
+}
+.ulpf6 li:last-child {
+	padding-right: 0;
+}
+
+.qb_tabe tbody tr td {
+	border-bottom: 1px solid #fff;
+	padding: 2px 0px;
+}
+.qb_tabe thead tr th:nth-child(1){
+	font-size: 18px;
+	font-weight: 700;
+}
+.add_zp,.add_zp_sku,.remove_zp_sku,.remove_zp,.add_xp,.add_xp_sku,.remove_xp_sku,.remove_xp{
+	cursor: pointer;
+    display: inline-block;
+    width: 12px;
+    line-height: 12px;
+    height: 12px;
+    font-size: 12px;
+    background-color: #fff;
+    color: #000;
+}
+.key-produc-detail tr td:first-child,.new-produc-detail tr td:first-child{
+	cursor:pointer;
+}
+.T_zd,.T_xp{
+	height:200px;
+	overflow:auto;
+	position:relative;
+}
+#h_body,#h_zx{
+	position:relative;
+}
+
+.ulpf6 li div:last-child p:last-child {
+	margin-top:4px;
+}
+
+@media screen and (max-width:1400px){
+	
+	.ulpf6 li div:first-child p {
+	line-height: 25px;
+	}
+	.ulpf6 li:nth-child(1) div:first-child p,.ulpf6 li:nth-child(3) div:first-child p{
+		line-height: 50px;
+	}
+	
+}
+
+
+table.a_keytable tbody tr td:nth-child(2){
+	text-align:left;
+}
+
+.font16.font_w600{
+	font-size:17px!important;
+}  
+
+
+
+
+
+

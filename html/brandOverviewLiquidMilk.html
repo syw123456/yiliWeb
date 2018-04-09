@@ -1,0 +1,603 @@
+<!--液奶区域日达成总览-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>液奶区域日达成总览</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/brandOverviewLiquidMilk.css">
+		<script src="../js/init.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src='../My97DatePicker/WdatePicker.js'></script>
+	</head>
+	<body id='h_body'>
+		<div class="w100b  over-hide">
+			<p class="bule1 margin-top5 paddinglr5">液奶区域日达成总览</p>
+			<div class="ulpf4t text-fff w100b over-hide line25 paddinglr5 padding-top5 ">
+				<ul class="w100b">
+
+					<!--日报日期 S-->
+					<li>
+						<label>日报日期</label>
+						<input type="text" id="startTime" class="startTime bg-808080" onfocus="this.blur()" />
+					</li>
+					<!--日报日期 E-->
+					<!--经营指标 S-->
+					<li>
+						<label>经营指标</label>
+						<select name="" id="businessIndicators" class="bg-808080">
+							<option value="销售量(件)">销售量(件)</option>
+							<option value="销售量(吨)">销售量(吨)</option>
+							<option value="销售量(吨)">折前收入</option>
+							<option value="销售量(吨)">账面收入</option>
+						</select>
+					</li>
+					<!--经营指标 E-->
+					<!--销售目标 S-->
+					<li>
+						<label>销售目标</label>
+						<select name="" id="salesTarget" class="bg-808080">
+							<option value="销售任务">销售任务</option>
+							<option value="销售预算">销售预算</option>
+							<option value="销售计划">销售计划</option>
+						</select>
+					</li>
+					<!--销售目标 E-->
+					<!--产品类型 S-->
+					<li>
+						<label>产品类型</label>
+						<select name="" id="productType" class="bg-808080">
+							<option value="（全部）">（全部）</option>
+							<option value="取消">取消</option>
+							<option value="应用">应用</option>
+						</select>
+					</li>
+					<!--产品类型 E-->
+					<!--子品牌 S-->
+					<li>
+						<label>子品牌</label>
+						<select name="" id="busi-subbrand" class="bg-808080">
+							<option value="（全部）">（全部）</option>
+							<option value="取消">取消</option>
+							<option value="应用">应用</option>
+						</select>
+					</li>
+					<!--子品牌 E-->
+					<!--品类四级 S-->
+					<li>
+						<label>品类四级</label>
+						<select name="" id="classBrandFourth" class="bg-808080">
+							<option value="（全部）">（全部）</option>
+							<option value="取消">取消</option>
+							<option value="应用">应用</option>
+						</select>
+					</li>
+					<!--品类四级 E-->
+					<!--品类五级 S-->
+					<li>
+						<label>品类五级</label>
+						<select name="" id="classBrandFifth" class="bg-808080">
+							<option value="（全部）">（全部）</option>
+							<option value="取消">取消</option>
+							<option value="应用">应用</option>
+						</select>
+					</li>
+					<!--品类五级 E-->
+
+					<!--品项 S-->
+					<li>
+						<label for="">品项</label>
+						<select name="" id="productItem" class="bg-808080">
+							<option value="（全部）">（全部）</option>
+							<option value="取消">取消</option>
+							<option value="应用">应用</option>
+						</select>
+					</li>
+					<!--品项 E-->
+				</ul>
+			</div>
+			<!--基本数据  S-->
+			<ul class="ulpf6s w100b over-hide text-fff margin-top10">
+				<li>
+					<span>日销售</span>
+					<span><b class="ppzl-summary">36.61亿</b></span>
+				</li>
+				<li>
+					<span>月累计</span>
+					<span><b class="ppzl-summary">112.09亿</b></span>
+				</li>
+				<li>
+					<span>月目标</span>
+					<span><b class="ppzl-summary">6.84亿</b></span>
+				</li>
+				<li>
+					<span>月达成</span>
+					<span><b class="ppzl-summary">10.13%</b></span>
+				</li>
+				<li>
+					<span>同期月累计</span>
+					<span><b class="ppzl-summary">10.13%</b></span>
+				</li>
+				<li>
+					<span>月同比</span>
+					<span><b class="ppzl-summary">10.13%</b></span>
+				</li>
+				<li>
+					<span>月时间进度</span>
+					<span><b class="ppzl-summary">10.13%</b></span>
+				</li>
+				<li>
+					<span>年累计</span>
+					<span><b class="ppzl-summary">10.13%</b></span>
+				</li>
+				<li>
+					<span>年达成</span>
+					<span><b class="ppzl-summary">10.13%</b></span>
+				</li>
+
+				<li>
+					<p class="util_time_p">数据截止时间： <p class="util_time_p newyearday">2017-04-07</p></p>
+					<p>单位：亿元</p>
+					<div class="tip_wrapper">
+						<p class="item_tip inline_tip anger"></p><p class="inline_tip number_tip "><96%</p>
+					</div>
+					<div class="tip_wrapper tip_left">
+						<p class="item_tip inline_tip warn"></p><p class="inline_tip number_tip ">96%-100%</p>
+					</div>
+					<div class="tip_wrapper tip_left_over">
+						<p class="item_tip inline_tip safe"></p><p class="inline_tip number_tip ">>100%</p>
+					</div>
+
+				</li>
+
+			</ul>
+			<!--基本数据  E-->
+		</div>
+		<div class="w100b over-hide border_s paddingAll text-fff">			
+
+			<div>
+				<!--大区折前收入增长及达成 S-->
+				<div id="main1" class="w33left border-dff">
+					<h3>大区折前收入增长及达成</h3>
+					<div id="eMap"></div>
+				</div>
+				<!--大区折前收入增长及达成 E-->
+
+
+				<!--大区及区域折前收入增长及达成 S-->
+				<div id="main2" class="w33left border-dff">
+					<h3>大区及区域折前收入增长及达成</h3>
+					<table id="table1" class="w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0" cellpadding="0">
+						<tr>
+							<th style="width: 11%">大区</th>
+							<th style="width: 10%">月销售目标</th>
+							<th style="width: 10%">日销售</th>
+							<th style="width: 10%">月累计销售</th>
+							<th style="width: 10%">月销售达成进度</th>
+							<th style="width: 10%">月同比增长</th>
+							<th style="width: 10%">年累计销售</th>
+							<th style="width: 10%">年销售达成进度</th>
+						</tr>
+					</table>
+					<div id="table2_d" style="overflow: auto;height: 320px;">
+						<table id="table2" class="w100b text-center qb_tabe border0 a_keytable" cellspacing="0" cellpadding="0">
+							<tr>
+								<td onclick="cause_click($(this),'1')">西南</td>
+								<td>41,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">29.00%</td>
+								<td>9%<img src="../img/up.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+
+							</tr>
+							<tr>
+								<td onclick="	cause_click($(this),'1')">晋察冀</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#EDC948; font-weight: bold;">24.00%</td>
+								<td>-67%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">粤海</td>
+
+								<td>81,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>10%<img src="../img/up.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">苏皖</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#E15658; font-weight: bold;">24.00%</td>
+								<td>12%<img src="../img/up.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">河南</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#EDC948; font-weight: bold;">24.00%</td>
+								<td>-6%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">山东</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#EDC948; font-weight: bold;">24.00%</td>
+								<td>-30%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">两湖</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-23%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">浙沪</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#E15658; font-weight: bold;">24.00%</td>
+								<td>-12%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">云贵广</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-14%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">京津</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-16%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">晋冀蒙</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-10%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">闽赣</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-12%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+
+							<tr>
+								<td onclick="cause_click($(this),'1')">西北</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-19%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">东北</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-13%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">电子商务...</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9840.16</td>
+								<td style="color:#58A14E; font-weight: bold;">24.00%</td>
+								<td>-16%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')">本部</td>
+								<td>51,008.00</td>
+								<td>1099.10</td>
+								<td>9880.16</td>
+								<td style="color:#58A14E; font-weight: bold;">4.00%</td>
+								<td>-3%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>26.00%</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!--大区及区域折前收入增长及达成 E-->
+			</div>
+		</div>
+		<div class="w100b over-hide border_s paddingAll text-fff margin-top10">
+
+
+			<div>
+			    <!--达成进度 S-->
+				<div id="main4" class="w33left border-dff">
+					<h3>达成进度</h3>
+					<div id="eBar2"></div>
+				</div>
+				<!--达成进度 E-->
+
+				<div id="main5" class="w33left border-dff">
+					<h3>日销售趋势</h3>
+					<div id="eBar4"></div>
+				</div>
+				<div id="main6"  style="margin-top:5px!important;" class="wallleft border-dff">
+					<h3>产品折前收入增长及达成</h3>
+					<table id="table3" class="w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0" cellpadding="0">
+						<tr>
+							<th style="width: 6%">产品类型</th>
+							<th style="width: 13%">子品牌</th>
+							<th style="width: 11%">月销售目标</th>
+							<th style="width: 10%">日销售</th>
+							<th style="width: 10%">月累计销售</th>
+							<th style="width: 10%">月销售达成进度</th>
+							<th style="width: 10%">月同比增长</th>
+							<th style="width: 10%">年累计销售</th>
+							<th style="width: 10%">年销售达成进度</th>
+						</tr>
+					</table>
+					<div id="table3_d" style="overflow: auto;height: 300px;">
+						<table id="table" class="w100b text-center qb_tabe border0 a_keytable" cellspacing="0" cellpadding="0">
+							<tr>
+								<td onclick="cause_click($(this),'1')">常配产品</td>
+								<td>液奶母品牌</td>
+								<td>1099.10</td>
+								<td>3840.16</td>
+								<td>34,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">34%</td>
+								<td>9%<img src="../img/up.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>162,081.85</td>
+								<td>27.00%</td>
+
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>安慕希</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#E15658; font-weight: bold;">4%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>优酸乳</td>
+								<td>20099.10</td>
+								<td>1840.16</td>
+								<td>124,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">9%</td>
+								<td>-10%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>金典</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#E15658; font-weight: bold;">44%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>QQ星</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#EDC948; font-weight: bold;">4%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>畅意100%</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#EDC948; font-weight: bold;">30%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>学生奶</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#EDC948; font-weight: bold;">4%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>谷粒多</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#EDC948; font-weight: bold;">4%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>舒化</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">4%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>味可滋</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">5%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>植选</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">4%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>ByeBye君</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">34%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>奶油</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">14%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>核桃乳</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">78%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>柏菲兰</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">12%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>哇哈哈</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">12%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>纯真</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">53%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+							<tr>
+								<td onclick="cause_click($(this),'1')"></td>
+								<td>果粒橙</td>
+								<td>10099.10</td>
+								<td>4840.16</td>
+								<td>14,33343</td>
+								<td style="color:#58A14E; font-weight: bold;">67%</td>
+								<td>-9%<img src="../img/down.png" alt="" height="20px" style="vertical-align: top;"></td>
+								<td>142,081.85</td>
+								<td>27.00%</td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/echarts.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/brandOverviewLiquidMilk.js"></script>
+	</body>
+
+</html>
