@@ -1572,7 +1572,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 			 func(data);
 		 },
 		 error:function(){
-			 alert("数据查询错误");
+			 //alert("数据查询错误");
 			 $("#hide1").remove();
 			 $("#hide2").remove();
 			 $("#hide3").remove();
@@ -1583,6 +1583,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 myChart3.on('click', function (params) {
 	loadHide1("h_rightB","hide3");
 	bigAreaMapName = params.name;
+	console.log(bigAreaMapName);
     var time = $("#startTime").val();
 	var isName = $("#sr_typeselect").val();
 	var isZQ = isName=="折前收入" ? "true":"false";
