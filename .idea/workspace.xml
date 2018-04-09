@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d155697c-fbc3-439c-961a-52276f18cda8" name="Default" comment="提交">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="d155697c-fbc3-439c-961a-52276f18cda8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/html/brandOverviewLiquidMilk.html" afterPath="$PROJECT_DIR$/html/brandOverviewLiquidMilk.html" />
-      <change beforePath="$PROJECT_DIR$/html/saleSuccessday.html" afterPath="$PROJECT_DIR$/html/saleSuccessday.html" />
-      <change beforePath="$PROJECT_DIR$/js/brandOverview2.js" afterPath="$PROJECT_DIR$/js/brandOverview.js" />
       <change beforePath="$PROJECT_DIR$/js/brandOverviewLiquidMilk.js" afterPath="$PROJECT_DIR$/js/brandOverviewLiquidMilk.js" />
-      <change beforePath="$PROJECT_DIR$/js/common.js" afterPath="$PROJECT_DIR$/js/common.js" />
-      <change beforePath="$PROJECT_DIR$/js/saleSuccessday.js" afterPath="$PROJECT_DIR$/js/saleSuccessday.js" />
-      <change beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,43 +15,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="brandOverviewLiquidMilk.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/brandOverviewLiquidMilk.js">
+      <file leaf-file-name="brandOverviewLiquidMilk.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/brandOverviewLiquidMilk.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="995" column="23" lean-forward="false" selection-start-line="995" selection-start-column="23" selection-end-line="995" selection-end-column="23" />
+            <state relative-caret-position="2955">
+              <caret line="363" column="18" lean-forward="true" selection-start-line="363" selection-start-column="18" selection-end-line="363" selection-end-column="18" />
               <folding>
-                <element signature="e#2986#7595#0" expanded="false" />
-                <element signature="e#7750#11601#0" expanded="false" />
-                <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-                <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
-                <element signature="n#!!block;n#getMap#0" expanded="false" />
-                <marker date="1523271058670" expanded="true" signature="21454:21489" ph="..." />
-                <marker date="1523271058670" expanded="true" signature="21611:21631" ph="..." />
-                <marker date="1523271058670" expanded="true" signature="23218:23253" ph="..." />
-                <marker date="1523271058670" expanded="true" signature="23375:23395" ph="..." />
+                <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#table#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="brandOverview.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/brandOverview.js">
+      <file leaf-file-name="brandOverviewLiquidMilk.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/brandOverviewLiquidMilk.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-375">
-              <caret line="797" column="38" lean-forward="true" selection-start-line="797" selection-start-column="38" selection-end-line="797" selection-end-column="38" />
+            <state relative-caret-position="-6685">
+              <caret line="64" column="53" lean-forward="false" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
               <folding>
-                <element signature="e#900#5470#0" expanded="false" />
-                <element signature="e#5592#9107#0" expanded="false" />
-                <element signature="e#9224#11550#0" expanded="false" />
-                <element signature="e#11666#14867#0" expanded="false" />
+                <element signature="e#2992#7601#0" expanded="false" />
+                <element signature="e#7756#11607#0" expanded="false" />
                 <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-                <element signature="n#!!block;n#getData1#0" expanded="false" />
-                <element signature="n#!!block;n#getData3#0" expanded="false" />
-                <element signature="e#22963#23535#0" expanded="false" />
-                <element signature="e#23586#23810#0" expanded="false" />
-                <marker date="1523181826985" expanded="true" signature="21330:21365" ph="..." />
-                <marker date="1523181826985" expanded="true" signature="21468:21488" ph="..." />
+                <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
+                <marker date="1523271756007" expanded="true" signature="21756:21791" ph="..." />
+                <marker date="1523271756007" expanded="true" signature="21913:21933" ph="..." />
+                <marker date="1523271756007" expanded="true" signature="23664:23699" ph="..." />
+                <marker date="1523271756007" expanded="true" signature="23821:23841" ph="..." />
               </folding>
             </state>
           </provider>
@@ -70,13 +53,13 @@
     <findStrings>
       <find>basepath</find>
       <find>alert</find>
-      <find>dataJson</find>
       <find>getMap</find>
       <find>getData1</find>
       <find>ppzl-summary</find>
       <find>getMapchart</find>
       <find>getData2</find>
       <find>table1</find>
+      <find>dataJson</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -137,11 +120,6 @@
               <item name="yiliWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="yiliWeb" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yiliWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yiliWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -571,12 +549,20 @@
       <option name="presentableId" value="Default" />
       <updated>1523260866662</updated>
       <workItem from="1523260869716" duration="4271000" />
-      <workItem from="1523267299931" duration="3732000" />
+      <workItem from="1523267299931" duration="4409000" />
     </task>
+    <task id="LOCAL-00001" summary="修改液奶总览的JS">
+      <created>1523271176161</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1523271176161</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8003000" />
+    <option name="totallyTimeSpent" value="8680000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -594,7 +580,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46553808" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -666,7 +652,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交" />
+    <MESSAGE value="修改液奶总览的JS" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改液奶总览的JS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -731,15 +718,14 @@
         <state relative-caret-position="10200">
           <caret line="680" column="9" lean-forward="false" selection-start-line="680" selection-start-column="9" selection-end-line="680" selection-end-column="9" />
           <folding>
-            <element signature="e#2986#7595#0" expanded="false" />
-            <element signature="e#7750#11601#0" expanded="false" />
+            <element signature="e#2992#7601#0" expanded="false" />
+            <element signature="e#7756#11607#0" expanded="false" />
             <element signature="n#!!block;n#getMapchart#0" expanded="false" />
             <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
-            <element signature="n#!!block;n#getMap#0" expanded="false" />
-            <marker date="1523271058670" expanded="true" signature="21454:21489" ph="..." />
-            <marker date="1523271058670" expanded="true" signature="21611:21631" ph="..." />
-            <marker date="1523271058670" expanded="true" signature="23218:23253" ph="..." />
-            <marker date="1523271058670" expanded="true" signature="23375:23395" ph="..." />
+            <marker date="1523271756007" expanded="true" signature="21756:21791" ph="..." />
+            <marker date="1523271756007" expanded="true" signature="21913:21933" ph="..." />
+            <marker date="1523271756007" expanded="true" signature="23664:23699" ph="..." />
+            <marker date="1523271756007" expanded="true" signature="23821:23841" ph="..." />
           </folding>
         </state>
       </provider>
@@ -828,38 +814,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/brandOverviewLiquidMilk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="402" column="41" lean-forward="false" selection-start-line="402" selection-start-column="35" selection-end-line="402" selection-end-column="41" />
-          <folding>
-            <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#table#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/brandOverviewLiquidMilk.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="995" column="23" lean-forward="false" selection-start-line="995" selection-start-column="23" selection-end-line="995" selection-end-column="23" />
-          <folding>
-            <element signature="e#2986#7595#0" expanded="false" />
-            <element signature="e#7750#11601#0" expanded="false" />
-            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-            <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
-            <element signature="n#!!block;n#getMap#0" expanded="false" />
-            <marker date="1523271058670" expanded="true" signature="21454:21489" ph="..." />
-            <marker date="1523271058670" expanded="true" signature="21611:21631" ph="..." />
-            <marker date="1523271058670" expanded="true" signature="23218:23253" ph="..." />
-            <marker date="1523271058670" expanded="true" signature="23375:23395" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/brandOverview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
+        <state relative-caret-position="-598">
           <caret line="797" column="38" lean-forward="true" selection-start-line="797" selection-start-column="38" selection-end-line="797" selection-end-column="38" />
           <folding>
             <element signature="e#900#5470#0" expanded="false" />
@@ -873,6 +830,34 @@
             <element signature="e#23586#23810#0" expanded="false" />
             <marker date="1523181826985" expanded="true" signature="21330:21365" ph="..." />
             <marker date="1523181826985" expanded="true" signature="21468:21488" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/brandOverviewLiquidMilk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2955">
+          <caret line="363" column="18" lean-forward="true" selection-start-line="363" selection-start-column="18" selection-end-line="363" selection-end-column="18" />
+          <folding>
+            <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/brandOverviewLiquidMilk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6685">
+          <caret line="64" column="53" lean-forward="false" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
+          <folding>
+            <element signature="e#2992#7601#0" expanded="false" />
+            <element signature="e#7756#11607#0" expanded="false" />
+            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
+            <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
+            <marker date="1523271756007" expanded="true" signature="21756:21791" ph="..." />
+            <marker date="1523271756007" expanded="true" signature="21913:21933" ph="..." />
+            <marker date="1523271756007" expanded="true" signature="23664:23699" ph="..." />
+            <marker date="1523271756007" expanded="true" signature="23821:23841" ph="..." />
           </folding>
         </state>
       </provider>

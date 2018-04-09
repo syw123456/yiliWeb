@@ -13,7 +13,7 @@ var time =yyyy+ "-" + mm+ "-" + dd;
 //time = "2018-04-01";
 //当前的时间今天
 $("#startTime").val(time);
-console.log(time);
+//console.log(time);
 $(".newyearday").text(time);
 /****获取日期 E***/
 
@@ -21,7 +21,7 @@ var dataJson = {
     year: time.split("-")[0], // 年
     month: time.split("-")[1], //月
     day: time.split("-")[2],  //日
-    businessIndicators: "折前收入", //经营指标
+    businessIndicators: "销售量(件)", //经营指标
     salesTarget: "销售任务", // 销售目标
     productType: "全部", // 产品类型
     subbrand: "全部", // 子品牌
@@ -55,7 +55,7 @@ $("#startTime").off("click").on("click",function(){
                     year: time.split("-")[0], // 年
                     month: time.split("-")[1], //月
                     day: time.split("-")[2],  //日
-                    businessIndicators: "折前收入", //经营指标
+                    businessIndicators: "销售量(件)", //经营指标
                     salesTarget: "销售任务", // 销售目标
                     productType: "全部", // 产品类型
                     subbrand: "全部", // 子品牌
@@ -578,6 +578,7 @@ function init(){
     loadHide1("h_body","hide1");
     //默认的初始化的json
     
+    console.log('页面初始化的json');
     console.log(dataJson);
     //基本数据的,达成进度chart图,日销售趋势
     getData1(dataJson);
@@ -627,11 +628,14 @@ function bgColor3(num) {
 }
 //基本数据的,达成进度chart图,日销售趋势
 function getData1(jsonData) {
-    console.log('基本数据的,达成进度chart图,日销售趋势的参数的传递: ');
+    console.log('基本数据的达成进度chart图日销售趋势的传递参数: ');
     console.log(jsonData);
     // 这个接口是液奶日达成总额的头部和达成进度的接口
     ajaxReq("summary",jsonData,function(data) {
-        console.log('这个是chart的 summary 接口------>');
+
+
+        console.log('基本数据的,达成进度chart图,日销售趋势 成功的回调---succeed--->');
+        console.log(data);
         /****基本数据的填充页面 S　*****/
         //注意 i表示当前的编号 r 是标签 <b class="ppzl-summary">36.61亿</b>
         //bgColor2   获取对比后的颜色 3种颜色  红  黄  绿
@@ -698,9 +702,11 @@ function getData1(jsonData) {
  * 地图数据显示未添加
  */
 function getMap(jsonData) {
+    console.log('地图的接口的传递参数:');
+    console.log(jsonData);
     ajaxReq("getMap", function(data) {
-        console.log('这个是地图的接口------>');
-        console.log(jsonData);
+        console.log('地图的接口-------succeed--->');
+        console.log(data);
         if (jsonData) { // 如果存在数据
 
 
@@ -753,9 +759,12 @@ function getMap(jsonData) {
 
 //大区及区域折前收入增长及达成的表格的填充（待完成）
 function getData2(jsonData){
-
+    console.log('大区及区域折前收入增长及达成的表格的填充的传递参数: ');
+    console.log(jsonData);
     ajaxReq("bigArea",jsonData,function(data) {
 
+        console.log('大区及区域折前收入增长及达成的表格-------succeed--->');
+        console.log(data);
        //大区及区域折前收入增长及达成的表格的填充  8个字段
         $("#table2 tr").remove();
         //data.salesDetail 后台的返回的值（待确定）
@@ -795,9 +804,11 @@ function getData2(jsonData){
 
 //产品折前收入增长及达成(未完成)
 function getData3(jsonData){
-
+    console.log('产品折前收入增长及达成传递参数: ');
+    console.log(jsonData);
     ajaxReq("ZQData",jsonData,function(data) {
-
+        console.log('产品折前收入增长及达成-------succeed--->');
+        console.log(data);
         //产品折前收入增长及达成   9个字段
         $("#table4 tr").remove();
         //data.salesDetail 后台的返回的值（待确定）
@@ -1006,7 +1017,7 @@ $("#productItem").on({
 
 // 在原来的json上面添加新的json
 function setDataJson(newDataJson) {
-    console.log('扩充后的JSON：  ');
-    console.log($.extend(dataJson, newDataJson));
+    //console.log('扩充后的JSON：  ');
+    //console.log($.extend(dataJson, newDataJson));
 	return $.extend(dataJson, newDataJson);
 };
