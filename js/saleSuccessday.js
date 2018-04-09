@@ -61,14 +61,14 @@ function init(){
 	loadHide1("h_middle","hide2");
 
 	//基本数据和柱状图以及2个表格的接口
-	var jsondata1 = { 'day':time } //day: 2017-12-31
+	var jsondata1 = { 'day':time }; //day: 2017-12-31
 	getxsdc(jsondata1);
 
 	//地图
 	var jsondata2 = {
 			"day":time,
 			"businessMapName":"液态奶事业部"
-	}
+	};
 	getMap(jsondata2);
 	loadHide1("h_bottom","hide3");
 
@@ -78,7 +78,7 @@ function init(){
 			"isZQ":"true",
 			"businessMapName":"",
 			"bigAreaMapName":""
-	}
+	};
 	getRightBottom(jsondata3,"折前收入");
 }
 var businessMapName = "",bigAreaMapName="";
@@ -98,13 +98,13 @@ $("#startTime").off("click").on("click",function(){
             	loadHide1("h_bottom","hide3");
             	$(".newyearday").text(times.split("-")[0]+"年"+times.split("-")[1]+"月"+times.split("-")[2]+"日");
             	//获取基本数据
-            	var jsondata1 = { 'day':times }
+            	var jsondata1 = { 'day':times };
             	getxsdc(jsondata1);
             	//获取地图数据
             	var jsondata2 = {
             			"day":times,
             			"businessMapName":businessMapName
-            	}
+            	};
             	if(jsondata2.businessMapName==""){
             		jsondata2.businessMapName="液态奶事业部";
             	}
@@ -119,7 +119,7 @@ $("#startTime").off("click").on("click",function(){
             			"isZQ":"true",
             			"businessMapName":businessMapName,
             			"bigAreaMapName":bigAreaMapName
-            	}
+            	};
             	getRightBottom(jsondata3,isName);
                 times1 = times;
             }            
@@ -138,14 +138,14 @@ myChart.on('click', function (params) {
 				"day":time,
 				"isZQ":isZQ,
 				"businessMapName":businessMapName
-		}
+		};
 		getMap(jsondata2);
 		var jsondata3={
 				"day":time,
 				"isZQ":isZQ,
 				"businessMapName":businessMapName,
 				"bigAreaMapName":""
-		}
+		};
 		getRightBottom(jsondata3,isName);
 	 }
 }); 
@@ -160,7 +160,7 @@ $("#sr_typeselect").on("change",function(){
 			"isZQ":isZQ,
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName
-	}
+	};
 	getRightBottom(jsondata3,isName);
 });
 //获取基本数据和柱状图
@@ -330,7 +330,7 @@ function getxsdc(jsonData){
         //头部的当前的日期
 		$(".char_date").text(jsonData.day.split("-")[0]+"年" + jsonData.day.split("-")[1]+"月"+ jsonData.day.split("-")[2]+"日");
         //各事业部的收成情况的进度
-		$(".char_timePercent").text(formatNumber(data.businessIncomeComplete.timePercent,1,0)+"%")
+		$(".char_timePercent").text(formatNumber(data.businessIncomeComplete.timePercent,1,0)+"%");
 
         /******各事业部收成情况 E******/
 
@@ -462,11 +462,11 @@ function getMap(jsonData){
 			var jsons = {
 					"name":v.areaName,
 					"value":v.areaZQIncomeCompletePercent
-			}
+			};
 			data_sjjd.push(jsons);
-			var jsons1 = { "name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent }
+			var jsons1 = { "name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent };
 			data_yjdcl.push(jsons1);
-			var jsons2 = { "name":v.areaName,"value":v.areaZQIncome }
+			var jsons2 = { "name":v.areaName,"value":v.areaZQIncome };
 			data_zq.push(jsons2);
 		});
 		myChart3.clear();
@@ -554,7 +554,7 @@ function getRightBottom(jsonData,isName){
 							+'<th>销售占比</th>'
 							+'<th>月折前达成进度</th>'
 							+'<th>月增长</th>'
-						+'</tr>'
+						+'</tr>';
 		$(".d_zdcpT thead").html(str_head1);					
 		var str_zdcp = "";
 		$.each(data.zpxpIncome.mainProduct,function(k,v){
@@ -594,7 +594,7 @@ function getRightBottom(jsonData,isName){
 							+'<th>月折前收入</th>'
 							+'<th>销售占比</th>'
 							+'<th>月折前达成进度</th>'
-						+'</tr>'
+						+'</tr>';
 			$(".d_xpT thead").html(str_head2);
 			var str_xp = "";
 			$.each(data.zpxpIncome.newProduct,function(k,v){
@@ -635,7 +635,7 @@ function getChart1(x_data,y1_data,y2_data,data_bs){
                 formatter:function(params){  
                    var relVal = params[0].name;  
                    for (var i = 0, l = params.length; i < l; i++) {  
-                        relVal += '<br/>' + params[i].marker +  params[i].seriesName + ' : ' + params[i].value+"%"
+                        relVal += '<br/>' + params[i].marker +  params[i].seriesName + ' : ' + params[i].value+"%";
                         if(i==1){
                         	relVal +='<br/>当月计划进度：'+data_bs[params[i].dataIndex][0].value;
                         }
@@ -873,7 +873,7 @@ function getChart1(x_data,y1_data,y2_data,data_bs){
 	                linkStyle: {}
 	            }
 	        },
-	    }
+	    };
 	return option;
 }
 //获取折线图样式当月全部折前收入进度
@@ -1017,7 +1017,7 @@ function getJson2(x_data,y_total_data,y_budget_data,isName,businessMapName){
 	                data: y_total_data
 	            }
 	        ]
-	    }
+	    };
 	 return option2;
 }
 //地图
@@ -1111,7 +1111,7 @@ function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
 		            }
 		        }
 			 }]
-		}
+		};
 	return option3;
 }
 
@@ -1129,7 +1129,7 @@ $(".T_zd").on("click",".add_zp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"true"
-	}
+	};
 	var that = $(this);
 	// 重点产品的加号getProductByBusinessName 调用 getstr2方法
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
@@ -1140,7 +1140,7 @@ $(".T_zd").on("click",".add_zp",function(){
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
 			+"<th>月增长</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_zd thead").html(head_str);
 		$(".d_zdcpT tbody").html(getStr1(data));
 		$("#hide4").remove();
@@ -1158,7 +1158,7 @@ $(".T_zd").on("click",".add_zp",function(){
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
 					+"<th>月增长</th>"
-				+"</tr>"
+				+"</tr>";
 				$(".T_zd thead").html(head_str1);							
 				$(".d_zdcpT tbody").html(getstr2(data));
 				$("#hide4").remove();
@@ -1178,7 +1178,7 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"true"
-	}
+	};
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
 			+"<th><span class='remove_zp'>-</span></th>"
@@ -1187,7 +1187,7 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
 			+"<th>月增长</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_zd thead").html(head_str);
 		$(".d_zdcpT tbody").html(getStr1(data));
 		$("#hide4").remove();
@@ -1207,14 +1207,14 @@ $(".T_zd").on("click",".remove_zp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"true"
-	}
+	};
 	var head_str1 = "<tr>" 
 					+"<th><span class='add_zp'>+</span></th>"
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
 					+"<th>月增长</th>"
-				+"</tr>"
+				+"</tr>";
 	$(".T_zd thead").html(head_str1);
 	ajaxReq("getRightBottom",jsonData,function(data){
 		 if(jsonData.businessMapName == ""){
@@ -1235,7 +1235,7 @@ $(".T_zd").on("click",".remove_zp",function(){
 							+'<th>销售占比</th>'
 							+'<th>月折前达成进度</th>'
 							+'<th>月增长</th>'
-						+'</tr>'
+						+'</tr>';
 		$(".d_zdcpT thead").html(str_head1);					
 		var str_zdcp = "";
 		$.each(data.zpxpIncome.mainProduct,function(k,v){
@@ -1272,7 +1272,7 @@ function getStr1(data){
 		$.each(v,function(m,n){
 			$.each(n,function(s,t){
 				var ss = 0;
-				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>"			
+				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
 				$.each(t,function(o,p){
 					if(ss!=0){
 						str+="<tr>"
@@ -1286,7 +1286,7 @@ function getStr1(data){
 						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"
 						+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
 						+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
-						+"</tr>"
+						+"</tr>";
 					ss++;
 				});				
 			});
@@ -1317,7 +1317,7 @@ function getstr2(data){
 				});				
 			});
 			$.each(t,function(m,n){
-				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>"
+				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>";
 				$.each(n,function(o,p){
 					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
 					var rr=0;
@@ -1334,7 +1334,7 @@ function getstr2(data){
 							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
 							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
 							+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
-							+"</tr>"				
+							+"</tr>";
 						rr++;
 					});
 				});
@@ -1355,7 +1355,7 @@ $(".T_xp").on("click",".add_xp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"false"
-	}
+	};
 	var that = $(this);
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
@@ -1364,7 +1364,7 @@ $(".T_xp").on("click",".add_xp",function(){
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
-				+"</tr>"
+				+"</tr>";
 		$(".T_xp thead").html(head_str);
 		$(".d_xpT tbody").html(getStr3(data));
 		$("#hide4").remove();
@@ -1381,7 +1381,7 @@ $(".T_xp").on("click",".add_xp",function(){
 							+"<th>月折前收入</th>"
 							+"<th>销售占比</th>"
 							+"<th>月折前达成进度</th>"
-						+"</tr>"
+						+"</tr>";
 				$(".T_xp thead").html(head_str1);							
 				$(".d_xpT tbody").html(getstr4(data));
 				$("#hide4").remove();
@@ -1401,7 +1401,7 @@ $(".T_xp").on("click",".remove_xp_sku",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"false"
-	}
+	};
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
 			+"<th><span class='remove_xp'>-</span></th>"
@@ -1409,7 +1409,7 @@ $(".T_xp").on("click",".remove_xp_sku",function(){
 			+"<th>月折前收入</th>"
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_xp thead").html(head_str);
 		$(".d_xpT tbody").html(getStr3(data));
 		$("#hide4").remove();
@@ -1425,13 +1425,13 @@ $(".T_xp").on("click",".remove_xp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"false"
-	}
+	};
 	var head_str1 = "<tr>" 
 			+"<th><span class='add_zp'>+</span></th>"
 			+"<th>月折前收入</th>"
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
-		+"</tr>"
+		+"</tr>";
 	$(".T_xp thead").html(head_str1);
 	ajaxReq("getRightBottom",jsonData,function(data){
 		 if(jsonData.businessMapName == ""){
@@ -1451,7 +1451,7 @@ $(".T_xp").on("click",".remove_xp",function(){
 							+'<th>月折前收入</th>'
 							+'<th>销售占比</th>'
 							+'<th>月折前达成进度</th>'
-						+'</tr>'
+						+'</tr>';
 			$(".d_xpT thead").html(str_head2);	
 			var str_xp = "";
 			$.each(data.zpxpIncome.newProduct,function(k,v){
@@ -1486,7 +1486,7 @@ function getStr3(data){
 		$.each(v,function(m,n){
 			$.each(n,function(s,t){
 				var ss = 0;
-				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>"			
+				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
 				$.each(t,function(o,p){
 					if(ss!=0){
 						str+="<tr>"
@@ -1498,7 +1498,7 @@ function getStr3(data){
 						+"<td style='text-align:left;'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
 						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"
 						+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
-						+"</tr>"
+						+"</tr>";
 					ss++;
 				});
 			});	
@@ -1529,7 +1529,7 @@ function getstr4(data){
 				});				
 			});
 			$.each(t,function(m,n){
-				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>"
+				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>";
 				$.each(n,function(o,p){
 					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
 					var rr=0;
@@ -1544,7 +1544,7 @@ function getstr4(data){
 							+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
 							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
 							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
-							+"</tr>"				
+							+"</tr>";
 						rr++;
 					});
 				});
@@ -1578,7 +1578,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 			 $("#hide3").remove();
 		 }
 	});
-};
+}
 //地图点击事件的查询
 myChart3.on('click', function (params) {
 	loadHide1("h_rightB","hide3");
@@ -1595,7 +1595,7 @@ myChart3.on('click', function (params) {
 			"isZQ":isZQ,
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName
-	}
+	};
 	getRightBottom(jsondata3,isName);
 });
  

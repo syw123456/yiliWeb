@@ -27,7 +27,7 @@ var reportJson = {
         "date_day": time,
         "isNew":"0#1#3",
         "isMain":"0#1#3"
-    }
+    };
 getData1();
 getData2(reportJson);
 
@@ -101,7 +101,7 @@ $("#startTime").off("click").on("click",function(){
             	        "date_day": times,
             	        "isNew":isNew,
             	        "isMain":isMain
-            	    }
+            	    };
             	getData1();
             	getData2(reportJson);            	
                 times1 = times;
@@ -137,7 +137,7 @@ $("#isXP .inp_val").off("click").on("click",function(){
 			        "date_day": times,
 			        "isNew":"0#1#2",
 			        "isMain":isMain
-			    }
+			    };
 			getData2(reportJson);
 		}else{
 			$("#isXP .selectBox .inp_b").prop("checked",false);
@@ -146,7 +146,7 @@ $("#isXP .inp_val").off("click").on("click",function(){
 			        "date_day": times,
 			        "isNew":"",
 			        "isMain":isMain
-			    }
+			    };
 			getData2(reportJson);
 		}
 	});	
@@ -194,7 +194,7 @@ $("#isXP .inp_val").off("click").on("click",function(){
 		        "date_day": times,
 		        "isNew":isNew,
 		        "isMain":isMain
-		    }
+		    };
 		getData2(reportJson);
 	});
 });
@@ -222,7 +222,7 @@ document.onclick=function(event){
           obj1.style.display="none";
         }
     }
-  }
+  };
 //点击重品下拉选择框
 $("#isZP .inp_val").off("click").on("click",function(){    
     $("#isZP .selectBox").show();
@@ -251,7 +251,7 @@ $("#isZP .inp_val").off("click").on("click",function(){
 			        "date_day": times,
 			        "isNew":"0#1#2",
 			        "isMain":isMain
-			    }
+			    };
 			getData2(reportJson);
 		}else{
 			$("#isZP .selectBox .inp_b").prop("checked",false);
@@ -260,7 +260,7 @@ $("#isZP .inp_val").off("click").on("click",function(){
 			        "date_day": times,
 			        "isNew":"",
 			        "isMain":isMain
-			    }
+			    };
 			getData2(reportJson);
 		}
 	});	
@@ -309,7 +309,7 @@ $("#isZP .inp_val").off("click").on("click",function(){
 		        "date_day": times,
 		        "isNew":isNew,
 		        "isMain":isMain
-		    }
+		    };
 		getData2(reportJson);
 	});
 });
@@ -335,7 +335,7 @@ function getData1(){
         	var x1_data=[],y1_data=[];
         	$.each(data.p_B_main_rat,function(k,v){
         		x1_data.push(k);
-        		var json = {value:formatNumber(v,2,0),itemStyle:{ color:bgColor2(v)}}
+        		var json = {value:formatNumber(v,2,0),itemStyle:{ color:bgColor2(v)}};
         		y1_data.push(json);
         	});
         	myChart.setOption(getJson(x1_data,y1_data,data.p_main_new_all.A_amt_main_dis_bef_rat));
@@ -622,7 +622,7 @@ function getJson(x_data,y_data,title_a){
                 linkStyle: {}
             }
         },
-    }
+    };
 	return option;
 }
 function getJson1(x_data,y_data,title_a,data_bs,t_bs){
@@ -751,6 +751,6 @@ function getJson1(x_data,y_data,title_a,data_bs,t_bs){
             }
 
         ]
-    }
+    };
 	return option1;
 }

@@ -1,399 +1,405 @@
 <!--集团销售达成日报-->
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>集团销售日报</title>
-		<meta name="renderer" content="webkit">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="format-detection" content="telephone=no">
-		<link rel="stylesheet" href="../css/style.css">
-		<script src="../js/init.js"></script>
-		<script src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src='../My97DatePicker/WdatePicker.js'></script>
-		<style>
-			.add_zp,.add_zp_sku,.remove_zp_sku,.remove_zp,.add_xp,.add_xp_sku,.remove_xp_sku,.remove_xp{
-				cursor: pointer;
-			    display: inline-block;
-			    width: 12px;
-			    line-height: 12px;
-			    height: 12px;
-			    font-size: 12px;
-			    background-color: #fff;
-			    color: #000;
-			}
-			.qb_tabe tbody td {
-				border:none;
-			    border-top: 1px solid #ccc;
-			    border-left: 1px solid #ccc;
-			}
-			#h_top,#h_middle,#h_rightB,#h_bottom,#h_rightL,#h_xp,#h_zp{
-				position:relative;
-			}
-		</style>
-	</head>
-	<body>
-		<div id='h_top' class="w100b over-hide">
-			<p class="bule1 margin-top5 paddinglr5">集团销售日报</p>
-			<ul class="w100b ulborder margin-top5">
-				<li class="text-2382d1"><a class="text-2382d1" href='saleSuccessday.html'>集团销售达成日报</a></li>
-				<li><a href='saleDaily.html'>集团销售增长日报</a></li>
-			</ul>
-			<div class="w100b over-hide line25 paddinglr5 padding-top5 ">
-				<div class="fn-left">
-					<span class="text-fff">日期</span>
-					<input type="text" id="startTime" class="font11 startTime bg-808080" onfocus="this.blur()" />
-				</div>
-				<div class="fn-right text-fff"><span class="char_date"></span>集团销售达成日报</div>
-			</div>
-			<!--基本数据-->
-			<ul class="ulpf5 w100b over-hide text-fff margin-top10">
-				<li>
-					<div class='fl'>
-						<p>日折前收入</p>
-						<p>日账面收入</p>
-					</div>
-					<div class='fl'>
-						<div><b id="daybefore" class="daybefore">10</b>亿</div>
-						<div><b id="daybook" class="daybook">30</b>亿</div>
-					</div>
-				</li>
-				<li>
-					<div class='fl'>
-						<p>月度累计折前<br/>收入</p>
-						<p>月度累计账面<br/>收入</p>
-					</div>
-					<div class='fl'>
-						<div><b id="monthbefore" class="monthbefore">20</b>亿</div>
-						<div><b id="monthbook" class="monthbook">40</b>亿</div>
-					</div>
-				</li>
-				<li>
-					<div class='fl'>
-						<p>月累计折前达成<br/>进度</p>
-						<p>月累计账面达成<br/>进度</p>
-					</div>
-					<div class='fl'>
-						<div><b id="monthbefore_reach" class="monthbefore_reach">30</b>%</div>
-						<div><b id="monthbook_reach" class="monthbook_reach">20</b>%</div>
-					</div>
-				</li>
-				<li>
-					<div class='fl'>
-						<p>年累计折前<br/>收入</p>
-						<p>年累计账面<br/>收入</p>
-					</div>
-					<div class='fl'>
-						<div><b id="yearbefore" class="yearbefore">10</b>亿</div>
-						<div><b id="yearbook" class="yearbook">10</b>亿</div>
-					</div>
-				</li>
-				<li>
-					<div class='fl'>
-						<p>年累计折前<br/>达成率</p>
-						<p>年累计账面<br/>达成率</p>
-					</div>
-					<div class='fl'>
-						<div><b id="yearbefore_reach" class="yearbefore_reach">34</b>%</div>
-						<div><b id="yearbook_reach" class="yearbook_reach">78</b>%</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div id='h_middle' class="w100b over-hide">
-			<div class="border-dff w40left height400 relative">
-				<div class="text-fff font12 absolute"  style="right: 50px;top: 20px;">时间：<b class="text-f19900 newyearday2 margin-right10 char_date"></b>时间进度：<span class="char_timePercent text-f19900 timejd font_w700"></span></div>
-				<div id="main" class="height400"></div>
-			</div>
-			<div class="border-dff line25 text-fff over-hide w60right height400 paddingAll">
-				<div class="w100b margin-top10">
-					<p class="font16 font_w700">各事业部折前收入指标&nbsp;&nbsp;单位万元</p>
-					<table class="d_zqsrT w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0">
-						<thead>
-							<tr>
-								<th>事业部名称</th>
-								<th class="hide">SKU</th>
-								<th>日折前收入</th>
-								<th>月度折前收入</th>
-								<th>月折前达成进度</th>
-								<th>月累计增长</th>
-								<th>年累计折前收入</th>
-								<th>年折前达成率</th>
-								<th>年累计增长</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td onclick="cause_click($(this),'1')">液态奶事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span><span id="ytn_daybefore">0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">奶粉事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span><span id="nf_daybefore">0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">酸奶事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span><span id="sn_daybefore">0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">冷饮事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span><span id="ly_daybefore">0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span class="table_bg4A7EBE"></span><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">电商</td>
-								<td class="hide">0</td>
-								<td><span id="ds_daybefore">0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-								<td><span >0</span></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="w100b margin-top10">
-					<p class="d_zmsrT font_w700 font16">各事业部账面收入指标&nbsp;&nbsp;单位万元</p>
-					<table class="d_zmsrT w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0">
-						<thead>
-							<tr>
-								<th>事业部名称</th>
-								<th class="hide">SKU</th>
-								<th>日账面收入</th>
-								<th>月度账面收入</th>
-								<th>月账面达成进度</th>
-								<th>月累计增长</th>
-								<th>年累计账面收入</th>
-								<th>年账面达成率</th>
-								<th>年累计增长</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td onclick="cause_click($(this),'1')">液态奶事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">奶粉事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">酸奶事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">冷饮事业部</td>
-								<td class="hide">0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td><span class="table_bg4A7EBE"></span>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td onclick="cause_click($(this),'1')">电商</td>
-								<td class="hide">0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div id='h_bottom' class="w100b border-dff margin-top10 over-hide">
-			<!--地图-->
-			<div class="w40left">
-				<div id="main_map" class="map_div"></div>
-			</div>
-			<div id='h_rightB' class="text-fff over-hide w60right line25 padding-top5" style="height: 613px;overflow-y:auto; ">
-				<div id='h_rightL' class="w100b relative">
-					<div class="absolute zindex5">
-						<label for="sr_typeselect">指标销售</label>
-						<select id="sr_typeselect" class="font11 sr_typeselect bg-808080">
-							<option value="折前收入">折前收入</option>
-							<option value="账面收入">账面收入</option>
-						</select>
-					</div>
-					<div id="main2" class="height200 margin-top10"></div>
-				</div>
-				<div class="w100b margin-top10">
-					<p class="font16 font_w700"><span class="businessMapName">全部</span><span class="text-f19900">重点产品</span>折前收入&nbsp;&nbsp;月达成率<span class="text-f19900 d_zdcpsr">0%</span>&nbsp;&nbsp;单位：万元</p>
-					<div id='h_zp' class="T_zd" style="height:164px;overflow:auto;">
-						<table class="d_zdcpT  w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0">
-							<thead>
-								<tr>
-									<th>事业部名称<span class='add_zp'>+</span></th>
-									<th class="hide">SKU</th>
-									<th>月折前收入</th>
-									<th>销售占比</th>
-									<th>月折前达成进度</th>
-									<th>月增长</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td onclick="cause_click($(this),'1')">液态奶事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'1')">奶粉事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'1')">酸奶事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'1')">冷饮事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'1')">电商</td>
-									<td class="hide">0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="w100b margin-top10">
-					<p class="font16 font_w700"><span class="businessMapName">全部</span><span class="text-f19900">新品</span>折前收入&nbsp;&nbsp;月达成率<span class="text-f19900 d_xpsr">0%</span>&nbsp;&nbsp;单位：万元</p>
-					<div id='h_xp' class="T_xp" style="height:164px;overflow:auto;">
-						<table class="d_xpT w100b text-center qb_tabe border0 margin-top10 p_keytable" cellspacing="0">
-							<thead>
-								<tr>
-									<th>事业部名称<span class='add_xp'>+</span></th>
-									<th class="hide">SKU</th>
-									<th>月折前收入</th>
-									<th>销售占比</th>
-									<th>月折前达成进展</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td onclick="cause_click($(this),'2')">液态奶事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'2')">奶粉事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'2')">酸奶事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'2')">冷饮事业部</td>
-									<td class="hide">0</td>
-									<td><span class="table_bg4A7EBE"></span>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td onclick="cause_click($(this),'2')">电商</td>
-									<td class="hide">0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<script src="../js/echarts.js"></script>
-		<script src="../js/common.js"></script>
-		<script src="../js/saleSuccessday.js"></script>
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <title>集团销售日报</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/init.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src='../My97DatePicker/WdatePicker.js'></script>
+    <style>
+        .add_zp, .add_zp_sku, .remove_zp_sku, .remove_zp, .add_xp, .add_xp_sku, .remove_xp_sku, .remove_xp {
+            cursor: pointer;
+            display: inline-block;
+            width: 12px;
+            line-height: 12px;
+            height: 12px;
+            font-size: 12px;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .qb_tabe tbody td {
+            border: none;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+
+        #h_top, #h_middle, #h_rightB, #h_bottom, #h_rightL, #h_xp, #h_zp {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id='h_top' class="w100b over-hide">
+    <p class="bule1 margin-top5 paddinglr5">集团销售日报</p>
+    <ul class="w100b ulborder margin-top5">
+        <li class="text-2382d1"><a class="text-2382d1" href='saleSuccessday.html'>集团销售达成日报</a></li>
+        <li><a href='saleDaily.html'>集团销售增长日报</a></li>
+    </ul>
+    <div class="w100b over-hide line25 paddinglr5 padding-top5 ">
+        <div class="fn-left">
+            <span class="text-fff">日期</span>
+            <input type="text" id="startTime" class="font11 startTime bg-808080" onfocus="this.blur()"/>
+        </div>
+        <div class="fn-right text-fff"><span class="char_date"></span>集团销售达成日报</div>
+    </div>
+    <!--基本数据-->
+    <ul class="ulpf5 w100b over-hide text-fff margin-top10">
+        <li>
+            <div class='fl'>
+                <p>日折前收入</p>
+                <p>日账面收入</p>
+            </div>
+            <div class='fl'>
+                <div><b id="daybefore" class="daybefore">10</b>亿</div>
+                <div><b id="daybook" class="daybook">30</b>亿</div>
+            </div>
+        </li>
+        <li>
+            <div class='fl'>
+                <p>月度累计折前<br/>收入</p>
+                <p>月度累计账面<br/>收入</p>
+            </div>
+            <div class='fl'>
+                <div><b id="monthbefore" class="monthbefore">20</b>亿</div>
+                <div><b id="monthbook" class="monthbook">40</b>亿</div>
+            </div>
+        </li>
+        <li>
+            <div class='fl'>
+                <p>月累计折前达成<br/>进度</p>
+                <p>月累计账面达成<br/>进度</p>
+            </div>
+            <div class='fl'>
+                <div><b id="monthbefore_reach" class="monthbefore_reach">30</b>%</div>
+                <div><b id="monthbook_reach" class="monthbook_reach">20</b>%</div>
+            </div>
+        </li>
+        <li>
+            <div class='fl'>
+                <p>年累计折前<br/>收入</p>
+                <p>年累计账面<br/>收入</p>
+            </div>
+            <div class='fl'>
+                <div><b id="yearbefore" class="yearbefore">10</b>亿</div>
+                <div><b id="yearbook" class="yearbook">10</b>亿</div>
+            </div>
+        </li>
+        <li>
+            <div class='fl'>
+                <p>年累计折前<br/>达成率</p>
+                <p>年累计账面<br/>达成率</p>
+            </div>
+            <div class='fl'>
+                <div><b id="yearbefore_reach" class="yearbefore_reach">34</b>%</div>
+                <div><b id="yearbook_reach" class="yearbook_reach">78</b>%</div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div id='h_middle' class="w100b over-hide">
+    <div class="border-dff w40left height400 relative">
+        <div class="text-fff font12 absolute" style="right: 50px;top: 20px;">时间：<b
+                class="text-f19900 newyearday2 margin-right10 char_date"></b>时间进度：<span
+                class="char_timePercent text-f19900 timejd font_w700"></span></div>
+        <div id="main" class="height400"></div>
+    </div>
+    <div class="border-dff line25 text-fff over-hide w60right height400 paddingAll">
+        <div class="w100b margin-top10">
+            <p class="font16 font_w700">各事业部折前收入指标&nbsp;&nbsp;单位万元</p>
+            <table class="d_zqsrT w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>事业部名称</th>
+                    <th class="hide">SKU</th>
+                    <th>日折前收入</th>
+                    <th>月度折前收入</th>
+                    <th>月折前达成进度</th>
+                    <th>月累计增长</th>
+                    <th>年累计折前收入</th>
+                    <th>年折前达成率</th>
+                    <th>年累计增长</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">液态奶事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span><span id="ytn_daybefore">0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">奶粉事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span><span id="nf_daybefore">0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">酸奶事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span><span id="sn_daybefore">0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">冷饮事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span><span id="ly_daybefore">0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span class="table_bg4A7EBE"></span><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">电商</td>
+                    <td class="hide">0</td>
+                    <td><span id="ds_daybefore">0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                    <td><span>0</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="w100b margin-top10">
+            <p class="d_zmsrT font_w700 font16">各事业部账面收入指标&nbsp;&nbsp;单位万元</p>
+            <table class="d_zmsrT w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>事业部名称</th>
+                    <th class="hide">SKU</th>
+                    <th>日账面收入</th>
+                    <th>月度账面收入</th>
+                    <th>月账面达成进度</th>
+                    <th>月累计增长</th>
+                    <th>年累计账面收入</th>
+                    <th>年账面达成率</th>
+                    <th>年累计增长</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">液态奶事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">奶粉事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">酸奶事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">冷饮事业部</td>
+                    <td class="hide">0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td><span class="table_bg4A7EBE"></span>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td onclick="cause_click($(this),'1')">电商</td>
+                    <td class="hide">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id='h_bottom' class="w100b border-dff margin-top10 over-hide">
+    <!--地图-->
+    <div class="w40left">
+        <div id="main_map" class="map_div"></div>
+    </div>
+    <div id='h_rightB' class="text-fff over-hide w60right line25 padding-top5" style="height: 613px;overflow-y:auto; ">
+        <div id='h_rightL' class="w100b relative">
+            <div class="absolute zindex5">
+                <label for="sr_typeselect">指标销售</label>
+                <select id="sr_typeselect" class="font11 sr_typeselect bg-808080">
+                    <option value="折前收入">折前收入</option>
+                    <option value="账面收入">账面收入</option>
+                </select>
+            </div>
+            <div id="main2" class="height200 margin-top10"></div>
+        </div>
+        <div class="w100b margin-top10">
+            <p class="font16 font_w700"><span class="businessMapName">全部</span><span class="text-f19900">重点产品</span>折前收入&nbsp;&nbsp;月达成率<span
+                    class="text-f19900 d_zdcpsr">0%</span>&nbsp;&nbsp;单位：万元</p>
+            <div id='h_zp' class="T_zd" style="height:164px;overflow:auto;">
+                <table class="d_zdcpT  w100b text-center qb_tabe border0 margin-top10 a_keytable" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>事业部名称<span class='add_zp'>+</span></th>
+                        <th class="hide">SKU</th>
+                        <th>月折前收入</th>
+                        <th>销售占比</th>
+                        <th>月折前达成进度</th>
+                        <th>月增长</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td onclick="cause_click($(this),'1')">液态奶事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'1')">奶粉事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'1')">酸奶事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'1')">冷饮事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'1')">电商</td>
+                        <td class="hide">0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="w100b margin-top10">
+            <p class="font16 font_w700"><span class="businessMapName">全部</span><span class="text-f19900">新品</span>折前收入&nbsp;&nbsp;月达成率<span
+                    class="text-f19900 d_xpsr">0%</span>&nbsp;&nbsp;单位：万元</p>
+            <div id='h_xp' class="T_xp" style="height:164px;overflow:auto;">
+                <table class="d_xpT w100b text-center qb_tabe border0 margin-top10 p_keytable" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>事业部名称<span class='add_xp'>+</span></th>
+                        <th class="hide">SKU</th>
+                        <th>月折前收入</th>
+                        <th>销售占比</th>
+                        <th>月折前达成进展</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td onclick="cause_click($(this),'2')">液态奶事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'2')">奶粉事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'2')">酸奶事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'2')">冷饮事业部</td>
+                        <td class="hide">0</td>
+                        <td><span class="table_bg4A7EBE"></span>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td onclick="cause_click($(this),'2')">电商</td>
+                        <td class="hide">0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/echarts.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/saleSuccessday.js"></script>
+</body>
 </html>

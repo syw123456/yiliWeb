@@ -46,7 +46,7 @@ function cause_click(a,b){
 			day_data:"20171231",
 			businessName: "奶粉事业部",
 			type: "main"
-	}
+	};
 	$.ajax({
 	    url: basepath + "/day/xszz/linechartsales",
 	    // url: basepath + "/web/json/data1.json",
@@ -339,7 +339,7 @@ function getchart1(time,x_data,y1_data,y2_data,yqzqsr){
 		            linkStyle: {}
 		        }
 		    },
-		}
+		};
 	return option;
 }
 //
@@ -358,7 +358,7 @@ function ajaxReq(urlSuffix, jsonData, func) {
 			 alert("数据查询错误");
 		 }
 	});
-};
+}
 //获取重品表格
 function getData4(times) {
 	//重点产品
@@ -368,7 +368,7 @@ function getData4(times) {
 						+'<th>月累计折前收入</th>'
 						+'<th>销售占比</th>'
 						+'<th>折前同比增长率</th>'
-					+'</tr>'
+					+'</tr>';
 		$(".d_zdcpT thead").html(str_head);
 		 var arr = [];
 		 $.each(data.list, function(k,v) {
@@ -407,7 +407,7 @@ function getData5(times){
 							+'<th><span class="add_xp">+</span></th>'
 							+'<th>月累计折前收入</th>'
 							+'<th>销售占比</th>'
-						+'</tr>'
+						+'</tr>';
 		$(".d_xpT thead").html(str_head);
 		//新品
 		var arr = [];
@@ -444,7 +444,7 @@ $(".T_zd").on("click",".add_zp",function(){
 			year: timess.split("-")[0],
 			month: timess.split("-")[1],
 			businessName: "液态奶事业部"
-	}
+	};
 	var that = $(this);
 	ajaxReq("keysubbrand",jsonData,function(data) {
 		var head_str = "<tr>" 
@@ -453,7 +453,7 @@ $(".T_zd").on("click",".add_zp",function(){
 							+"<th>月累计折前收入</th>"
 							+"<th>销售占比</th>"
 							+"<th>折前同比增长率</th>"
-						+"</tr>"
+						+"</tr>";
 		$(".T_zd thead").html(head_str);
 		$(".key-produc-detail").html(getStr1(data));
 		$("#hide2").remove();
@@ -470,7 +470,7 @@ $(".T_zd").on("click",".add_zp",function(){
 					+"<th>月累计折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>折前同比增长率</th>"
-				+"</tr>"
+				+"</tr>";
 				$(".T_zd thead").html(head_str1);							
 				$(".key-produc-detail").html(getstr2(data));
 				$("#hide2").remove();
@@ -487,7 +487,7 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 			year: timess.split("-")[0],
 			month: timess.split("-")[1],
 			businessName: "液态奶事业部"
-	}
+	};
 	$(".key-produc-detail").html("");
 	ajaxReq("keysubbrand",jsonData,function(data) {
 		var head_str1 = "<tr>" 
@@ -496,7 +496,7 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 			+"<th>月累计折前收入</th>"
 			+"<th>销售占比</th>"
 			+"<th>折前同比增长率</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_zd thead").html(head_str1);
 		$(".key-produc-detail").html(getStr1(data));
 		$("#hide2").remove();
@@ -529,7 +529,7 @@ function getStr1(data){
 	var max_zp = Math.max.apply(null,arr);
 	var str = "";
 	$.each(data,function(k,v){
-		str+="<tr><td rowspan='"+v.length+"'>"+k+"</td>"
+		str+="<tr><td rowspan='"+v.length+"'>"+k+"</td>";
 		$.each(v,function(s,t){
 			var imgs = t[3]<0 ? "down" : "up"; 
 			var widths = max_zp<=0 ? "0":(t[1]/max_zp)*100;
@@ -541,7 +541,7 @@ function getStr1(data){
 				+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(t[1],1,1)+"</td>"
 				+"<td>"+formatNumber(t[2],2,0)+"%</td>"
 				+"<td>"+formatNumber(t[3],1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
-				+"</tr>"
+				+"</tr>";
 			m++;
 		});
 	});
@@ -566,9 +566,9 @@ function getstr2(data){
 		$.each(v,function(s,t){
 			len+=t.length;
 		});
-		str+="<tr><td rowspan='"+len+"'>"+k+"</td>"
+		str+="<tr><td rowspan='"+len+"'>"+k+"</td>";
 		$.each(v,function(s,t){
-			str+="<td rowspan='"+getJsonLength(t)+"'>"+s+"</td>"
+			str+="<td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
 			var m=0;
 			$.each(t,function(m,n){
 				var imgs = n[3]<0 ? "down" : "up"; 
@@ -581,7 +581,7 @@ function getstr2(data){
 					+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n[1],1,1)+"</td>"
 					+"<td>"+formatNumber(n[2],2,0)+"%</td>"
 					+"<td>"+formatNumber(n[3],1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
-					+"</tr>"
+					+"</tr>";
 				m++;
 			});
 		});
@@ -596,7 +596,7 @@ $(".T_xp").on("click",".add_xp",function(){
 			year: timess.split("-")[0],
 			month: timess.split("-")[1],
 			businessName: "液态奶事业部"
-	}
+	};
 	var that = $(this);
 	ajaxReq("newsubbrand",jsonData,function(data) {
 		var head_str = "<tr>" 
@@ -604,7 +604,7 @@ $(".T_xp").on("click",".add_xp",function(){
 							+"<th><span class='add_xp_sku'>+</span></th>"
 							+"<th>月累计折前收入</th>"
 							+"<th>销售占比</th>"
-						+"</tr>"
+						+"</tr>";
 		$(".T_xp thead").html(head_str);
 		$(".new-produc-detail").html(getStr3(data));
 		$("#hide2").remove();
@@ -620,7 +620,7 @@ $(".T_xp").on("click",".add_xp",function(){
 					+"<th></th>"
 					+"<th>月累计折前收入</th>"
 					+"<th>销售占比</th>"
-				+"</tr>"
+				+"</tr>";
 				$(".T_xp thead").html(head_str1);							
 				$(".new-produc-detail").html(getstr4(data));
 				$("#hide2").remove();
@@ -637,14 +637,14 @@ $(".T_xp").on("click",".remove_xp_sku",function(){
 			year: timess.split("-")[0],
 			month: timess.split("-")[1],
 			businessName: "液态奶事业部"
-	}
+	};
 	ajaxReq("newsubbrand",jsonData,function(data) {
 		var head_str1 = "<tr>" 
 			+"<th><span class='remove_xp'>-</span></th>"
 			+"<th><span class='add_xp_sku'>+</span></th>"
 			+"<th>月累计折前收入</th>"
 			+"<th>销售占比</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_xp thead").html(head_str1);
 		$(".new-produc-detail").html(getStr3(data));
 		$("#hide2").remove();
@@ -664,7 +664,7 @@ $(".T_xp").on("click",".remove_xp",function(){
 		+"<th><span class='add_xp'>+</span></th>"
 		+"<th>月累计折前收入</th>"
 		+"<th>销售占比</th>"
-	+"</tr>"
+	+"</tr>";
 	$(".T_xp thead").html(head_str1);
 	getData5(timess);
 });
@@ -681,7 +681,7 @@ function getStr3(data){
 	var max_zp = Math.max.apply(null,arr);
 	var str = "";
 	$.each(data,function(k,v){
-		str+="<tr><td rowspan='"+v.length+"'>"+k+"</td>"
+		str+="<tr><td rowspan='"+v.length+"'>"+k+"</td>";
 		$.each(v,function(s,t){
 			var widths = max_zp<=0 ? "0":(t[1]/max_zp)*100;
 			var m=0;
@@ -691,7 +691,7 @@ function getStr3(data){
 			str+="<td>"+t[0]+"</td>"
 				+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(t[1],1,1)+"</td>"
 				+"<td>"+formatNumber(t[2],2,0)+"%</td>"
-				+"</tr>"
+				+"</tr>";
 			m++;
 		});
 	});
@@ -716,9 +716,9 @@ function getstr4(data){
 		$.each(v,function(s,t){
 			len+=t.length;
 		});
-		str+="<tr><td rowspan='"+len+"'>"+k+"</td>"
+		str+="<tr><td rowspan='"+len+"'>"+k+"</td>";
 		$.each(v,function(s,t){
-			str+="<td rowspan='"+getJsonLength(t)+"'>"+s+"</td>"
+			str+="<td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
 			var m=0;
 			$.each(t,function(m,n){
 				var widths = max_zp<=0 ? "0":(n[1]/max_zp)*100;
@@ -729,7 +729,7 @@ function getstr4(data){
 				str+="<td title='"+n[0]+"' style='width:300px;text-align:left;'>"+n[0]+"</td>"
 					+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n[1],1,1)+"</td>"
 					+"<td>"+formatNumber(n[2],2,0)+"%</td>"
-					+"</tr>"
+					+"</tr>";
 				m++;
 			});
 		});

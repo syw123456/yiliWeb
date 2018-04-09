@@ -235,8 +235,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 			 $("#shade").remove();
 		 }
 	});
-};
-
+}
 function cause_click(type, busi, subb, sku) {
 	loadHide("h_zx");
 	var timess = $("#startTime").val();

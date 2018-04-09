@@ -3207,7 +3207,7 @@ function parse(colorStr, rgbaArr) {
     }
 
     setRgba(rgbaArr, 0, 0, 0, 1);
-    return;
+
 }
 
 /**
@@ -15194,7 +15194,7 @@ var Rect = Path.extend({
             buildPath(ctx, shape);
         }
         ctx.closePath();
-        return;
+
     }
 });
 
@@ -19027,7 +19027,7 @@ function detectSourceFormat(datasetModel) {
             var item = data[i];
 
             if (item == null) {
-                continue;
+
             }
             else if (isArray(item)) {
                 sourceFormat = SOURCE_FORMAT_ARRAY_ROWS;
@@ -22878,7 +22878,7 @@ var aria = function (dom, ecModel) {
     var ariaLabel;
     if (seriesCnt < 1) {
         // No series, no aria label
-        return;
+
     }
     else {
         var title = getTitle();
@@ -47975,7 +47975,7 @@ var PointerPath = Path.extend({
             shape.y - mathSin(angle) * width
         );
         ctx.lineTo(x, y);
-        return;
+
     }
 });
 

@@ -732,7 +732,7 @@ var dataJson = {
 	businessName: "液态奶事业部", 
 	subbrand: "安慕希",
 	isCurrentMonth: "true"
-}
+};
 loadHide1("h_body","hide1");
 var busiData = [];
 getData3();
@@ -855,9 +855,9 @@ function getData2(isLinkageMap) {
 				    	$("#table1 tr").find("th").eq(i).css("width",(widths+17)+"px");				    	
 				    }else{				       
 				    	 $("#table1 tr").find("th").eq(i).css("width",widths+"px");
-				    };
-				};
-		 });
+                    }
+             }
+         });
 		 $("#hide1").remove()
 	});
 }
@@ -931,4 +931,4 @@ $("#busi-subbrand").on({
 // 修改json数据
 function setDataJson(newDataJson) {
 	return $.extend(dataJson, newDataJson);
-};
+}

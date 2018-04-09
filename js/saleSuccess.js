@@ -69,13 +69,13 @@ function init(){
 	var jsondata1 = { 
 			"year":time.split("-")[0],
 		    "month": time.split("-")[1]
-		}
+		};
 	getxsdc(jsondata1);
 	var jsondata2 = {
 			"year":time.split("-")[0],
 		    "month": time.split("-")[1],
 			"businessMapName":"液态奶事业部"
-	}
+	};
 	getMap(jsondata2);
 	var jsondata3={
 			"year":time.split("-")[0],
@@ -83,7 +83,7 @@ function init(){
 			"isZQ":"true",
 			"businessMapName":"",
 			"bigAreaMapName":""
-	}
+	};
 	getRightBottom(jsondata3,"折前收入");
 }
 var businessMapName = "",bigAreaMapName="";
@@ -126,8 +126,8 @@ function getxsdc(jsonData){
         	//各事业部折前收入指标
         	var color1 = bgColor2(v.monthZQIncomeCompletePercent);            	
         	var color2 = bgColor2(v.yearZQIncomeCompletePercent);
-        	var imgs1 = v.monthZQIncomeIncreasePercent >=0 ? "up":"down"
-        	var imgs2 = v.yearZQIncomeIncreasePercent>=0 ? "up":"down"
+        	var imgs1 = v.monthZQIncomeIncreasePercent >=0 ? "up":"down";
+        	var imgs2 = v.yearZQIncomeIncreasePercent>=0 ? "up":"down";
         	var width1 = tiaomax1 === 0 ? 0 : (v.monthZQIncome/tiaomax1)*100 ;
         	var width2 = tiaomax2 === 0 ? 0 : (v.yearZQIncome/tiaomax2)*100 ;
         	str1_1+='<tr>'
@@ -177,12 +177,12 @@ function getMap(jsonData){
 			var jsons = {
 					"name":v.areaName,
 					"value":v.areaZQIncomeCompletePercent
-			}
+			};
 			datas.push(jsons);
 			var jsons2 = {
 					"name":v.areaName,
 					"value":v.areaZQIncome
-			}
+			};
 			datas2.push(jsons2);
 		});
 		myChart3.clear();
@@ -287,7 +287,7 @@ $("#sr_typeselect").on("change",function(){
 			"isZQ":isZQ,
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName
-	}
+	};
 	getRightBottom(jsondata3,isName);
 });
 //选择日期查询数据
@@ -311,14 +311,14 @@ $("#startTime").off("click").on("click",function(){
             	var jsondata1 = { 
             			"year":times.split("-")[0],
             		    "month": times.split("-")[1]
-            			}
+            			};
             	getxsdc(jsondata1);
             	//获取地图数据
             	var jsondata2 = {
             			"year":times.split("-")[0],
             		    "month": times.split("-")[1],
             			"businessMapName":businessMapName
-            	}
+            	};
             	if(jsondata2.businessMapName==""){
             		jsondata2.businessMapName="液态奶事业部";
             	}
@@ -332,7 +332,7 @@ $("#startTime").off("click").on("click",function(){
             			"isZQ":isZQ,
             			"businessMapName":businessMapName,
             			"bigAreaMapName":bigAreaMapName
-            	}
+            	};
             	getRightBottom(jsondata3,isName);
                 times1 = times;
             }            
@@ -503,7 +503,7 @@ function getJson(x1,y1_data1,y1_data2,max_y){
                 },
                 emphasis:{show:false}
             }
-        }
+        };
 	return option;
 }
 
@@ -766,7 +766,7 @@ function getJson3(name,data,data2){
 	                {name:"晋冀蒙",value:73}
 	               ]*/
 	        }]
-	    }
+	    };
 	return option3;
 }
 //重点产品下钻
@@ -782,7 +782,7 @@ $(".T_zd").on("click",".add_zp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"true"
-	}
+	};
 	var that = $(this);
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
@@ -792,7 +792,7 @@ $(".T_zd").on("click",".add_zp",function(){
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
 			+"<th>月增长</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_zd thead").html(head_str);
 		$(".d_zdcpT tbody").html(getStr1(data));
 		$("#hide4").remove();
@@ -810,7 +810,7 @@ $(".T_zd").on("click",".add_zp",function(){
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
 					+"<th>月增长</th>"
-				+"</tr>"
+				+"</tr>";
 				$(".T_zd thead").html(head_str1);							
 				$(".d_zdcpT tbody").html(getstr2(data));
 				$("#hide4").remove();
@@ -831,7 +831,7 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"true"
-	}
+	};
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
 			+"<th><span class='remove_zp'>-</span></th>"
@@ -840,7 +840,7 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
 			+"<th>月增长</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_zd thead").html(head_str);
 		$(".d_zdcpT tbody").html(getStr1(data));
 		$("#hide4").remove();
@@ -858,14 +858,14 @@ $(".T_zd").on("click",".remove_zp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"true"
-	}
+	};
 	var head_str1 = "<tr>" 
 					+"<th><span class='add_zp'>+</span></th>"
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
 					+"<th>月增长</th>"
-				+"</tr>"
+				+"</tr>";
 	$(".T_zd thead").html(head_str1);
 	ajaxReq("getRightBottom",jsonData,function(data){
 		 if(jsonData.businessMapName == ""){
@@ -887,7 +887,7 @@ $(".T_zd").on("click",".remove_zp",function(){
 								+'<th>销售占比</th>'
 								+'<th>月折前达成进度</th>'
 								+'<th>月增长</th>'
-							+'</tr>'
+							+'</tr>';
 			$(".d_zdcpT thead").html(str_head1);					
 			var str_zdcp = "";
 			$.each(data.zpxp.businessZPBeanMap,function(k,v){
@@ -925,7 +925,7 @@ function getStr1(data){
 		$.each(v,function(m,n){
 			$.each(n,function(s,t){
 				var ss = 0;
-				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>"			
+				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
 				$.each(t,function(o,p){
 					if(ss!=0){
 						str+="<tr>"
@@ -939,7 +939,7 @@ function getStr1(data){
 						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"
 						+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
 						+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
-						+"</tr>"
+						+"</tr>";
 					ss++;
 				});				
 			});
@@ -970,7 +970,7 @@ function getstr2(data){
 				});				
 			});
 			$.each(t,function(m,n){
-				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>"
+				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>";
 				$.each(n,function(o,p){
 					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
 					var rr=0;
@@ -987,7 +987,7 @@ function getstr2(data){
 							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
 							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
 							+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
-							+"</tr>"				
+							+"</tr>";
 						rr++;
 					});
 				});
@@ -1009,7 +1009,7 @@ $(".T_xp").on("click",".add_xp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"false"
-	}
+	};
 	var that = $(this);
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
@@ -1018,7 +1018,7 @@ $(".T_xp").on("click",".add_xp",function(){
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
-				+"</tr>"
+				+"</tr>";
 		$(".T_xp thead").html(head_str);
 		$(".d_xpT tbody").html(getStr3(data));
 		$("#hide4").remove();
@@ -1035,7 +1035,7 @@ $(".T_xp").on("click",".add_xp",function(){
 							+"<th>月折前收入</th>"
 							+"<th>销售占比</th>"
 							+"<th>月折前达成进度</th>"
-						+"</tr>"
+						+"</tr>";
 				$(".T_xp thead").html(head_str1);							
 				$(".d_xpT tbody").html(getstr4(data));
 				$("#hide4").remove();
@@ -1056,7 +1056,7 @@ $(".T_xp").on("click",".remove_xp_sku",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"false"
-	}
+	};
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
 			+"<th><span class='remove_xp'>-</span></th>"
@@ -1064,7 +1064,7 @@ $(".T_xp").on("click",".remove_xp_sku",function(){
 			+"<th>月折前收入</th>"
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
-		+"</tr>"
+		+"</tr>";
 		$(".T_xp thead").html(head_str);
 		$(".d_xpT tbody").html(getStr3(data));
 		$("#hide4").remove();
@@ -1082,13 +1082,13 @@ $(".T_xp").on("click",".remove_xp",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"false"
-	}
+	};
 	var head_str1 = "<tr>" 
 			+"<th><span class='add_zp'>+</span></th>"
 			+"<th>月折前收入</th>"
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
-		+"</tr>"
+		+"</tr>";
 	$(".T_xp thead").html(head_str1);
 	ajaxReq("getRightBottom",jsonData,function(data){
 		 if(jsonData.businessMapName == ""){
@@ -1109,7 +1109,7 @@ $(".T_xp").on("click",".remove_xp",function(){
 							+'<th>月折前收入</th>'
 							+'<th>销售占比</th>'
 							+'<th>月折前达成进度</th>'
-						+'</tr>'
+						+'</tr>';
 			$(".d_xpT thead").html(str_head2);	
 			var str_xp = "";
 			$.each(data.zpxp.businessXPBeanMap,function(k,v){
@@ -1145,7 +1145,7 @@ function getStr3(data){
 		$.each(v,function(m,n){
 			$.each(n,function(s,t){
 				var ss = 0;
-				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>"			
+				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
 				$.each(t,function(o,p){
 					if(ss!=0){
 						str+="<tr>"
@@ -1157,7 +1157,7 @@ function getStr3(data){
 						+"<td style='text-align:left;'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
 						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"
 						+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
-						+"</tr>"
+						+"</tr>";
 					ss++;
 				});
 				
@@ -1190,7 +1190,7 @@ function getstr4(data){
 				});				
 			});
 			$.each(t,function(m,n){
-				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>"
+				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>";
 				$.each(n,function(o,p){
 					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
 					var rr=0;
@@ -1205,7 +1205,7 @@ function getstr4(data){
 							+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
 							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
 							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
-							+"</tr>"				
+							+"</tr>";
 						rr++;
 					});
 				});
@@ -1238,8 +1238,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 			 $("#shade").remove();
 		 }
 	});
-};
-
+}
 //地图点击事件
 myChart3.on('click', function (params) {
 	loadHide1("h_rightB","hide3");
@@ -1256,7 +1255,7 @@ myChart3.on('click', function (params) {
 			"isZQ":isZQ,
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName
-	}
+	};
 	getRightBottom(jsondata3,isName);
 });
 //点击柱状图x轴标签
@@ -1273,14 +1272,14 @@ myChart.on('click', function (params) {
 				"isZQ":isZQ,
 				"businessMapName":businessMapName,
 				"bigAreaMapName":""
-		}
+		};
 		getRightBottom(jsondata3,isName);
 		var jsondata2={
 				"year":time.split("-")[0],
 			    "month": time.split("-")[1],
 				"isZQ":isZQ,
 				"businessMapName":businessMapName
-		}
+		};
 		getMap(jsondata2);
 	 }
 }); 

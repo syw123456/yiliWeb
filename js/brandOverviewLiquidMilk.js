@@ -73,7 +73,7 @@ $("#startTime").off("click").on("click",function(){
                 var jsondata2 = {
                     "day":times,
                     "bigAreaMapName":bigAreaMapName
-                }
+                };
                 if(jsondata2.bigAreaMapName==""){
                     jsondata2.bigAreaMapName="西南";
                 }
@@ -587,7 +587,7 @@ function init(){
     var jsondata2 = {
         "day":time,
         "bigAreaMapName":"西南"
-    }
+    };
     getMap(jsondata2);
     loadHide1("h_bottom","hide3");
 
@@ -722,11 +722,11 @@ function getMap(jsonData) {
                 var jsons = {
                     "name":v.areaName,
                     "value":v.areaZQIncomeCompletePercent
-                }
+                };
                 data_sjjd.push(jsons);
-                var jsons1 = { "name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent }
+                var jsons1 = { "name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent };
                 data_yjdcl.push(jsons1);
-                var jsons2 = { "name":v.areaName,"value":v.areaZQIncome }
+                var jsons2 = { "name":v.areaName,"value":v.areaZQIncome };
                 data_zq.push(jsons2);
             });
             myChart3.clear();
@@ -794,8 +794,8 @@ function getData2(jsonData){
                     $("#table1 tr").find("th").eq(i).css("width",(widths+17)+"px");
                 }else{
                     $("#table1 tr").find("th").eq(i).css("width",widths+"px");
-                };
-            };
+                }
+            }
         });
         $("#hide1").remove()
     });
@@ -839,8 +839,8 @@ function getData3(jsonData){
                     $("#table3 tr").find("th").eq(i).css("width",(widths+17)+"px");
                 }else{
                     $("#table3 tr").find("th").eq(i).css("width",widths+"px");
-                };
-            };
+                }
+            }
         });
         //$("#hide1").remove()
     });
@@ -1020,4 +1020,4 @@ function setDataJson(newDataJson) {
     //console.log('扩充后的JSON：  ');
     //console.log($.extend(dataJson, newDataJson));
 	return $.extend(dataJson, newDataJson);
-};
+}
