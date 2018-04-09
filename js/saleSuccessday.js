@@ -21,7 +21,7 @@ $("#startTime").val(time);
 //各事业部的收成的情况
 var myChart = echarts.init(document.getElementById('main'));
 
-//当月折前收入进度
+//当月全部折前收入进度
 var myChart2 = echarts.init(document.getElementById('main2'));
 
 //地图的显示
@@ -36,8 +36,8 @@ myChart.setOption(getChart1(x_data,y1_data,y2_data,[]));
 
 //当月折前收入进度页面初始化
 var x_data =  ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
-var y_total_data = ["0","0","0","0"];
-var y_budget_data = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];
+var y_total_data = ["30","10","20","40"];
+var y_budget_data = ["40","10","40","10","450","20","10","20","50","60","80","50","20","10","10"];
 myChart2.setOption(getJson2(x_data,y_total_data,y_budget_data,"折前收入","全部"));
 
 //中国地图
