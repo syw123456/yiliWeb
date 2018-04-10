@@ -218,6 +218,8 @@ function getxsdc(jsonData){
         console.log('getxsdc接口返回的数据：');
 		console.log(data);
 		/***基本数据 S***/
+
+		/*
 		//日期
 		$("#startTime").val(data.startTime);
 
@@ -267,7 +269,7 @@ function getxsdc(jsonData){
 
 
 		//各事业部折前收入指标
-
+        /*
 		//液态奶事业部
 		$("#ytn_daybefore").html(data.ytn_daybefore);
 		//奶粉事业部
@@ -281,7 +283,7 @@ function getxsdc(jsonData){
 
 		//电商
 		$("#ds_daybefore").html(data.ds_daybefore);
-
+        */
 
 
 
@@ -1728,6 +1730,7 @@ function getstr4(data){
 	});
 	return str1;
 }
+
 //获取json对象的length,用于合并单元格
 function getJsonLength(jsonData) {  
 	var length=0;  
