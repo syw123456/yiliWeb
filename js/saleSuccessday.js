@@ -13,7 +13,7 @@ if (dd.length == 1) {
 }
 var time =yyyy+ "-" + mm+ "-" + dd;
 
-//测试的日期
+//测试的日期时间
 time = "2017-12-31";
 $("#startTime").val(time);
 
@@ -67,7 +67,7 @@ setTimeout(function () {
 init();
 function init(){
 
-    console.log('------------进入init-----------------');
+    console.log('------------进入初始化的方法-----------------');
 	//默认的加载的头部的loading图
 	loadHide1("h_top","hide1");
 
@@ -446,15 +446,15 @@ function getxsdc(jsonData){
 
 
             /******各事业部账面收入指标 S******/
-                //各事业部账面收入指标
-                //bgIncome  各事业部账面收入指标
-                //dayZMIncome 日账面收入
-                //monthZMIncome 月度账面收入
-                //monthZMCompletePercent 月账面达成进度
-                //monthZMIncomeIncrease  月累计增长
-                //yearZMLJIncome 年累计账面收入
-                //yearZMIncomeCompletePercent  年账面达成率
-                //yearZMLJIncomeIncrease 年累计增长
+			//各事业部账面收入指标
+			//bgIncome  各事业部账面收入指标
+			//dayZMIncome 日账面收入
+			//monthZMIncome 月度账面收入
+			//monthZMCompletePercent 月账面达成进度
+			//monthZMIncomeIncrease  月累计增长
+			//yearZMLJIncome 年累计账面收入
+			//yearZMIncomeCompletePercent  年账面达成率
+			//yearZMLJIncomeIncrease 年累计增长
 
 
             var tiao3 = [], tiao4 = [];

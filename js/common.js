@@ -7,7 +7,7 @@ function getRootPath(){
     var postPath=strPath.substring(0,strPath.substr(1).indexOf('/')+1);
     return(prePath+postPath);
 }
-//var basepath = getRootPath();
+
 var basepath = 'http://10.1.150.147:8080';
 
 
