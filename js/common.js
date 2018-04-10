@@ -23,7 +23,8 @@ $("#Mask img").css("margin-top",img_mT+"px");
 @return 格式的字符串,如'1,234,567.45' 
 @type String 
 */ 
-function formatNumber(num,cent,isThousand){ 
+function formatNumber(num,cent,isThousand){
+
 	num = num.toString().replace(/$|,/g,''); 
 	if(isNaN(num))//检查传入数值为数值类型. 
 	num = "0"; 
@@ -64,9 +65,7 @@ function formatNumber(num,cent,isThousand){
 		}else{
 			return (((sign)?'':'-') + num + '.' + cents);
 		}
-		 
 	}
-	
 } 
 
 
@@ -108,15 +107,6 @@ function bgColor2(num) {
  * id  需要遮挡的部分的id值
  * */
 function loadHide(id){
-	/*$("<div id='shade' style='opacity:0.5;background:#fff'><img width='60px' style='position:relative;left:45%;top:45%;' src='"+basepath+"/web/img/loading.gif' /></div>").css({
-		  position:'absolute', 
-		  top:0, 
-		  left:0, 
-		  zIndex:300,
-		  height:'100%',
-		  width:'100%'
-	}).appendTo('#'+id);*/
-
 
     $("<div id='shade' style='opacity:0.5;background:#fff'><img width='60px' style='position:relative;left:45%;top:45%;' src='../img/loading.gif' /></div>").css({
         position:'absolute',
@@ -126,17 +116,10 @@ function loadHide(id){
         height:'100%',
         width:'100%'
     }).appendTo('#'+id);
+
 }
 
 function loadHide1(id,id1){
-	/*$("<div id='"+id1+"' style='opacity:0.5;background:#fff'><img width='60px' style='position:relative;left:45%;top:45%;' src='"+basepath+"/web/img/loading.gif' /></div>").css({
-		  position:'absolute',
-		  top:0,
-		  left:0,
-		  zIndex:300,
-		  height:'100%',
-		  width:'100%'
-	}).appendTo('#'+id);*/
 
     $("<div id='"+id1+"' style='opacity:0.5;background:#fff'><img width='60px' style='position:relative;left:45%;top:45%;' src='../img/loading.gif' /></div>").css({
         position:'absolute',
@@ -146,6 +129,7 @@ function loadHide1(id,id1){
         height:'100%',
         width:'100%'
     }).appendTo('#'+id);
+
 }
 
 //获取json对象的length

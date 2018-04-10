@@ -57,7 +57,10 @@ isMainProduct: true是否是重点的产品  ture是  false 不是
 返回--
 
 http://10.60.138.106/trusted/MnysXKyUQ-a1NdIoBe1JDw==:3yS21__9Q7xcyJkOBJfOPb8e/views/--_10/-?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no&:toolbar=no
+
+数据的展现
+Echarts
 BIEE集成echats
-tableau的使用可以做表格和柱状图的结合的图形化
+TableAU的使用可以做表格和柱状图的结合的图形化
 
 
