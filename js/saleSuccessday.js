@@ -211,296 +211,294 @@ $("#sr_typeselect").on("change",function(){
 });
 //获取基本数据和柱状图
 function getxsdc(jsonData){
-    console.log('--------------获取基本数据和柱状图---------------');
+    console.log('--------------获取基本数据和柱状图以及2个表格---------------');
     console.log(jsonData);
 	// 基本数据和柱状图以及2个表格的接口 getxsdc
 	ajaxReq("getxsdc",jsonData,function(data) {
         console.log('getxsdc接口返回的数据：');
 		console.log(data);
-		/***基本数据 S***/
+		//判断json是否为空
+        var flagJSON=JSON.stringify(data)=="{}";
+        if(!flagJSON) {
+            /***基本数据 S***/
 
-		/*
-		//日期
-		$("#startTime").val(data.startTime);
+            /*
+            //日期
+            $("#startTime").val(data.startTime);
 
-		//日折前收入
-		$("#daybefore").html(formatNumber(data.daybefore,2,1));
+            //日折前收入
+            $("#daybefore").html(formatNumber(data.daybefore,2,1));
 
-		//日账面收入
-		$("#daybook").html(formatNumber(data.daybook,2,1));
+            //日账面收入
+            $("#daybook").html(formatNumber(data.daybook,2,1));
 
-		//月度累计折前收入
-		$("#monthbefore").html(formatNumber(data.monthbefore,2,1));
+            //月度累计折前收入
+            $("#monthbefore").html(formatNumber(data.monthbefore,2,1));
 
-		//月度累计账面收入
-		$("#monthbook").html(formatNumber(data.monthbook,2,1));
+            //月度累计账面收入
+            $("#monthbook").html(formatNumber(data.monthbook,2,1));
 
-		//月累计折前达成进度
-		$("#monthbefore_reach").html(formatNumber(data.monthbefore_reach,2,1));
+            //月累计折前达成进度
+            $("#monthbefore_reach").html(formatNumber(data.monthbefore_reach,2,1));
 
-        //月累计折前达成进度的数字的颜色
-		$("#monthbefore_reach").parent("div").css("background-color",bgColor2(data.monthbefore_reach_color));
-
-
-		//月累计账面达成进度
-		$("#monthbook_reach").html(formatNumber(data.monthbook_reach,2,1));
-
-        //月累计账面达成进度的数字的颜色
-		$("#monthbook_reach").parent("div").css("background-color",bgColor2(data.monthbook_reach_color));
-
-        //年累计折前收入
-		$("#yearbefore").html(formatNumber(data.yearbefore,2,1));
-
-        //年累计账面收入
-		$("#yearbook").html(formatNumber(data.yearbook,2,1));
-
-		//年累计折前达成率
-		$("#yearbefore_reach").html(formatNumber(data.yearbefore_reach,2,1));
-        //年累计折前达成率的数据的颜色
-		$("#yearbefore_reach").parent("div").css("background-color",bgColor2(data.yearbefore_reach));
+            //月累计折前达成进度的数字的颜色
+            $("#monthbefore_reach").parent("div").css("background-color",bgColor2(data.monthbefore_reach_color));
 
 
-		//年累计账面达成率
-		$("#yearbook_reach").html(formatNumber(data.yearbook_reach,2,1));
-        //年累计账面达成率的数据的颜色
-		$("#yearbook_reach").parent("div").css("background-color",bgColor2(data.yearbook_reach));
-        /***基本数据 E***/
+            //月累计账面达成进度
+            $("#monthbook_reach").html(formatNumber(data.monthbook_reach,2,1));
+
+            //月累计账面达成进度的数字的颜色
+            $("#monthbook_reach").parent("div").css("background-color",bgColor2(data.monthbook_reach_color));
+
+            //年累计折前收入
+            $("#yearbefore").html(formatNumber(data.yearbefore,2,1));
+
+            //年累计账面收入
+            $("#yearbook").html(formatNumber(data.yearbook,2,1));
+
+            //年累计折前达成率
+            $("#yearbefore_reach").html(formatNumber(data.yearbefore_reach,2,1));
+            //年累计折前达成率的数据的颜色
+            $("#yearbefore_reach").parent("div").css("background-color",bgColor2(data.yearbefore_reach));
 
 
-
-		//各事业部折前收入指标
-        /*
-		//液态奶事业部
-		$("#ytn_daybefore").html(data.ytn_daybefore);
-		//奶粉事业部
-		$("#nf_daybefore").html(data.nf_daybefore);
-
-		//酸奶事业部
-		$("#sn_daybefore").html(data.sn_daybefore);
-
-		//冷饮事业部
-		$("#ly_daybefore").html(data.ly_daybefore);
-
-		//电商
-		$("#ds_daybefore").html(data.ds_daybefore);
-        */
+            //年累计账面达成率
+            $("#yearbook_reach").html(formatNumber(data.yearbook_reach,2,1));
+            //年累计账面达成率的数据的颜色
+            $("#yearbook_reach").parent("div").css("background-color",bgColor2(data.yearbook_reach));
+            /***基本数据 E***/
 
 
+            //各事业部折前收入指标
+            /*
+            //液态奶事业部
+            $("#ytn_daybefore").html(data.ytn_daybefore);
+            //奶粉事业部
+            $("#nf_daybefore").html(data.nf_daybefore);
+
+            //酸奶事业部
+            $("#sn_daybefore").html(data.sn_daybefore);
+
+            //冷饮事业部
+            $("#ly_daybefore").html(data.ly_daybefore);
+
+            //电商
+            $("#ds_daybefore").html(data.ds_daybefore);
+            */
 
 
+            /******各事业部收成情况 S******/
+            /*
+            * 参数的含义:
+            * x_data 这个是X轴
+            * y1_data 折前达成进度的y轴
+            * y2_data 账面达成进度的y轴
+            * data_bs 当月计划进度
+            *
+            * */
 
-		/******各事业部收成情况 S******/
-		/*
-		* 参数的含义:
-		* x_data 这个是X轴
-		* y1_data 折前达成进度的y轴
-		* y2_data 账面达成进度的y轴
-		* data_bs 当月计划进度
-		*
-		* */
-
-		var x_data = [],y1_data=[],y2_data=[],data_bs=[];
-
-
-		//businessIncomeComplete  各事业部的收成的情况
-		//bG_NAME  液态奶事业部 事业部的名称
-		//dayZQIncomeCompletePercent 折前达成进度
-		//dayZMIncomeCompletePercent 折面达成进度
-		//jzx  当月计划进度
-
-		$.each(data.businessIncomeComplete.map,function(k,v){
-			x_data.push(v.bG_NAME);
-			y1_data.push(formatNumber(v.dayZQIncomeCompletePercent,1,0));
-			y2_data.push(formatNumber(v.dayZMIncomeCompletePercent,1,0));
-			//液态奶事业部
-			if(k==0){
-				var chart_arr=[{  
-			                  
-			                     x: "10%",  
-			                     yAxis: v.jzx,
-			                     value:formatNumber(v.jzx,1,0)+"%"
-			                 },  
-			                 {  
-			                     x: "26.5%",  
-			                     yAxis: v.jzx
-			                 }];
-				data_bs.push(chart_arr);
-			}
-			//奶粉事业部
-            else if(k==1){
-				var chart_arr=[{ 
-			                    x: "26.5%",  
-			                    yAxis: v.jzx,
-			                    value:formatNumber(v.jzx,1,0)+"%"
-			                },  
-			                {  
-			                    x: "43%",  
-			                    yAxis: v.jzx
-			                }];
-				data_bs.push(chart_arr);
-			}
-			//酸奶事业部
-			else if(k==2){
-				var chart_arr=[{ 
-			                    x: "43%",  
-			                    yAxis: v.jzx,
-			                    value:formatNumber(v.jzx,1,0)+"%"
-			                },  
-			                {  
-			                    x: "59.5%",  
-			                    yAxis:v.jzx
-			                }];
-				data_bs.push(chart_arr);
-			}
-			//冷饮事业部
-			else if(k==3){
-				var chart_arr=[{ 
-			                    x: "59.5%",  
-			                    yAxis: v.jzx,
-			                    value:formatNumber(v.jzx,1,0)+"%"
-			                },  
-			                {  
-			                    x: "76%",  
-			                    yAxis: v.jzx
-			                }];
-				data_bs.push(chart_arr);
-			}
-			//电商
-			else if(k==4){
-				var chart_arr=[{ 
-			                    x: "76%",  
-			                    yAxis: v.jzx,
-			                    value:formatNumber(v.jzx,1,0)+"%"
-			                },  
-			                {  
-			                    x: "92.5%",  
-			                    yAxis: v.jzx
-			                }];
-				data_bs.push(chart_arr);
-			}
-		});
-		myChart.setOption(getChart1(x_data,y1_data,y2_data,data_bs));
+            var x_data = [], y1_data = [], y2_data = [], data_bs = [];
 
 
+            //businessIncomeComplete  各事业部的收成的情况
+            //bG_NAME  液态奶事业部 事业部的名称
+            //dayZQIncomeCompletePercent 折前达成进度
+            //dayZMIncomeCompletePercent 折面达成进度
+            //jzx  当月计划进度
+            /*
+            $.each(data.businessIncomeComplete.map,function(k,v){
+                x_data.push(v.bG_NAME);
+                y1_data.push(formatNumber(v.dayZQIncomeCompletePercent,1,0));
+                y2_data.push(formatNumber(v.dayZMIncomeCompletePercent,1,0));
+                //液态奶事业部
+                if(k==0){
+                    var chart_arr=[{
 
-
-        //头部的当前的日期
-		$(".char_date").text(jsonData.day.split("-")[0]+"年" + jsonData.day.split("-")[1]+"月"+ jsonData.day.split("-")[2]+"日");
-        //各事业部的收成情况的时间进度
-		$(".char_timePercent").text(formatNumber(data.businessIncomeComplete.timePercent,1,0)+"%");
-
-        /******各事业部收成情况 E******/
-
-
-        /******各事业部折前收入指标 S******/
-
-		//各事业部折前收入指标bgIncome
-		//bgName事业部名称
-		//dayZQIncome 日折前收入
-		//monthZQIncome  月度折前收入
-        //monthZQCompletePercent 月折前达成进度
-		//monthZQIncomeIncrease  月累计增长
-		//yearZQLJIncome 年累计折前收入
-		//yearZQIncomeCompletePercent 年折前达成率
-		//yearZQLJIncomeIncrease 年累计增长
-        //monthZQCompletePercentColor 月折前达成进度颜色
-
-		/**求月度折前收入的最大值和年累计折前收入的最大值**/
-		var tiao1=[],tiao2=[];
-        $.each(data.bgIncome,function(k,v){
-        	tiao1.push(v.monthZQIncome);
-        	tiao2.push(v.yearZQLJIncome);            	
-        });
-
-        var tiaomax1 = Math.max.apply(null,tiao1);//月度折前收入的最大值
-        var tiaomax2 = Math.max.apply(null,tiao2);//年累计折前收入的最大值
-
-		var str_zqsr = "";
-		$.each(data.bgIncome,function(k,v){
-			var rzmsr = v.dayZQIncome,   //日折前收入
-				ydzmsr = v.monthZQIncome,//月度折前收入
-				yzmdcjd = v.monthZQCompletePercent,//月折前达成进度
-				yljzz = v.monthZQIncomeIncrease,//月累计增长
-				nljzmsr = v.yearZQLJIncome,//年累计折前收入
-				nzmdcl = v.yearZQIncomeCompletePercent,//年折前达成率
-				nljzz = v.yearZQLJIncomeIncrease;//年累计增长
-			var color1 = bgColor2(v.monthZQCompletePercentColor); //月折前达成进度颜色
-        	var color2 = bgColor2(nzmdcl);  //年折前达成率的颜色
-        	var imgs1 = yljzz >=0 ? "up":"down";   //月累计增长的向上或者向下的箭头
-        	var imgs2 = nljzz >=0 ? "up":"down";   //年累计增长的向上或者向下的箭头
-        	var width1 = tiaomax1 === 0 ? 0 : (ydzmsr/tiaomax1)*100 ; //月度折前收入的宽度
-        	var width2 = tiaomax2 === 0 ? 0 : (nljzmsr/tiaomax2)*100 ;
-        	str_zqsr += '<tr>'
-						+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
-						+'<td class="hide">0</td>'
-						+'<td>'+formatNumber(rzmsr,1,1)+'</td>'
-						+'<td><span class="table_bg4A7EBE" style="width:'+width1+'%;"></span>'+formatNumber(ydzmsr,1,1)+'</td>'
-						+'<td style="font-weight:bold;color:'+color1+';">'+formatNumber(yzmdcjd,2,0)+'%</td>'
-						+'<td>'+formatNumber(yljzz,1,0)+'%<img src="../img/'+imgs1+'.png" alt="" height="20px" style="vertical-align: top;"></td>'
-						+'<td><span class="table_bg4A7EBE" style="width:'+width2+'%;"></span>'+formatNumber(nljzmsr,1,1)+'</td>'
-						+'<td style="font-weight:bold;color:'+color2+';">'+formatNumber(nzmdcl,2,0)+'%</td>'
-						+'<td>'+formatNumber(nljzz,1,0)+'%<img src="../img/'+imgs2+'.png" alt="" height="20px" style="vertical-align: top;"></td>'
-					+'</tr>'
-		});
-		$(".d_zqsrT tbody").html(str_zqsr);
-        /******各事业部折前收入指标 E******/
+                                     x: "10%",
+                                     yAxis: v.jzx,
+                                     value:formatNumber(v.jzx,1,0)+"%"
+                                 },
+                                 {
+                                     x: "26.5%",
+                                     yAxis: v.jzx
+                                 }];
+                    data_bs.push(chart_arr);
+                }
+                //奶粉事业部
+                else if(k==1){
+                    var chart_arr=[{
+                                    x: "26.5%",
+                                    yAxis: v.jzx,
+                                    value:formatNumber(v.jzx,1,0)+"%"
+                                },
+                                {
+                                    x: "43%",
+                                    yAxis: v.jzx
+                                }];
+                    data_bs.push(chart_arr);
+                }
+                //酸奶事业部
+                else if(k==2){
+                    var chart_arr=[{
+                                    x: "43%",
+                                    yAxis: v.jzx,
+                                    value:formatNumber(v.jzx,1,0)+"%"
+                                },
+                                {
+                                    x: "59.5%",
+                                    yAxis:v.jzx
+                                }];
+                    data_bs.push(chart_arr);
+                }
+                //冷饮事业部
+                else if(k==3){
+                    var chart_arr=[{
+                                    x: "59.5%",
+                                    yAxis: v.jzx,
+                                    value:formatNumber(v.jzx,1,0)+"%"
+                                },
+                                {
+                                    x: "76%",
+                                    yAxis: v.jzx
+                                }];
+                    data_bs.push(chart_arr);
+                }
+                //电商
+                else if(k==4){
+                    var chart_arr=[{
+                                    x: "76%",
+                                    yAxis: v.jzx,
+                                    value:formatNumber(v.jzx,1,0)+"%"
+                                },
+                                {
+                                    x: "92.5%",
+                                    yAxis: v.jzx
+                                }];
+                    data_bs.push(chart_arr);
+                }
+            });
+            myChart.setOption(getChart1(x_data,y1_data,y2_data,data_bs));
 
 
 
 
-        /******各事业部账面收入指标 S******/
-		//各事业部账面收入指标
-		//bgIncome  各事业部账面收入指标
-		//dayZMIncome 日账面收入
-		//monthZMIncome 月度账面收入
-		//monthZMCompletePercent 月账面达成进度
-		//monthZMIncomeIncrease  月累计增长
-		//yearZMLJIncome 年累计账面收入
-		//yearZMIncomeCompletePercent  年账面达成率
-		//yearZMLJIncomeIncrease 年累计增长
+            //头部的当前的日期
+            $(".char_date").text(jsonData.day.split("-")[0]+"年" + jsonData.day.split("-")[1]+"月"+ jsonData.day.split("-")[2]+"日");
+            //各事业部的收成情况的时间进度
+            $(".char_timePercent").text(formatNumber(data.businessIncomeComplete.timePercent,1,0)+"%");
+             */
+            /******各事业部收成情况 E******/
 
 
+            /******各事业部折前收入指标 S******/
 
-		var tiao3=[],tiao4=[];
-        $.each(data.bgIncome,function(k,v){
-        	tiao3.push(v.monthZMIncome);
-        	tiao4.push(v.yearZMLJIncome);            	
-        });
-        var tiaomax3 = Math.max.apply(null,tiao3);//月度账面收入的最大值
-        var tiaomax4 = Math.max.apply(null,tiao4);//年累计账面收入的最大值
-		var str_zmsr = "";
-		$.each(data.bgIncome,function(k,v){
-			var rzmsr = v.dayZMIncome,//日账面收入
-				ydzmsr = v.monthZMIncome,//月度账面收入
-				yzmdcjd = v.monthZMCompletePercent,//月账面达成进度
-				yljzz = v.monthZMIncomeIncrease,//月累计增长
-				nljzmsr = v.yearZMLJIncome,//年累计账面收入
-				nzmdcl = v.yearZMIncomeCompletePercent,//年账面达成率
-				nljzz = v.yearZMLJIncomeIncrease;//年累计增长
-			var color1 = bgColor2(v.monthZMCompletePercentColor);  //月账面达成进度的颜色
-        	var color2 = bgColor2(nzmdcl); //年账面达成率颜色
-        	var imgs1 = yljzz >=0 ? "up":"down";//月累计增长的箭头
-        	var imgs2 = nljzz >=0 ? "up":"down";//年累计增长的箭头
-            var width3 = tiaomax3 === 0 ? 0 : (ydzmsr/tiaomax3)*100;  //月度账面收入的宽度
-        	var width4 = tiaomax4 === 0 ? 0 : (nljzmsr/tiaomax4)*100; //年累计账面收入的宽度
-        	str_zmsr += '<tr>'
-							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
-							+'<td class="hide">0</td>'
-							+'<td>'+formatNumber(rzmsr,1,1)+'</td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+width3+'%;"></span>'+formatNumber(ydzmsr,1,1)+'</td>'
-							+'<td style="font-weight:bold;color:'+color1+';">'+formatNumber(yzmdcjd,2,0)+'%</td>'
-							+'<td>'+formatNumber(yljzz,1,0)+'%<img src="../img/'+imgs1+'.png" alt="" height="20px" style="vertical-align: top;"></td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+width4+'%;"></span>'+formatNumber(nljzmsr,1,1)+'</td>'
-							+'<td style="font-weight:bold;color:'+color2+';">'+formatNumber(nzmdcl,2,1)+'%</td>'
-							+'<td>'+formatNumber(nljzz,1,0)+'%<img src="../img/'+imgs2+'.png" alt="" height="20px" style="vertical-align: top;"></td>'
-						+'</tr>'
-		});
-		$(".d_zmsrT tbody").html(str_zmsr);
+            //各事业部折前收入指标bgIncome
+            //bgName事业部名称
+            //dayZQIncome 日折前收入
+            //monthZQIncome  月度折前收入
+            //monthZQCompletePercent 月折前达成进度
+            //monthZQIncomeIncrease  月累计增长
+            //yearZQLJIncome 年累计折前收入
+            //yearZQIncomeCompletePercent 年折前达成率
+            //yearZQLJIncomeIncrease 年累计增长
+            //monthZQCompletePercentColor 月折前达成进度颜色
 
-        /******各事业部账面收入指标 E******/
-		$("#hide1").remove();
-		$("#hide2").remove();
+            /**求月度折前收入的最大值和年累计折前收入的最大值**/
+            var tiao1 = [], tiao2 = [];
+            $.each(data.bgIncome, function (k, v) {
+                tiao1.push(v.monthZQIncome);
+                tiao2.push(v.yearZQLJIncome);
+            });
+
+            var tiaomax1 = Math.max.apply(null, tiao1);//月度折前收入的最大值
+            var tiaomax2 = Math.max.apply(null, tiao2);//年累计折前收入的最大值
+
+            var str_zqsr = "";
+            $.each(data.bgIncome, function (k, v) {
+                var rzmsr = v.dayZQIncome,   //日折前收入
+                    ydzmsr = v.monthZQIncome,//月度折前收入
+                    yzmdcjd = v.monthZQCompletePercent,//月折前达成进度
+                    yljzz = v.monthZQIncomeIncrease,//月累计增长
+                    nljzmsr = v.yearZQLJIncome,//年累计折前收入
+                    nzmdcl = v.yearZQIncomeCompletePercent,//年折前达成率
+                    nljzz = v.yearZQLJIncomeIncrease;//年累计增长
+                var color1 = bgColor2(v.monthZQCompletePercentColor); //月折前达成进度颜色
+                var color2 = bgColor2(nzmdcl);  //年折前达成率的颜色
+                var imgs1 = yljzz >= 0 ? "up" : "down";   //月累计增长的向上或者向下的箭头
+                var imgs2 = nljzz >= 0 ? "up" : "down";   //年累计增长的向上或者向下的箭头
+                var width1 = tiaomax1 === 0 ? 0 : (ydzmsr / tiaomax1) * 100; //月度折前收入的宽度
+                var width2 = tiaomax2 === 0 ? 0 : (nljzmsr / tiaomax2) * 100;
+                str_zqsr += '<tr>'
+                    + '<td onclick="cause_click($(this),"1")">' + v.bgName + '</td>'
+                    + '<td class="hide">0</td>'
+                    + '<td>' + formatNumber(rzmsr, 1, 1) + '</td>'
+                    + '<td><span class="table_bg4A7EBE" style="width:' + width1 + '%;"></span>' + formatNumber(ydzmsr, 1, 1) + '</td>'
+                    + '<td style="font-weight:bold;color:' + color1 + ';">' + formatNumber(yzmdcjd, 2, 0) + '%</td>'
+                    + '<td>' + formatNumber(yljzz, 1, 0) + '%<img src="../img/' + imgs1 + '.png" alt="" height="20px" style="vertical-align: top;"></td>'
+                    + '<td><span class="table_bg4A7EBE" style="width:' + width2 + '%;"></span>' + formatNumber(nljzmsr, 1, 1) + '</td>'
+                    + '<td style="font-weight:bold;color:' + color2 + ';">' + formatNumber(nzmdcl, 2, 0) + '%</td>'
+                    + '<td>' + formatNumber(nljzz, 1, 0) + '%<img src="../img/' + imgs2 + '.png" alt="" height="20px" style="vertical-align: top;"></td>'
+                    + '</tr>'
+            });
+            $(".d_zqsrT tbody").html(str_zqsr);
+            /******各事业部折前收入指标 E******/
+
+
+            /******各事业部账面收入指标 S******/
+                //各事业部账面收入指标
+                //bgIncome  各事业部账面收入指标
+                //dayZMIncome 日账面收入
+                //monthZMIncome 月度账面收入
+                //monthZMCompletePercent 月账面达成进度
+                //monthZMIncomeIncrease  月累计增长
+                //yearZMLJIncome 年累计账面收入
+                //yearZMIncomeCompletePercent  年账面达成率
+                //yearZMLJIncomeIncrease 年累计增长
+
+
+            var tiao3 = [], tiao4 = [];
+            $.each(data.bgIncome, function (k, v) {
+                tiao3.push(v.monthZMIncome);
+                tiao4.push(v.yearZMLJIncome);
+            });
+            var tiaomax3 = Math.max.apply(null, tiao3);//月度账面收入的最大值
+            var tiaomax4 = Math.max.apply(null, tiao4);//年累计账面收入的最大值
+            var str_zmsr = "";
+            $.each(data.bgIncome, function (k, v) {
+                var rzmsr = v.dayZMIncome,//日账面收入
+                    ydzmsr = v.monthZMIncome,//月度账面收入
+                    yzmdcjd = v.monthZMCompletePercent,//月账面达成进度
+                    yljzz = v.monthZMIncomeIncrease,//月累计增长
+                    nljzmsr = v.yearZMLJIncome,//年累计账面收入
+                    nzmdcl = v.yearZMIncomeCompletePercent,//年账面达成率
+                    nljzz = v.yearZMLJIncomeIncrease;//年累计增长
+                var color1 = bgColor2(v.monthZMCompletePercentColor);  //月账面达成进度的颜色
+                var color2 = bgColor2(nzmdcl); //年账面达成率颜色
+                var imgs1 = yljzz >= 0 ? "up" : "down";//月累计增长的箭头
+                var imgs2 = nljzz >= 0 ? "up" : "down";//年累计增长的箭头
+                var width3 = tiaomax3 === 0 ? 0 : (ydzmsr / tiaomax3) * 100;  //月度账面收入的宽度
+                var width4 = tiaomax4 === 0 ? 0 : (nljzmsr / tiaomax4) * 100; //年累计账面收入的宽度
+                str_zmsr += '<tr>'
+                    + '<td onclick="cause_click($(this),"1")">' + v.bgName + '</td>'
+                    + '<td class="hide">0</td>'
+                    + '<td>' + formatNumber(rzmsr, 1, 1) + '</td>'
+                    + '<td><span class="table_bg4A7EBE" style="width:' + width3 + '%;"></span>' + formatNumber(ydzmsr, 1, 1) + '</td>'
+                    + '<td style="font-weight:bold;color:' + color1 + ';">' + formatNumber(yzmdcjd, 2, 0) + '%</td>'
+                    + '<td>' + formatNumber(yljzz, 1, 0) + '%<img src="../img/' + imgs1 + '.png" alt="" height="20px" style="vertical-align: top;"></td>'
+                    + '<td><span class="table_bg4A7EBE" style="width:' + width4 + '%;"></span>' + formatNumber(nljzmsr, 1, 1) + '</td>'
+                    + '<td style="font-weight:bold;color:' + color2 + ';">' + formatNumber(nzmdcl, 2, 1) + '%</td>'
+                    + '<td>' + formatNumber(nljzz, 1, 0) + '%<img src="../img/' + imgs2 + '.png" alt="" height="20px" style="vertical-align: top;"></td>'
+                    + '</tr>'
+            });
+            $(".d_zmsrT tbody").html(str_zmsr);
+
+            /******各事业部账面收入指标 E******/
+            $("#hide1").remove();
+            $("#hide2").remove();
+        }
 	});
+
 }
 
 /******获取地图  S*******/
