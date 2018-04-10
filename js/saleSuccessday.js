@@ -436,20 +436,42 @@ function getxsdc(jsonData){
                 var width1 = tiaomax1 === 0 ? 0 : (ydzmsr / tiaomax1) * 100; //月度折前收入的宽度
                 var width2 = tiaomax2 === 0 ? 0 : (nljzmsr / tiaomax2) * 100; //年折前累计收入的宽度
                 var width5 = tiaomax5 === 0 ? 0 : (rzmsr/tiaomax5)*100 ;
-
+                // 8个字段
 				str_zqsr += '<tr>'
+					if('undefined'==typeof(v.bgName)){
+                        v.bgName = '';
+					}
+					if('undefined'==typeof(rzmsr)){
+                        rzmsr    = '';
+					}
+					if('undefined'==typeof(ydzmsr)){
+                        ydzmsr   = '';
+					}
+					if('undefined'==typeof(yzmdcjd)){
+                        yzmdcjd  = '';
+					}
+					if('undefined'==typeof(yljzz)){
+                        yljzz    = '';
+					}
+					if('undefined'==typeof(nljzmsr)){
+                        nljzmsr  = '';
+					}
+					if('undefined'==typeof(nzmdcl)){
+                        nzmdcl   = '';
+					}
+					if('undefined'==typeof(nljzz)){
+                        nljzz    = '';
+					}
 
-					+ '<td onclick="cause_click($(this),"1")">' + v.bgName + '</td>'
+					+ '<td onclick="cause_click($(this),"1")">' + v.bgName + '</td>'  //事业部的名称
 					+ '<td class="hide">0</td>'
-					+ '<td align="left"><span class="table_bg4A7EBE" style="width:' +width5+'%;"></span>' + formatNumber(rzmsr, 1, 1) + '</td>'
-					+ '<td align="left"><span class="table_bg4A7EBE" style="width:' +width1+'%;"></span>' + formatNumber(ydzmsr, 1, 1) + '</td>'
-					+ '<td style="font-weight:bold;align:left;color:' + color1 + ';">' + formatNumber(yzmdcjd, 2, 0) + '%</td>' //月折前达成进度颜色
-					+ '<td>' + formatNumber(yljzz, 1, 0) + '%<img src="../img/' + imgs1 + '.png" alt="" height="20px" style="vertical-align: top;"></td>'
-					+ '<td><span class="table_bg4A7EBE" style="width:' + width2 + '%;"></span>' + formatNumber(nljzmsr, 1, 1) + '</td>'
-
-
-					+ '<td style="font-weight:bold;color:' + color2 + ';">' + formatNumber(nzmdcl, 2, 0) + '%</td>'
-					+ '<td>' + formatNumber(nljzz, 1, 0) + '%<img src="../img/' + imgs2 + '.png" alt="" height="20px" style="vertical-align: top;"></td>'
+					+ '<td align="left"><span class="table_bg4A7EBE" style="width:' +width5+'%;"></span>' + formatNumber(rzmsr, 1, 1) + '</td>'  //日折前收入
+					+ '<td align="left"><span class="table_bg4A7EBE" style="width:' +width1+'%;"></span>' + formatNumber(ydzmsr, 1, 1) + '</td>'  //月度折前收入
+					+ '<td style="font-weight:bold;align:left;color:' + color1 + ';">' + formatNumber(yzmdcjd, 2, 0) + '%</td>'                   //月折前达成进度颜色
+					+ '<td>' + formatNumber(yljzz, 1, 0) + '%<img src="../img/' + imgs1 + '.png" alt="" height="20px" style="vertical-align: top;"></td>' //月累计增长
+					+ '<td><span class="table_bg4A7EBE" style="width:' + width2 + '%;"></span>' + formatNumber(nljzmsr, 1, 1) + '</td>' //年折前累计收入
+					+ '<td style="font-weight:bold;color:' + color2 + ';">' + formatNumber(nzmdcl, 2, 0) + '%</td>'  //年折前达成率
+					+ '<td>' + formatNumber(nljzz, 1, 0) + '%<img src="../img/' + imgs2 + '.png" alt="" height="20px" style="vertical-align: top;"></td>'  //年折前累计增长
 					+ '</tr>'
 
 
