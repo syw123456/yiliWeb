@@ -7,7 +7,10 @@ function getRootPath(){
     var postPath=strPath.substring(0,strPath.substr(1).indexOf('/')+1);
     return(prePath+postPath);
 }
-var basepath = getRootPath();
+//var basepath = getRootPath();
+var basepath = 'http://10.1.150.147:8080';
+
+
 //数据加载中图片
 var img_mT = $("#Mask").height()/2-25;
 $("#Mask img").css("margin-top",img_mT+"px");

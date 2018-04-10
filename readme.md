@@ -1,3 +1,8 @@
+史跃伟
+
+mac地址：18:65:90:d5:f8:d1
+IP地址：10.1.150.144
+
 页面构成
 saleSuccess          销售达成
 saleIncrease         销售增长
@@ -6,7 +11,7 @@ brandOverview        品牌总览
 saleDaily            集团销售增长日报
 saleSuccessday       集团销售达成日报
 jquery的版本          v1.11.1 
-echart的版本          4.0.2
+echart的版本          v4.0.2
 日期选择器             WdatePicker
 服务器的地址           1564行
 基本数据和柱状图以及2个表格的接口  169行
@@ -53,3 +58,9 @@ isMainProduct: true是否是重点的产品  ture是  false 不是
 
 
 http://10.60.138.106/trusted/MnysXKyUQ-a1NdIoBe1JDw==:3yS21__9Q7xcyJkOBJfOPb8e/views/--_10/-?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no&:toolbar=no
+
+
+BIEE集成echats
+tableau 的使用可以做表格和柱状图的结合的图形化
+
+

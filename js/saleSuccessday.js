@@ -2,10 +2,9 @@
 
 //获取日期,填充日期
 var now = new Date();
-//alert(now.toLocaleString());
 now = new Date(now.getTime() - 86400000);
-var yyyy = now.getFullYear(), mm = (now.getMonth() + 1).toString(), dd = now
-        .getDate().toString();
+var yyyy = now.getFullYear(), mm = (now.getMonth() + 1).toString(),
+	dd = now.getDate().toString();
 if (mm.length == 1) {
     mm = '0' + mm;
 }
@@ -13,7 +12,9 @@ if (dd.length == 1) {
     dd = '0' + dd;
 }
 var time =yyyy+ "-" + mm+ "-" + dd;
-//time = "2017-12-31";
+
+//测试的日期
+time = "2017-12-31";
 $("#startTime").val(time);
 
 //定义echart 插件到页面
@@ -28,15 +29,22 @@ var myChart2 = echarts.init(document.getElementById('main2'));
 var myChart3 = echarts.init(document.getElementById('main_map'));
 
 //各事业部的收成的情况页面初始化
+//x轴的数据
 var x_data = ["液态奶事业部","奶粉事业部","酸奶事业部","冷饮事业部","电商"];
+//折前达成进度的y轴
 var y1_data = ["0","0","0","0","0"];
+//账面达成进度的y轴
 var y2_data = ["0","0","0","0","0"];
 myChart.setOption(getChart1(x_data,y1_data,y2_data,[]));
 
 
-//当月折前收入进度页面初始化
+//当月全部折前收入进度页面初始化
+//当月全部折前收入进度的x轴
 var x_data =  ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
+
+//预算目标的y轴
 var y_total_data = ["30","10","20","40"];
+//累计收入的y轴
 var y_budget_data = ["40","10","40","10","450","20","10","20","50","60","80","50","20","10","10"];
 myChart2.setOption(getJson2(x_data,y_total_data,y_budget_data,"折前收入","全部"));
 
@@ -45,6 +53,7 @@ $.get('../json/china.json', function (chinaJson) {
     echarts.registerMap('china', chinaJson);
     myChart3.setOption(getMapchart("液态奶事业部",[],[],[]),true);
 });
+
 //图标内容大小自适应
 setTimeout(function () {
     window.onresize = function () {
@@ -53,37 +62,53 @@ setTimeout(function () {
         myChart3.resize();
     }
 }, 1);
+
 //页面初始化加载数据
 init();
 function init(){
-	//默认的加载的loading图
+
+    console.log('------------进入init-----------------');
+	//默认的加载的头部的loading图
 	loadHide1("h_top","hide1");
+
+	//默认的加载的中间的loading图
 	loadHide1("h_middle","hide2");
 
-	//基本数据和柱状图以及2个表格的接口
+	//基本数据和柱状图以及2个表格（各事业部折前收入指标和各事业部账面收入指标）的接口
 	var jsondata1 = { 'day':time }; //day: 2017-12-31
 	getxsdc(jsondata1);
 
-	//地图
+	//地图的显示  day 是当前的日期,businessMapName是事业部的名称
 	var jsondata2 = {
 			"day":time,
 			"businessMapName":"液态奶事业部"
 	};
-	getMap(jsondata2);
+	//getMap(jsondata2);
+
+    //默认的加载的底部的loading图
 	loadHide1("h_bottom","hide3");
 
 	//当月全部折前收入进度和全部重点产品折前收入和全部新品折前收入
+	/*
+	* 参数:
+	* day 当前的日期
+	* isZQ 是否是折前的收入 true 是  false 否
+	* businessMapName 是事业部的名称
+	* bigAreaMapName  是大区的名称
+	* */
 	var jsondata3={
 			"day":time,
 			"isZQ":"true",
 			"businessMapName":"",
 			"bigAreaMapName":""
 	};
-	getRightBottom(jsondata3,"折前收入");
+	//getRightBottom(jsondata3,"折前收入");
 }
 var businessMapName = "",bigAreaMapName="";
 //选择日期查询数据
 var times1 = $("#startTime").val();
+
+//这个是日期的点击事件
 $("#startTime").off("click").on("click",function(){    
     var that = $(this);
     WdatePicker({
@@ -96,11 +121,13 @@ $("#startTime").off("click").on("click",function(){
             	loadHide1("h_top","hide1");
             	loadHide1("h_middle","hide2");
             	loadHide1("h_bottom","hide3");
+            	//右侧的日期的显示
             	$(".newyearday").text(times.split("-")[0]+"年"+times.split("-")[1]+"月"+times.split("-")[2]+"日");
             	//获取基本数据
             	var jsondata1 = { 'day':times };
+            	//基本数据和柱状图以及2个表格（各事业部折前收入指标和各事业部账面收入指标）的接口
             	getxsdc(jsondata1);
-            	//获取地图数据
+            	//获取地图数据的请求
             	var jsondata2 = {
             			"day":times,
             			"businessMapName":businessMapName
@@ -112,6 +139,14 @@ $("#startTime").off("click").on("click",function(){
 
 
             	//获取右下角数据
+				/*
+				* day:当前日期
+				* isZQ: 是否是折前收入
+				* businessMapName: 事业部的名称
+				* bigAreaMapName: 大区的名称
+				*
+				* */
+
             	var isName = $("#sr_typeselect").val();
             	var isZQ = isName=="折前收入" ? "true":"false";
             	var jsondata3={
@@ -126,20 +161,28 @@ $("#startTime").off("click").on("click",function(){
         }
     });     
 });
-//点击柱状图x轴标签
+//点击柱状图x轴的事业部 去请求 地图的接口 和 china.json 和getRightBottom的方法 右下角的3个内容
 myChart.on('click', function (params) {
-	 if(params.componentType == "xAxis"){  
+	 if(params.componentType == "xAxis"){
+	 	//出现底部的loading
 		loadHide1("h_bottom","hide3");
+		//得到当前的时间
 		var time = $("#startTime").val();
+		//是否是折前收入
 		var isName = $("#sr_typeselect").val();
 		var isZQ = isName=="折前收入" ? "true":"false";
+		//事业部的名称
 		businessMapName = params.value;
+
+		//请求地图的数据
 		var jsondata2={
 				"day":time,
 				"isZQ":isZQ,
 				"businessMapName":businessMapName
 		};
 		getMap(jsondata2);
+
+		//请求右下角的3块的数据
 		var jsondata3={
 				"day":time,
 				"isZQ":isZQ,
@@ -148,13 +191,16 @@ myChart.on('click', function (params) {
 		};
 		getRightBottom(jsondata3,isName);
 	 }
-}); 
-//选择指标销售获取折线图和两个表格的信息
+});
+
+//选择指标销售的下拉的列表  获取折线图和两个表格的信息
 $("#sr_typeselect").on("change",function(){
 	loadHide1("h_rightL","hide3");
 	var times=$("#startTime").val(),isZQ='';
 	var isName = $("#sr_typeselect").val();
 	var isZQ = isName=="折前收入" ? "true":"false";
+
+	//得到又下角的3块的数据
 	var jsondata3={
 			"day":times,
 			"isZQ":isZQ,
@@ -165,13 +211,12 @@ $("#sr_typeselect").on("change",function(){
 });
 //获取基本数据和柱状图
 function getxsdc(jsonData){
-
+    console.log('--------------获取基本数据和柱状图---------------');
+    console.log(jsonData);
 	// 基本数据和柱状图以及2个表格的接口 getxsdc
 	ajaxReq("getxsdc",jsonData,function(data) {
         console.log('getxsdc接口返回的数据：');
 		console.log(data);
-
-
 		/***基本数据 S***/
 		//日期
 		$("#startTime").val(data.startTime);
@@ -191,14 +236,14 @@ function getxsdc(jsonData){
 		//月累计折前达成进度
 		$("#monthbefore_reach").html(formatNumber(data.monthbefore_reach,2,1));
 
-        //月累计折前达成进度
+        //月累计折前达成进度的数字的颜色
 		$("#monthbefore_reach").parent("div").css("background-color",bgColor2(data.monthbefore_reach_color));
 
 
 		//月累计账面达成进度
 		$("#monthbook_reach").html(formatNumber(data.monthbook_reach,2,1));
 
-        //月累计账面达成进度
+        //月累计账面达成进度的数字的颜色
 		$("#monthbook_reach").parent("div").css("background-color",bgColor2(data.monthbook_reach_color));
 
         //年累计折前收入
@@ -209,11 +254,13 @@ function getxsdc(jsonData){
 
 		//年累计折前达成率
 		$("#yearbefore_reach").html(formatNumber(data.yearbefore_reach,2,1));
+        //年累计折前达成率的数据的颜色
 		$("#yearbefore_reach").parent("div").css("background-color",bgColor2(data.yearbefore_reach));
 
 
 		//年累计账面达成率
 		$("#yearbook_reach").html(formatNumber(data.yearbook_reach,2,1));
+        //年累计账面达成率的数据的颜色
 		$("#yearbook_reach").parent("div").css("background-color",bgColor2(data.yearbook_reach));
         /***基本数据 E***/
 
@@ -241,6 +288,15 @@ function getxsdc(jsonData){
 
 
 		/******各事业部收成情况 S******/
+		/*
+		* 参数的含义:
+		* x_data 这个是X轴
+		* y1_data 折前达成进度的y轴
+		* y2_data 账面达成进度的y轴
+		* data_bs 当月计划进度
+		*
+		* */
+
 		var x_data = [],y1_data=[],y2_data=[],data_bs=[];
 
 
@@ -249,7 +305,6 @@ function getxsdc(jsonData){
 		//dayZQIncomeCompletePercent 折前达成进度
 		//dayZMIncomeCompletePercent 折面达成进度
 		//jzx  当月计划进度
-
 
 		$.each(data.businessIncomeComplete.map,function(k,v){
 			x_data.push(v.bG_NAME);
@@ -329,7 +384,7 @@ function getxsdc(jsonData){
 
         //头部的当前的日期
 		$(".char_date").text(jsonData.day.split("-")[0]+"年" + jsonData.day.split("-")[1]+"月"+ jsonData.day.split("-")[2]+"日");
-        //各事业部的收成情况的进度
+        //各事业部的收成情况的时间进度
 		$(".char_timePercent").text(formatNumber(data.businessIncomeComplete.timePercent,1,0)+"%");
 
         /******各事业部收成情况 E******/
@@ -341,7 +396,6 @@ function getxsdc(jsonData){
 		//bgName事业部名称
 		//dayZQIncome 日折前收入
 		//monthZQIncome  月度折前收入
-		//yearZQLJIncome
         //monthZQCompletePercent 月折前达成进度
 		//monthZQIncomeIncrease  月累计增长
 		//yearZQLJIncome 年累计折前收入
@@ -349,17 +403,19 @@ function getxsdc(jsonData){
 		//yearZQLJIncomeIncrease 年累计增长
         //monthZQCompletePercentColor 月折前达成进度颜色
 
+		/**求月度折前收入的最大值和年累计折前收入的最大值**/
 		var tiao1=[],tiao2=[];
         $.each(data.bgIncome,function(k,v){
         	tiao1.push(v.monthZQIncome);
         	tiao2.push(v.yearZQLJIncome);            	
         });
 
-        var tiaomax1 = Math.max.apply(null,tiao1);
-        var tiaomax2 = Math.max.apply(null,tiao2);
+        var tiaomax1 = Math.max.apply(null,tiao1);//月度折前收入的最大值
+        var tiaomax2 = Math.max.apply(null,tiao2);//年累计折前收入的最大值
+
 		var str_zqsr = "";
 		$.each(data.bgIncome,function(k,v){
-			var rzmsr = v.dayZQIncome,//日折前收入
+			var rzmsr = v.dayZQIncome,   //日折前收入
 				ydzmsr = v.monthZQIncome,//月度折前收入
 				yzmdcjd = v.monthZQCompletePercent,//月折前达成进度
 				yljzz = v.monthZQIncomeIncrease,//月累计增长
@@ -368,9 +424,9 @@ function getxsdc(jsonData){
 				nljzz = v.yearZQLJIncomeIncrease;//年累计增长
 			var color1 = bgColor2(v.monthZQCompletePercentColor); //月折前达成进度颜色
         	var color2 = bgColor2(nzmdcl);  //年折前达成率的颜色
-        	var imgs1 = yljzz >=0 ? "up":"down";
-        	var imgs2 = nljzz >=0 ? "up":"down";
-        	var width1 = tiaomax1 === 0 ? 0 : (ydzmsr/tiaomax1)*100 ;
+        	var imgs1 = yljzz >=0 ? "up":"down";   //月累计增长的向上或者向下的箭头
+        	var imgs2 = nljzz >=0 ? "up":"down";   //年累计增长的向上或者向下的箭头
+        	var width1 = tiaomax1 === 0 ? 0 : (ydzmsr/tiaomax1)*100 ; //月度折前收入的宽度
         	var width2 = tiaomax2 === 0 ? 0 : (nljzmsr/tiaomax2)*100 ;
         	str_zqsr += '<tr>'
 						+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
@@ -408,8 +464,8 @@ function getxsdc(jsonData){
         	tiao3.push(v.monthZMIncome);
         	tiao4.push(v.yearZMLJIncome);            	
         });
-        var tiaomax3 = Math.max.apply(null,tiao3);
-        var tiaomax4 = Math.max.apply(null,tiao4);
+        var tiaomax3 = Math.max.apply(null,tiao3);//月度账面收入的最大值
+        var tiaomax4 = Math.max.apply(null,tiao4);//年累计账面收入的最大值
 		var str_zmsr = "";
 		$.each(data.bgIncome,function(k,v){
 			var rzmsr = v.dayZMIncome,//日账面收入
@@ -419,12 +475,12 @@ function getxsdc(jsonData){
 				nljzmsr = v.yearZMLJIncome,//年累计账面收入
 				nzmdcl = v.yearZMIncomeCompletePercent,//年账面达成率
 				nljzz = v.yearZMLJIncomeIncrease;//年累计增长
-			var color1 = bgColor2(v.monthZMCompletePercentColor);            	
-        	var color2 = bgColor2(nzmdcl);
-        	var imgs1 = yljzz >=0 ? "up":"down";
-        	var imgs2 = nljzz >=0 ? "up":"down";
-        	var width3 = tiaomax3 === 0 ? 0 : (ydzmsr/tiaomax3)*100 ;
-        	var width4 = tiaomax4 === 0 ? 0 : (nljzmsr/tiaomax4)*100 ;
+			var color1 = bgColor2(v.monthZMCompletePercentColor);  //月账面达成进度的颜色
+        	var color2 = bgColor2(nzmdcl); //年账面达成率颜色
+        	var imgs1 = yljzz >=0 ? "up":"down";//月累计增长的箭头
+        	var imgs2 = nljzz >=0 ? "up":"down";//年累计增长的箭头
+            var width3 = tiaomax3 === 0 ? 0 : (ydzmsr/tiaomax3)*100;  //月度账面收入的宽度
+        	var width4 = tiaomax4 === 0 ? 0 : (nljzmsr/tiaomax4)*100; //年累计账面收入的宽度
         	str_zmsr += '<tr>'
 							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
 							+'<td class="hide">0</td>'
@@ -445,11 +501,21 @@ function getxsdc(jsonData){
 	});
 }
 
-
-
 /******获取地图  S*******/
 function getMap(jsonData){
+
 	ajaxReq("getMap",jsonData,function(data) {
+
+		console.log('中国地图的显示的后台的返回的数据：');
+		console.log(data);
+        /**
+         * 参数含义：
+         * b_name :表示事业部
+         * data_sjjd : 实际达成进度
+         * data_yjdcl : 预计达成率
+         * data_zq : 折前收入
+         *
+         * **/
 		var data_sjjd = [],data_yjdcl=[],data_zq=[];
 
 		//map 地图
@@ -459,19 +525,24 @@ function getMap(jsonData){
 		//areaZQIncome 折前收入
 
 		$.each(data.map,function(k,v){
+
 			var jsons = {
 					"name":v.areaName,
 					"value":v.areaZQIncomeCompletePercent
 			};
-			data_sjjd.push(jsons);
+			data_sjjd.push(jsons);//实际达成进度放在数组中
+
 			var jsons1 = { "name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent };
-			data_yjdcl.push(jsons1);
+			data_yjdcl.push(jsons1);//预计达成率
+
 			var jsons2 = { "name":v.areaName,"value":v.areaZQIncome };
-			data_zq.push(jsons2);
+			data_zq.push(jsons2);  //折前收入
+
 		});
+		//清除地图
 		myChart3.clear();
 
-		//得到是事务部的名称
+		//b_name是事业部的名称
 		var b_name = jsonData.businessMapName;
 		var json = "ynjson";
 		if(b_name.indexOf("液态奶事业部")!=-1){
@@ -503,17 +574,24 @@ function getMap(jsonData){
  * businessMapName   事业部名称  若为空   则默认全部
  * */
 function getRightBottom(jsonData,isName){
-	 ajaxReq("getRightBottom",jsonData,function(data){
-		 if(jsonData.businessMapName == ""){
+	    console.log('取右下角的3块的数据-------->');
+	    console.log(jsonData);
+	    ajaxReq("getRightBottom",jsonData,function(data){
+	    if(jsonData.businessMapName == ""){
 			 jsonData.businessMapName = "全部";
 		}
+		//重点产品的折前收入的文本
 		$(".businessMapName").text(jsonData.businessMapName);
 		
 		//当月全部折前收入进度(折线图)everyDayLJIncome
 		//day  天
 		//ljBudget 预算目标
 		//ljIncome 累计收入
-
+        /*
+        * x1_data:     //当月全部折前收入进度的x轴
+        * y_total_data://预算目标的y轴
+        * y_budget_data://累计收入的y轴
+        * */
 		var x1_data=[],y_total_data=[],y_budget_data=[];
 		$.each(data.everyDayLJIncome,function(k,v){
 			var N = Number(jsonData.day.split("-")[2]);
@@ -533,20 +611,26 @@ function getRightBottom(jsonData,isName){
 
 		/***全部重点折前收入 S****/
 		//  data.zpxpIncome.monthMainProductCompletePercent    全部重点产品折前收入  月达成率
-		//  mainProduct全部重点折前收入 表格的内容
+		//  mainProduct 全部重点折前收入 表格的内容
 		//  bgName 事业部名称
 		//  monthLJIncome 月折前收入
 		//  sellPercent 销售占比
 		//  monthCompletePercent  月折前达成进度
 		//  monthIncreasePercent  月增长
 
+		//全部重点产品折前收入  月达成率
 		$(".d_zdcpsr").text(data.zpxpIncome.monthMainProductCompletePercent+"%");
+
+
+		//
 		var tiaos1=[];
          $.each(data.zpxpIncome.mainProduct,function(k,v){
          	tiaos1.push(v.monthLJIncome);         	
          });
+
          //求月折前的收入最大值
          var tiaomaxs1 = Math.max.apply(null,tiaos1);
+         //填充表格头部
      	 var str_head1 = '<tr>'
 							+'<th>事业部名称<span class="add_zp">+</span></th>'
 							+'<th class="hide">SKU</th>'
@@ -555,19 +639,21 @@ function getRightBottom(jsonData,isName){
 							+'<th>月折前达成进度</th>'
 							+'<th>月增长</th>'
 						+'</tr>';
-		$(".d_zdcpT thead").html(str_head1);					
+		$(".d_zdcpT thead").html(str_head1);
+
+		//填充表格的内容
 		var str_zdcp = "";
 		$.each(data.zpxpIncome.mainProduct,function(k,v){
-			var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
+			var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ; //月折前的收入的宽度
 			var imgs = v.monthIncreasePercent < 0 ? "down" : "up";
 			var color = bgColor2(v.monthCompletePercentColor);
 			str_zdcp += '<tr>'
-							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
+							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'  //事业部的名称
 							+'<td class="hide">0</td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
-							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
-							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'
-							+'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>'
+							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>' //月折前收入
+							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'    //销售占比
+							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'  //月折前达成进度
+							+'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>' //月增长
 						+'</tr>'
 		});
 		$(".d_zdcpT tbody").html(str_zdcp);
@@ -587,7 +673,11 @@ function getRightBottom(jsonData,isName){
 		 $.each(data.zpxpIncome.newProduct,function(k,v){
 			tiaos2.push(v.monthLJIncome);
 		 });
+
+		 //求全部新品折前收入的最大值
 		 var tiaomaxs2 = Math.max.apply(null,tiaos2);
+
+		 //填充表格的头部
 		 var str_head2 = '<tr>'
 							+'<th>事业部名称<span class="add_xp">+</span></th>'
 							+'<th class="hide">SKU</th>'
@@ -596,16 +686,17 @@ function getRightBottom(jsonData,isName){
 							+'<th>月折前达成进度</th>'
 						+'</tr>';
 			$(".d_xpT thead").html(str_head2);
+
 			var str_xp = "";
 			$.each(data.zpxpIncome.newProduct,function(k,v){
-				var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100 ;
-				var color = bgColor2(v.monthCompletePercentColor);
+				var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100 ; //月折前收入的最大值
+				var color = bgColor2(v.monthCompletePercentColor);  //月折前达成进度的颜色
 				str_xp += '<tr>'
-							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
+							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>' //事业部名称
 							+'<td class="hide">0</td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
-							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
-							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'
+							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'  //月折前收入
+							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'  //销售占比
+							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'  //月折前达成进度
 						+'</tr>'
 			});
 			$(".d_xpT tbody").html(str_xp);
@@ -615,7 +706,6 @@ function getRightBottom(jsonData,isName){
      });
 }
 //获取柱形图样式  各事业部收成情况
-
 function getChart1(x_data,y1_data,y2_data,data_bs){
 	var option = {
 	        title: {
@@ -1022,6 +1112,14 @@ function getJson2(x_data,y_total_data,y_budget_data,isName,businessMapName){
 }
 //地图
 function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
+	/**
+	 * 参数含义：
+	 * b :表示事业部
+	 * data_sjjd : 实际达成进度
+	 * data_yjdcl : 预计达成率
+	 * data_zq : 折前收入
+	 *
+	 * **/
 	var option3 = {
 		    title: {
 		        text: b+'大区折前收入达成', //'液态奶事业部折前收入',
@@ -1114,15 +1212,23 @@ function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
 		};
 	return option3;
 }
-
-
-
-//重点产品下钻 的加号
+//重点产品下钻   下钻的功能的加号
 $(".T_zd").on("click",".add_zp",function(){
 	loadHide1("h_zp","hide4");
-	var timess = $("#startTime").val();
-	var isName=$("#sr_typeselect").val();
+	var timess = $("#startTime").val();//得到开始的时间
+	var isName=$("#sr_typeselect").val(); //得到是否是折前的收入
+
+	//是否是折前的收入
 	var isZQ = isName=="折前收入"?"true":"false";
+	/*
+	* jsonData的参数
+	* day 当前的日期
+	* isZQ 是否是折前收入
+	* businessMapName 事业部的名称
+	* bigAreaMapName  大区的名称
+	* isMainProduct   是否是重点的产品
+	*
+	* */
 	var jsonData = {
 			"day":timess,
 			"isZQ":isZQ,
@@ -1131,28 +1237,34 @@ $(".T_zd").on("click",".add_zp",function(){
 			"isMainProduct":"true"
 	};
 	var that = $(this);
-	// 重点产品的加号getProductByBusinessName 调用 getstr2方法
+	// 重点产品的下钻的功能   加号getProductByBusinessName 调用 getstr2方法
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
-		var head_str = "<tr>" 
-			+"<th><span class='remove_zp'>-</span></th>"
-			+"<th><span class='add_zp_sku'>+</span></th>"
-			+"<th>月折前收入</th>"
-			+"<th>销售占比</th>"
-			+"<th>月折前达成进度</th>"
-			+"<th>月增长</th>"
+
+		//填充头部的head
+		var head_str = "<tr>"
+			+"<th><span class='remove_zp'>-</span></th>"    //这个是合并下钻
+			+"<th><span class='add_zp_sku'>+</span></th>"   //这个是SKU的打开的功能
+			+"<th>月折前收入</th>"      //月折前收入
+			+"<th>销售占比</th>"        //销售占比
+			+"<th>月折前达成进度</th>"   //月折前达成进度
+			+"<th>月增长</th>"          //月增长
 		+"</tr>";
 		$(".T_zd thead").html(head_str);
+
+        //填充表格的内容getStr1(data)
 		$(".d_zdcpT tbody").html(getStr1(data));
 		$("#hide4").remove();
-		//获取sku
+		//重点产品获取SKU的数据的加号
 		$(".T_zd").on("click",".add_zp_sku",function(){
 			loadHide1("h_zp","hide4");
 			var thats = $(this);	
 			$(".d_zdcpT tbody").html("");
+
+            //重点产品获取SKU的数据的接口数据
 			ajaxReq("getSkuByProductName",jsonData,function(data) {
 				var head_str1 = "<tr>" 
-					+"<th><span class='remove_zp'>-</span></th>"
-					+"<th><span class='remove_zp_sku'>-</span></th>"
+					+"<th><span class='remove_zp'>-</span></th>"      //事业部名称的下钻的减号
+					+"<th><span class='remove_zp_sku'>-</span></th>"  //SKU的下钻的减号
 					+"<th></th>"
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
@@ -1166,7 +1278,6 @@ $(".T_zd").on("click",".add_zp",function(){
 		});			
 	});
 });
-
 $(".T_zd").on("click",".remove_zp_sku",function(){
 	loadHide1("h_zp","hide4");
 	var timess = $("#startTime").val();
@@ -1193,14 +1304,23 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 		$("#hide4").remove();
 	});
 });
-
-
-//重点产品的减号  调用 调用 getstr1方法
+//重点产品的减号
 $(".T_zd").on("click",".remove_zp",function(){
 	loadHide1("h_zp","hide4");
-	var timess = $("#startTime").val();
-	var isName=$("#sr_typeselect").val();
-	var isZQ = isName=="折前收入"?"true":"false";
+	var timess = $("#startTime").val(); //得到当前的时间
+	var isName=$("#sr_typeselect").val(); //指标销售
+    var isZQ = isName=="折前收入"?"true":"false";  //是否是折前的收入
+
+	/*
+	* 封装JSON对象
+	*
+	* day 当前日期
+	* isZQ 是否是折前收入
+	* businessMapName 事业部的名称
+	* bigAreaMapName  大区的名称
+	* isMainProduct   是否是重点的产品
+	*
+	* */
 	var jsonData = {
 			"day":timess,
 			"isZQ":isZQ,
@@ -1208,6 +1328,7 @@ $(".T_zd").on("click",".remove_zp",function(){
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"true"
 	};
+	/**填充表格的头部内容 S**/
 	var head_str1 = "<tr>" 
 					+"<th><span class='add_zp'>+</span></th>"
 					+"<th>月折前收入</th>"
@@ -1216,6 +1337,10 @@ $(".T_zd").on("click",".remove_zp",function(){
 					+"<th>月增长</th>"
 				+"</tr>";
 	$(".T_zd thead").html(head_str1);
+    /**填充表格的头部内容 E**/
+
+
+    //这个接口这是渲染重点产品的表格
 	ajaxReq("getRightBottom",jsonData,function(data){
 		 if(jsonData.businessMapName == ""){
 			 jsonData.businessMapName = "全部";
@@ -1228,7 +1353,9 @@ $(".T_zd").on("click",".remove_zp",function(){
         	tiaos1.push(v.monthLJIncome);         	
          });
          var tiaomaxs1 = Math.max.apply(null,tiaos1);
-    	var str_head1 = '<tr>'
+
+         /**表格的头部 S**/
+         var str_head1 = '<tr>'
 							+'<th>事业部名称<span class="add_zp">+</span></th>'
 							+'<th class="hide">SKU</th>'
 							+'<th>月折前收入</th>'
@@ -1236,25 +1363,32 @@ $(".T_zd").on("click",".remove_zp",function(){
 							+'<th>月折前达成进度</th>'
 							+'<th>月增长</th>'
 						+'</tr>';
-		$(".d_zdcpT thead").html(str_head1);					
+		$(".d_zdcpT thead").html(str_head1);
+        /**表格的头部 E**/
+
+
 		var str_zdcp = "";
 		$.each(data.zpxpIncome.mainProduct,function(k,v){
 			var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
 			var imgs = v.monthIncreasePercent < 0 ? "down" : "up";
 			var color = bgColor2(v.monthCompletePercentColor);
 			str_zdcp += '<tr>'
-							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
+							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'   //事业部名称
 							+'<td class="hide">0</td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
-							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
-							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'
-							+'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>'
+							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'  //月折前收入
+							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'  //销售占比
+							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'  //月折前达成进度
+							+'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>'  //月增长
 						+'</tr>'
 		});
-		$(".d_zdcpT tbody").html(str_zdcp);	
+		$(".d_zdcpT tbody").html(str_zdcp);
+
+
 		$("#hide4").remove();
     });
 });
+
+//重点产品的下钻的表格
 function getStr1(data){
 	var arr_width = [];
 	$.each(data,function(k,v){
@@ -1266,13 +1400,24 @@ function getStr1(data){
 			});			
 		});
 	});
+	//月折前收入的最大值
+	/*
+	monthIncome 月折前收入
+	monthCompletePercent 月折前达成进度
+	monthIncreasePercent 月增长
+    monthCompletePercentColor 月折前达成进度的颜色值
+    sellPercent 销售占比
+	*/
 	var max_n1 = Math.max.apply(null,arr_width);
+
 	var str="";
 	$.each(data,function(k,v){
 		$.each(v,function(m,n){
 			$.each(n,function(s,t){
 				var ss = 0;
+				//合并单元格
 				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
+
 				$.each(t,function(o,p){
 					if(ss!=0){
 						str+="<tr>"
@@ -1280,12 +1425,13 @@ function getStr1(data){
 					var n1 = p.monthIncome,n2 = p.monthCompletePercent,n3 = p.monthIncreasePercent;
 					var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
 					var colors = bgColor2(p.monthCompletePercentColor);
-					var imgs = n3<0 ? "down" : "up"; 
-					str+="<td>"+o+"</td>"
-						+"<td style='text-align:left;'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
-						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"
-						+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
-						+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
+					var imgs = n3<0 ? "down" : "up";
+
+					str+="<td>"+o+"</td>"  //事业部名称
+						+"<td style='text-align:left;'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>" //月折前收入
+						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"  //销售占比
+						+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"  //月折前达成进度
+						+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"  //月增长
 						+"</tr>";
 					ss++;
 				});				
@@ -1294,6 +1440,8 @@ function getStr1(data){
 	});	
 	return str;
 }
+
+//SKU的表格渲染
 function getstr2(data){
 	var str1 = "";
 	var arr_width=[];
@@ -1319,21 +1467,30 @@ function getstr2(data){
 			$.each(t,function(m,n){
 				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>";
 				$.each(n,function(o,p){
-					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
+
+                     //合并子品牌的单元格的数据
+					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>"; //子品牌的名称
 					var rr=0;
 					$.each(p,function(x,y){
 						if(rr!=0){
 							str1+="<tr>"
 						}
+						/**
+						 * monthIncome 月折前收入的最大值
+						 * monthCompletePercent  月折前达成进度
+						 * monthIncreasePercent  月增长
+						 * monthCompletePercentColor 月折前达成进度颜色
+						 *
+						 * **/
 						var n1 = y.monthIncome,n2 = y.monthCompletePercent,n3 = y.monthIncreasePercent;
 						var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
 						var colors = bgColor2(y.monthCompletePercentColor);
 						var imgs = n3<0 ? "down" : "up"; 
-						str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"
-							+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
-							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
-							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
-							+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"
+						str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"  //SKU
+							+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"  //月折前收入
+							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"  //销售占比
+							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"  //月折前达成进度
+							+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"  //月增长
 							+"</tr>";
 						rr++;
 					});
@@ -1343,12 +1500,23 @@ function getstr2(data){
 	});
 	return str1;
 }
-//新品下钻的加号
+//全部新品折前收入下钻的加号
 $(".T_xp").on("click",".add_xp",function(){
 	loadHide1("h_xp","hide4");
+	//当前的日期
 	var timess = $("#startTime").val();
+	//下拉选择的值
 	var isName = $("#sr_typeselect").val();
+	//是否是折前的收入
 	var isZQ = isName=="折前收入"?"true":"false";
+
+	/*
+	 timess当前的日期
+	 isZQ 是否是折前的收入
+	 businessMapName 事业部的名称
+	 bigAreaMapName 大区的名称
+	 isMainProduct  是否是重点的产品
+	  */
 	var jsonData = {
 			"day":timess,
 			"isZQ":isZQ,
@@ -1357,7 +1525,11 @@ $(".T_xp").on("click",".add_xp",function(){
 			"isMainProduct":"false"
 	};
 	var that = $(this);
+
+	// 全部新品折前收入下钻的接口
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
+
+	    /**新品的表格的头部**/
 		var head_str = "<tr>" 
 					+"<th><span class='remove_xp'>-</span></th>"
 					+"<th><span class='add_xp_sku'>+</span></th>"
@@ -1366,6 +1538,7 @@ $(".T_xp").on("click",".add_xp",function(){
 					+"<th>月折前达成进度</th>"
 				+"</tr>";
 		$(".T_xp thead").html(head_str);
+		// 填充新品的表格的内容
 		$(".d_xpT tbody").html(getStr3(data));
 		$("#hide4").remove();
 		//获取sku
@@ -1469,6 +1642,8 @@ $(".T_xp").on("click",".remove_xp",function(){
 			$("#hide4").remove();
     });
 });
+
+//新品的表格的内容
 function getStr3(data){
 	var arr_width = [];
 	$.each(data,function(k,v){
@@ -1553,7 +1728,7 @@ function getstr4(data){
 	});
 	return str1;
 }
-//获取json对象的length
+//获取json对象的length,用于合并单元格
 function getJsonLength(jsonData) {  
 	var length=0;  
 	for(var ever in jsonData) {  
@@ -1562,17 +1737,20 @@ function getJsonLength(jsonData) {
 	return length;  
 }  
 //通用ajax方法  请求的接口的地址ajaxReq  1564
-function ajaxReq(urlSuffix,jsonData,func) {	
+function ajaxReq(urlSuffix,jsonData,func) {
+    console.log('---ajax正在请求----');
 	$.ajax({
 		 url: basepath+"/SalesReached/" + urlSuffix,
-		 data: jsonData,
-		 dataType: "JSON",
-		 type: "post",
+         type:"POST",
+         contentType:'application/json;charset=utf-8',
+         dataType:"json",
+         data:JSON.stringify(jsonData),
 		 success: function(data) {
+             console.log('---success----');
 			 func(data);
 		 },
 		 error:function(){
-			 //alert("数据查询错误");
+			 alert("数据查询错误");
 			 $("#hide1").remove();
 			 $("#hide2").remove();
 			 $("#hide3").remove();
