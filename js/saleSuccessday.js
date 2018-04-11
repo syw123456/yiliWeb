@@ -247,14 +247,14 @@ function getxsdc(jsonData){
             $("#monthbefore_reach").html(formatNumber(data.top.monthbefore_reach,2,1));
 
             //月累计折前达成进度的数字的颜色
-            $("#monthbefore_reach").parent("div").css("background-color",bgColor2(data.top.monthbefore_reach_color));
+            $("#monthbefore_reach").parent("div").css("background-color",bgColor2(data.top.monthbefore_reach));
 
 
             //月累计账面达成进度
             $("#monthbook_reach").html(formatNumber(data.top.monthbook_reach,2,1));
 
             //月累计账面达成进度的数字的颜色
-            $("#monthbook_reach").parent("div").css("background-color",bgColor2(data.top.monthbook_reach_color));
+            $("#monthbook_reach").parent("div").css("background-color",bgColor2(data.top.monthbook_reach));
 
             //年累计折前收入
             $("#yearbefore").html(formatNumber(data.top.yearbefore,2,1));
@@ -265,13 +265,13 @@ function getxsdc(jsonData){
             //年累计折前达成率
             $("#yearbefore_reach").html(formatNumber(data.top.yearbefore_reach,2,1));
             //年累计折前达成率的数据的颜色
-            $("#yearbefore_reach").parent("div").css("background-color",bgColor2(data.top.yearbefore_reach_color));
+            $("#yearbefore_reach").parent("div").css("background-color",bgColor2(data.top.yearbefore_reach));
 
 
             //年累计账面达成率
             $("#yearbook_reach").html(formatNumber(data.top.yearbook_reach,2,1));
             //年累计账面达成率的数据的颜色
-            $("#yearbook_reach").parent("div").css("background-color",bgColor2(data.top.yearbook_reach_color));
+            $("#yearbook_reach").parent("div").css("background-color",bgColor2(data.top.yearbook_reach));
             /***基本数据 E***/
 
 
@@ -501,7 +501,7 @@ function getxsdc(jsonData){
                     nzmdcl = v.yearZQIncomeCompletePercent,//年折前达成率
                     nljzz = v.yearZQLJIncomeIncrease;//年折前累计增长
 
-                var color1 = bgColor2(v.monthZQCompletePercentColor); //月折前达成进度颜色
+                var color1 = bgColor2(v.monthZQCompletePercent); //月折前达成进度颜色
                 var color2 = bgColor2(nzmdcl);            //年折前达成率的颜色
                 var imgs1 = yljzz >= 0 ? "up" : "down";   //月累计增长的向上或者向下的箭头
                 var imgs2 = nljzz >= 0 ? "up" : "down";   //年累计增长的向上或者向下的箭头
@@ -607,7 +607,7 @@ function getxsdc(jsonData){
 					if('undefined'==typeof(v.yearZMLJIncomeIncrease)){
 						nljzz    = '';
 					}
-                var color1 = bgColor2(v.monthZMCompletePercentColor);  //月账面达成进度的颜色
+                var color1 = bgColor2(v.monthZMCompletePercent);  //月账面达成进度的颜色
                 var color2 = bgColor2(nzmdcl); //年账面达成率颜色
                 var imgs1 = yljzz >= 0 ? "up" : "down";//月累计增长的箭头
                 var imgs2 = nljzz >= 0 ? "up" : "down";//年累计增长的箭头
@@ -797,7 +797,7 @@ function getRightBottom(jsonData,isName){
             $.each(data.zpxpIncome.mainProduct,function(k,v){
                 var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
                 var imgs = v.monthIncreasePercent < 0 ? "down" : v.monthIncreasePercent===0 ? "" : "up";
-                var color = bgColor2(v.monthCompletePercentColor);
+                var color = bgColor2(v.monthCompletePercent);
                 var str_img = imgs ==="" ? "" : '<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;">'
                 str_zdcp += '<tr>'
                     +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
@@ -843,7 +843,7 @@ function getRightBottom(jsonData,isName){
 		 var str_xp = "";
 		 $.each(data.zpxpIncome.newProduct,function(k,v){
 			var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100 ; //月折前收入的最大值
-			var color = bgColor2(v.monthCompletePercentColor);  //月折前达成进度的颜色
+			var color = bgColor2(v.monthCompletePercent);  //月折前达成进度的颜色
 			str_xp += '<tr>'
 						+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>' //事业部名称
 						+'<td class="hide">0</td>'
@@ -1524,7 +1524,7 @@ $(".T_zd").on("click",".remove_zp",function(){
 		$.each(data.zpxpIncome.mainProduct,function(k,v){
             var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
             var imgs = v.monthIncreasePercent < 0 ? "down" : "up";
-            var color = bgColor2(v.monthCompletePercentColor);
+            var color = bgColor2(v.monthCompletePercent);
             str_zdcp += '<tr>'
                 +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
                 +'<td class="hide">0</td>'
@@ -1579,7 +1579,7 @@ function getStr1(data){
                     }
                     var n1 = p.monthIncome,n2 = p.monthCompletePercent,n3 = p.monthIncreasePercent;
                     var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
-                    var colors = bgColor2(p.monthCompletePercentColor);
+                    var colors = bgColor2(p.monthCompletePercent);
                     var imgs = n3<0 ? "down" : n3==0 ? "" : "up";
                     var str_img = imgs==="" ? "" : "<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/>";
                     str+="<td>"+o+"</td>"
@@ -1634,7 +1634,7 @@ function getstr2(data){
                         }
                         var n1 = y.monthIncome,n2 = y.monthCompletePercent,n3 = y.monthIncreasePercent;
                         var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
-                        var colors = bgColor2(y.monthCompletePercentColor);
+                        var colors = bgColor2(y.monthCompletePercent);
                         var imgs = n3<0 ? "down": n3===0 ? "" : "up";
                         var str_img = imgs === "" ? "" :"<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/>"
                         str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"
@@ -1784,7 +1784,7 @@ $(".T_xp").on("click",".remove_xp",function(){
         var str_xp = "";
         $.each(data.zpxpIncome.newProduct,function(k,v){
             var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100 ;
-            var color = bgColor2(v.monthCompletePercentColor);
+            var color = bgColor2(v.monthCompletePercent);
             str_xp += '<tr>'
                 +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
                 +'<td class="hide">0</td>'
@@ -1823,7 +1823,7 @@ function getStr3(data){
 					}
 					var n1 = p.monthIncome,n2 = p.monthCompletePercent;
 					var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
-					var colors = bgColor2(p.monthCompletePercentColor);
+					var colors = bgColor2(p.monthCompletePercent);
 					str+="<td>"+o+"</td>"
 						+"<td style='text-align:left;'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
 						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"
@@ -1869,7 +1869,7 @@ function getstr4(data){
                         }
                         var n1 = y.monthIncome,n2 = y.monthCompletePercent,n3 = y.monthIncreasePercent;
                         var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
-                        var colors = bgColor2(y.monthCompletePercentColor);
+                        var colors = bgColor2(y.monthCompletePercent);
                         str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"
                             +"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
                             +"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
