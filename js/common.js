@@ -24,7 +24,7 @@ $("#Mask img").css("margin-top",img_mT+"px");
 @type String 
 */ 
 function formatNumber(num,cent,isThousand){
-    console.log('*****--->'+num);
+
     if(num!='' && num!=null && num!=NaN) {
            if(num != 0){
                num = num.toString().replace(/$|,/g, '');

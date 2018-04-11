@@ -601,15 +601,16 @@ function init(){
 
 
 // 提取ajax公用代码  urlSuffix这个是请求的子路径 , 请求成功的回调函数 succFun
-function ajaxReq(urlSuffix, succFun) {
+function ajaxReq(urlSuffix,jsonData,succFun) {
 
     //请求的接口 dataJson是默认的初始化的数据
     var url ="/yiliReport/month/ppzl/" + urlSuffix;
 	$.ajax({
 		url: url,
-		data: dataJson,
-		dataType: "JSON",
-		type: "POST",
+        type:"POST",
+        contentType:'application/json;charset=utf-8',
+        dataType:"json",
+        data:JSON.stringify(jsonData),
 		success: function(data) {
 			succFun(data);
 		},
@@ -704,7 +705,7 @@ function getData1(jsonData) {
 function getMap(jsonData) {
     console.log('地图的接口的传递参数:');
     console.log(jsonData);
-    ajaxReq("getMap", function(data) {
+    ajaxReq("getMap", jsonData,function(data) {
         console.log('地图的接口-------succeed--->');
         console.log(data);
         if (jsonData) { // 如果存在数据

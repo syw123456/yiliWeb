@@ -83,10 +83,10 @@ function init(){
 			"day":time,
 			"businessMapName":"液态奶事业部"
 	};
-	//getMap(jsondata2);
+	getMap(jsondata2);
 
     //默认的加载的底部的loading图
-	loadHide1("h_bottom","hide3");
+	//loadHide1("h_bottom","hide3");
 
 	//当月全部折前收入进度和全部重点产品折前收入和全部新品折前收入
 	/*
@@ -166,7 +166,9 @@ $("#startTime").off("click").on("click",function(){
 });
 //点击柱状图x轴的事业部 去请求 地图的接口 和 china.json 和getRightBottom的方法 右下角的3个内容
 myChart.on('click', function (params) {
-	 if(params.componentType == "xAxis"){
+     console.log('点击柱状图x轴的事业部--->');
+     console.log(params);
+	 if(params.componentType == "xAxis" || params.seriesType=="bar" ){
 	 	//出现底部的loading
 		loadHide1("h_bottom","hide3");
 		//得到当前的时间
@@ -175,14 +177,18 @@ myChart.on('click', function (params) {
 		var isName = $("#sr_typeselect").val();
 		var isZQ = isName=="折前收入" ? "true":"false";
 		//事业部的名称
-		businessMapName = params.value;
-
+        if(params.seriesType=="bar"){
+             businessMapName = params.name;
+         }else if(params.componentType == "xAxis"){
+             businessMapName = params.value;
+         }
 		//请求地图的数据
 		var jsondata2={
 				"day":time,
 				"isZQ":isZQ,
 				"businessMapName":businessMapName
 		};
+		console.log(jsondata2);
 		getMap(jsondata2);
 
 		//请求右下角的3块的数据
@@ -637,7 +643,7 @@ function getMap(jsonData){
 	ajaxReq("getMap",jsonData,function(data) {
 
 		console.log('中国地图的显示的后台的返回的数据：');
-		console.log(data);
+		//console.log(data);
         /**
          * 参数含义：
          * b_name :表示事业部
@@ -658,14 +664,29 @@ function getMap(jsonData){
 
 		$.each(data.map,function(k,v){
 
-			var jsons = {
-					"name":v.areaName,
-					"value":v.areaZQIncomeCompletePercent
-			};
-			data_sjjd.push(jsons);//实际达成进度放在数组中
+		    /*
+		    //异常数据的处理
+		    if(v.areaZQIncomeCompletePercent == 'NaN' || v.areaZQIncomeCompletePercent == 'Infinity'){
+                var jsons = {"name":v.areaName, "value":'暂无数据'};//NaN
+                data_sjjd.push(jsons);//实际达成进度放在数组中
+            }else{
+                var jsons = {"name":v.areaName, "value":v.areaZQIncomeCompletePercent};//NaN
+                data_sjjd.push(jsons);//实际达成进度放在数组中
+            }
+            */
 
-			var jsons1 = { "name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent };
-			data_yjdcl.push(jsons1);//预计达成率
+            console.log(v.areaName);
+            var jsons = {"name":v.areaName, "value":v.areaZQIncomeCompletePercent};//NaN
+            data_sjjd.push(jsons);//实际达成进度放在数组中
+
+            //异常数据的处理
+            if(v.areaZQIncomeShouldCompletePercent == 'NaN'||v.areaZQIncomeShouldCompletePercent == 'Infinity'){
+                var jsons1 = {"name":v.areaName,"value":'暂无数据'}; //NaN
+                data_yjdcl.push(jsons1);//预计达成率
+            }else{
+                var jsons1 = {"name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent }; //NaN
+                data_yjdcl.push(jsons1);//预计达成率
+            }
 
 			var jsons2 = { "name":v.areaName,"value":v.areaZQIncome };
 			data_zq.push(jsons2);  //折前收入
@@ -673,7 +694,6 @@ function getMap(jsonData){
 		});
 		//清除地图
 		myChart3.clear();
-
 		//b_name是事业部的名称
 		var b_name = jsonData.businessMapName;
 		var json = "ynjson";
@@ -689,7 +709,7 @@ function getMap(jsonData){
 			json = "json";
 		}
         //根据事业部的不同加载不同的地图
-		$.get('../web/'+json+'/china.json', function (chinaJson) {
+		$.get('../'+json+'/china.json', function (chinaJson) {
 		    echarts.registerMap('china', chinaJson);
 		    myChart3.setOption(getMapchart(b_name,data_sjjd,data_yjdcl,data_zq),true);
 		});
@@ -715,7 +735,7 @@ function getRightBottom(jsonData,isName){
 		//重点产品的折前收入的文本
 		$(".businessMapName").text(jsonData.businessMapName);
 		
-		//当月全部折前收入进度(折线图)everyDayLJIncome
+		/****当月全部折前收入进度(折线图)everyDayLJIncome  S****/
 		//day  天
 		//ljBudget 预算目标
 		//ljIncome 累计收入
@@ -734,12 +754,11 @@ function getRightBottom(jsonData,isName){
 			}
 		});
 		myChart2.setOption(getJson2(x1_data,y_total_data,y_budget_data,isName,jsonData.businessMapName));
-
+		/****当月全部折前收入进度(折线图)everyDayLJIncome  E****/
 
 		if(isName == "折前收入"){
 			
 		}
-
 
 		/***全部重点折前收入 S****/
 		//  data.zpxpIncome.monthMainProductCompletePercent    全部重点产品折前收入  月达成率
@@ -775,19 +794,20 @@ function getRightBottom(jsonData,isName){
 
 		//填充表格的内容
 		var str_zdcp = "";
-		$.each(data.zpxpIncome.mainProduct,function(k,v){
-			var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ; //月折前的收入的宽度
-			var imgs = v.monthIncreasePercent < 0 ? "down" : "up";
-			var color = bgColor2(v.monthCompletePercentColor);
-			str_zdcp += '<tr>'
-							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'  //事业部的名称
-							+'<td class="hide">0</td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>' //月折前收入
-							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'    //销售占比
-							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'  //月折前达成进度
-							+'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>' //月增长
-						+'</tr>'
-		});
+            $.each(data.zpxpIncome.mainProduct,function(k,v){
+                var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
+                var imgs = v.monthIncreasePercent < 0 ? "down" : v.monthIncreasePercent===0 ? "" : "up";
+                var color = bgColor2(v.monthCompletePercentColor);
+                var str_img = imgs ==="" ? "" : '<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;">'
+                str_zdcp += '<tr>'
+                    +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
+                    +'<td class="hide">0</td>'
+                    +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
+                    +'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
+                    +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'
+                    +'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%'+str_img+'</td>'
+                    +'</tr>'
+            });
 		$(".d_zdcpT tbody").html(str_zdcp);
 		/***全部重点折前收入 E****/
 
@@ -1109,7 +1129,7 @@ function getJson2(x_data,y_total_data,y_budget_data,isName,businessMapName){
 	                fontWeight:600,
 	                fontFamily:'冬青黑体简体中文'
 	            },
-	            subtext: '时间',
+	            subtext: '',
 	            subtextStyle: {
 	                coloe: '#fff'
 	            },
@@ -1244,6 +1264,7 @@ function getJson2(x_data,y_total_data,y_budget_data,isName,businessMapName){
 }
 //地图
 function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
+
 	/**
 	 * 参数含义：
 	 * b :表示事业部
@@ -1374,8 +1395,8 @@ $(".T_zd").on("click",".add_zp",function(){
 
 		//填充头部的head
 		var head_str = "<tr>"
-			+"<th><span class='remove_zp'>-</span></th>"    //这个是合并下钻
-			+"<th><span class='add_zp_sku'>+</span></th>"   //这个是SKU的打开的功能
+			+"<th>事业部名称<span class='remove_zp'>-</span></th>"    //这个是合并下钻
+			+"<th>子品牌<span class='add_zp_sku'>+</span></th>"   //这个是SKU的打开的功能
 			+"<th>月折前收入</th>"      //月折前收入
 			+"<th>销售占比</th>"        //销售占比
 			+"<th>月折前达成进度</th>"   //月折前达成进度
@@ -1395,9 +1416,9 @@ $(".T_zd").on("click",".add_zp",function(){
             //重点产品获取SKU的数据的接口数据
 			ajaxReq("getSkuByProductName",jsonData,function(data) {
 				var head_str1 = "<tr>" 
-					+"<th><span class='remove_zp'>-</span></th>"      //事业部名称的下钻的减号
-					+"<th><span class='remove_zp_sku'>-</span></th>"  //SKU的下钻的减号
-					+"<th></th>"
+					+"<th>事业部名称<span class='remove_zp'>-</span></th>"      //事业部名称的下钻的减号
+					+"<th>子品牌<span class='remove_zp_sku'>-</span></th>"  //SKU的下钻的减号
+					+"<th>SKU</th>"
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
@@ -1424,8 +1445,8 @@ $(".T_zd").on("click",".remove_zp_sku",function(){
 	};
 	ajaxReq("getProductByBusinessName",jsonData,function(data) {
 		var head_str = "<tr>" 
-			+"<th><span class='remove_zp'>-</span></th>"
-			+"<th><span class='add_zp_sku'>+</span></th>"
+			+"<th>事业部名称<span class='remove_zp'>-</span></th>"
+			+"<th>子品牌<span class='add_zp_sku'>+</span></th>"
 			+"<th>月折前收入</th>"
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
@@ -1462,7 +1483,7 @@ $(".T_zd").on("click",".remove_zp",function(){
 	};
 	/**填充表格的头部内容 S**/
 	var head_str1 = "<tr>" 
-					+"<th><span class='add_zp'>+</span></th>"
+					+"<th>事业部名称<span class='add_zp'>+</span></th>"
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
@@ -1501,20 +1522,23 @@ $(".T_zd").on("click",".remove_zp",function(){
 
 		var str_zdcp = "";
 		$.each(data.zpxpIncome.mainProduct,function(k,v){
-			var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
-			var imgs = v.monthIncreasePercent < 0 ? "down" : "up";
-			var color = bgColor2(v.monthCompletePercentColor);
-			str_zdcp += '<tr>'
-							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'   //事业部名称
-							+'<td class="hide">0</td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'  //月折前收入
-							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'  //销售占比
-							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'  //月折前达成进度
-							+'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>'  //月增长
-						+'</tr>'
+            var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
+            var imgs = v.monthIncreasePercent < 0 ? "down" : "up";
+            var color = bgColor2(v.monthCompletePercentColor);
+            str_zdcp += '<tr>'
+                +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
+                +'<td class="hide">0</td>'
+                +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
+                +'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
+                +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>';
+            if(v.monthIncreasePercent == 0){
+                str_zdcp +='<td></td>';
+            }else{
+                str_zdcp +='<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>';
+            }
+            str_zdcp +='</tr>';
 		});
 		$(".d_zdcpT tbody").html(str_zdcp);
-
 
 		$("#hide4").remove();
     });
@@ -1550,21 +1574,25 @@ function getStr1(data){
 				str +="<tr><td rowspan='"+getJsonLength(t)+"'>"+s+"</td>";
 
 				$.each(t,function(o,p){
-					if(ss!=0){
-						str+="<tr>"
-					}
-					var n1 = p.monthIncome,n2 = p.monthCompletePercent,n3 = p.monthIncreasePercent;
-					var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
-					var colors = bgColor2(p.monthCompletePercentColor);
-					var imgs = n3<0 ? "down" : "up";
-
-					str+="<td>"+o+"</td>"  //事业部名称
-						+"<td style='text-align:left;'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>" //月折前收入
-						+"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"  //销售占比
-						+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"  //月折前达成进度
-						+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"  //月增长
-						+"</tr>";
-					ss++;
+                    if(ss!=0){
+                        str+="<tr>"
+                    }
+                    var n1 = p.monthIncome,n2 = p.monthCompletePercent,n3 = p.monthIncreasePercent;
+                    var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
+                    var colors = bgColor2(p.monthCompletePercentColor);
+                    var imgs = n3<0 ? "down" : n3==0 ? "" : "up";
+                    var str_img = imgs==="" ? "" : "<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/>";
+                    str+="<td>"+o+"</td>"
+                        +"<td style='text-align:left;'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
+                        +"<td>"+formatNumber(p.sellPercent,2,0)+"%</td>"
+                        +"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
+                    if(n3==0){
+                        str+="<td></td>"
+                    }else{
+                        str+="<td>"+formatNumber(n3,1,0)+"%"+str_img+"</td>"
+                    }
+                    str+="</tr>"
+                    ss++;
 				});				
 			});
 		});
@@ -1574,62 +1602,58 @@ function getStr1(data){
 
 //SKU的表格渲染
 function getstr2(data){
-	var str1 = "";
-	var arr_width=[];
-	$.each(data.skuList,function(k,v){		
-		$.each(v,function(s,t){
-			$.each(t,function(m,n){
-				$.each(n,function(o,p){
-					arr_width.push(p.monthIncome);					
-				});
-				
-			});
-		});
-	});
-	var max_n1 = Math.max.apply(null,arr_width);
-	$.each(data,function(k,v){		
-		$.each(v,function(s,t){
-			var len=0;
-			$.each(t,function(m,n){
-				$.each(n,function(o,p){
-					len += getJsonLength(p);
-				});				
-			});
-			$.each(t,function(m,n){
-				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>";
-				$.each(n,function(o,p){
+    var str1 = "";
+    var arr_width=[];
+    $.each(data.skuList,function(k,v){
+        $.each(v,function(s,t){
+            $.each(t,function(m,n){
+                $.each(n,function(o,p){
+                    arr_width.push(p.monthIncome);
+                });
 
-                     //合并子品牌的单元格的数据
-					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>"; //子品牌的名称
-					var rr=0;
-					$.each(p,function(x,y){
-						if(rr!=0){
-							str1+="<tr>"
-						}
-						/**
-						 * monthIncome 月折前收入的最大值
-						 * monthCompletePercent  月折前达成进度
-						 * monthIncreasePercent  月增长
-						 * monthCompletePercentColor 月折前达成进度颜色
-						 *
-						 * **/
-						var n1 = y.monthIncome,n2 = y.monthCompletePercent,n3 = y.monthIncreasePercent;
-						var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
-						var colors = bgColor2(y.monthCompletePercentColor);
-						var imgs = n3<0 ? "down" : "up"; 
-						str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"  //SKU
-							+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"  //月折前收入
-							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"  //销售占比
-							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"  //月折前达成进度
-							+"<td>"+formatNumber(n3,1,0)+"%<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/></td>"  //月增长
-							+"</tr>";
-						rr++;
-					});
-				});
-			});
-		});
-	});
-	return str1;
+            });
+        });
+    });
+    var max_n1 = Math.max.apply(null,arr_width);
+    $.each(data,function(k,v){
+        $.each(v,function(s,t){
+            var len=0;
+            $.each(t,function(m,n){
+                $.each(n,function(o,p){
+                    len += getJsonLength(p);
+                });
+            });
+            $.each(t,function(m,n){
+                str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>"
+                $.each(n,function(o,p){
+                    str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
+                    var rr=0;
+                    $.each(p,function(x,y){
+                        if(rr!=0){
+                            str1+="<tr>"
+                        }
+                        var n1 = y.monthIncome,n2 = y.monthCompletePercent,n3 = y.monthIncreasePercent;
+                        var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
+                        var colors = bgColor2(y.monthCompletePercentColor);
+                        var imgs = n3<0 ? "down": n3===0 ? "" : "up";
+                        var str_img = imgs === "" ? "" :"<img src='../img/"+imgs+".png' alt='' height='20px' style='vertical-align: top;'/>"
+                        str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"
+                            +"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
+                            +"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
+                            +"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
+                        if(n3==0){
+                            str1+="<td></td>"
+                        }else{
+                            str1+="<td>"+formatNumber(n3,1,0)+"%"+str_img+"</td>"
+                        }
+                        str1+="</tr>"
+                        rr++;
+                    });
+                });
+            });
+        });
+    });
+    return str1;
 }
 //全部新品折前收入下钻的加号
 $(".T_xp").on("click",".add_xp",function(){
@@ -1662,8 +1686,8 @@ $(".T_xp").on("click",".add_xp",function(){
 
 	    /**新品的表格的头部**/
 		var head_str = "<tr>" 
-					+"<th><span class='remove_xp'>-</span></th>"
-					+"<th><span class='add_xp_sku'>+</span></th>"
+					+"<th>事业部名称<span class='remove_xp'>-</span></th>"
+					+"<th>子品牌<span class='add_xp_sku'>+</span></th>"
 					+"<th>月折前收入</th>"
 					+"<th>销售占比</th>"
 					+"<th>月折前达成进度</th>"
@@ -1676,20 +1700,20 @@ $(".T_xp").on("click",".add_xp",function(){
 		$(".T_xp").on("click",".add_xp_sku",function(){
 			loadHide1("h_xp","hide4");
 			var thats = $(this);	
-			$(".d_xpT tbody").html("");		
-			ajaxReq("getSkuByProductName",jsonData,function(data) {
-				var head_str1 = "<tr>" 
-							+"<th><span class='remove_xp'>-</span></th>"
-							+"<th><span class='remove_xp_sku'>-</span></th>"
-							+"<th></th>"
-							+"<th>月折前收入</th>"
-							+"<th>销售占比</th>"
-							+"<th>月折前达成进度</th>"
-						+"</tr>";
-				$(".T_xp thead").html(head_str1);							
-				$(".d_xpT tbody").html(getstr4(data));
-				$("#hide4").remove();
-			});
+			$(".d_xpT tbody").html("");
+            ajaxReq("getSkuByProductName",jsonData,function(data) {
+                var head_str1 = "<tr>"
+                    +"<th>事业部名称<span class='remove_xp'>-</span></th>"
+                    +"<th>子品牌<span class='remove_xp_sku'>-</span></th>"
+                    +"<th>SKU</th>"
+                    +"<th>月折前收入</th>"
+                    +"<th>销售占比</th>"
+                    +"<th>月折前达成进度</th>"
+                    +"</tr>"
+                $(".T_xp thead").html(head_str1);
+                $(".d_xpT tbody").html(getstr4(data));
+                $("#hide4").remove();
+            });
 		});			
 	});
 });
@@ -1706,18 +1730,18 @@ $(".T_xp").on("click",".remove_xp_sku",function(){
 			"bigAreaMapName":bigAreaMapName,
 			"isMainProduct":"false"
 	};
-	ajaxReq("getProductByBusinessName",jsonData,function(data) {
-		var head_str = "<tr>" 
-			+"<th><span class='remove_xp'>-</span></th>"
-			+"<th><span class='add_xp_sku'>+</span></th>"
-			+"<th>月折前收入</th>"
-			+"<th>销售占比</th>"
-			+"<th>月折前达成进度</th>"
-		+"</tr>";
-		$(".T_xp thead").html(head_str);
-		$(".d_xpT tbody").html(getStr3(data));
-		$("#hide4").remove();
-	});
+    ajaxReq("getProductByBusinessName",jsonData,function(data) {
+        var head_str = "<tr>"
+            +"<th>事业部名称<span class='remove_xp'>-</span></th>"
+            +"<th>子品牌<span class='add_xp_sku'>+</span></th>"
+            +"<th>月折前收入</th>"
+            +"<th>销售占比</th>"
+            +"<th>月折前达成进度</th>"
+            +"</tr>"
+        $(".T_xp thead").html(head_str);
+        $(".d_xpT tbody").html(getStr3(data));
+        $("#hide4").remove();
+    });
 });
 //新品的减号
 $(".T_xp").on("click",".remove_xp",function(){
@@ -1731,46 +1755,46 @@ $(".T_xp").on("click",".remove_xp",function(){
 			"isMainProduct":"false"
 	};
 	var head_str1 = "<tr>" 
-			+"<th><span class='add_zp'>+</span></th>"
+			+"<th>事业部名称<span class='add_zp'>+</span></th>"
 			+"<th>月折前收入</th>"
 			+"<th>销售占比</th>"
 			+"<th>月折前达成进度</th>"
 		+"</tr>";
 	$(".T_xp thead").html(head_str1);
-	ajaxReq("getRightBottom",jsonData,function(data){
-		 if(jsonData.businessMapName == ""){
-			 jsonData.businessMapName = "全部";
-		}
-		$(".businessMapName").text(jsonData.businessMapName);		
-		//全部新品折前收入
-		$(".d_xpsr").text(data.zpxpIncome.monthNewProductCompletePercent+"%");
-		var tiaos2=[];
+    ajaxReq("getRightBottom",jsonData,function(data){
+        if(jsonData.businessMapName == ""){
+            jsonData.businessMapName = "全部";
+        }
+        $(".businessMapName").text(jsonData.businessMapName);
+        //全部新品折前收入
+        $(".d_xpsr").text(data.zpxpIncome.monthNewProductCompletePercent+"%");
+        var tiaos2=[];
         $.each(data.zpxpIncome.newProduct,function(k,v){
-        	tiaos2.push(v.monthLJIncome);         	
+            tiaos2.push(v.monthLJIncome);
         });
         var tiaomaxs2 = Math.max.apply(null,tiaos2);
         var str_head2 = '<tr>'
-							+'<th>事业部名称<span class="add_xp">+</span></th>'
-							+'<th class="hide">SKU</th>'
-							+'<th>月折前收入</th>'
-							+'<th>销售占比</th>'
-							+'<th>月折前达成进度</th>'
-						+'</tr>';
-			$(".d_xpT thead").html(str_head2);	
-			var str_xp = "";
-			$.each(data.zpxpIncome.newProduct,function(k,v){
-				var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100 ;
-				var color = bgColor2(v.monthCompletePercentColor);
-				str_xp += '<tr>'
-							+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
-							+'<td class="hide">0</td>'
-							+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
-							+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
-							+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'
-						+'</tr>'
-			});
-			$(".d_xpT tbody").html(str_xp);
-			$("#hide4").remove();
+            +'<th>事业部名称<span class="add_xp">+</span></th>'
+            +'<th class="hide">SKU</th>'
+            +'<th>月折前收入</th>'
+            +'<th>销售占比</th>'
+            +'<th>月折前达成进度</th>'
+            +'</tr>'
+        $(".d_xpT thead").html(str_head2);
+        var str_xp = "";
+        $.each(data.zpxpIncome.newProduct,function(k,v){
+            var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100 ;
+            var color = bgColor2(v.monthCompletePercentColor);
+            str_xp += '<tr>'
+                +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
+                +'<td class="hide">0</td>'
+                +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
+                +'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
+                +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'
+                +'</tr>'
+        });
+        $(".d_xpT tbody").html(str_xp);
+        $("#hide4").remove();
     });
 });
 
@@ -1834,27 +1858,28 @@ function getstr4(data){
 					len += getJsonLength(p);
 				});				
 			});
-			$.each(t,function(m,n){
-				str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>";
-				$.each(n,function(o,p){
-					str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
-					var rr=0;
-					$.each(p,function(x,y){
-						if(rr!=0){
-							str1+="<tr>"
-						}
-						var n1 = y.monthIncome,n2 = y.monthCompletePercent,n3 = y.monthIncreasePercent;
-						var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
-						var colors = bgColor2(y.monthCompletePercentColor);
-						str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"
-							+"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
-							+"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
-							+"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
-							+"</tr>";
-						rr++;
-					});
-				});
-			});
+            $.each(t,function(m,n){
+                str1 +="<tr><td rowspan='"+len+"'>"+m+"</td>"
+                $.each(n,function(o,p){
+                    str1 +="<td rowspan='"+getJsonLength(p)+"'>"+o+"</td>";
+                    var rr=0;
+                    $.each(p,function(x,y){
+                        if(rr!=0){
+                            str1+="<tr>"
+                        }
+                        var n1 = y.monthIncome,n2 = y.monthCompletePercent,n3 = y.monthIncreasePercent;
+                        var widths =  max_n1<=0 ? "0":(n1/max_n1)*100;
+                        var colors = bgColor2(y.monthCompletePercentColor);
+                        str1+="<td title='"+x+"' style='width:250px;text-align:left;'>"+x+"</td>"
+                            +"<td align='left'><span class='table_bg4A7EBE' style='width:"+widths+"%;'></span>"+formatNumber(n1,1,1)+"</td>"
+                            +"<td>"+formatNumber(y.sellPercent,2,0)+"%</td>"
+                            +"<td style='font-weight:bold;color:"+colors+";'>"+formatNumber(n2,2,0)+"%</td>"
+                            +"</tr>"
+                        rr++;
+                    });
+                });
+            });
+
 		});
 	});
 	return str1;

@@ -1306,6 +1306,7 @@ $(".T_xp").on("click",".remove_xp",function(){
         $("#hide4").remove();
     });
 });
+
 function getStr3(data){
     var arr_width = [];
     $.each(data,function(k,v){
