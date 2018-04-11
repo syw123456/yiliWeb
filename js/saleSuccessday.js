@@ -78,7 +78,7 @@ function init(){
 	var jsondata1 = { 'day':time }; //day: 2017-12-31
 	getxsdc(jsondata1);
 
-	//地图的显示  day 是当前的日期,businessMapName是事业部的名称
+	//地图的显示  day是当前的日期,businessMapName是事业部的名称默认的是液态奶事业部
 	var jsondata2 = {
 			"day":time,
 			"businessMapName":"液态奶事业部"
@@ -214,20 +214,20 @@ $("#sr_typeselect").on("change",function(){
 });
 //获取基本数据和柱状图
 function getxsdc(jsonData){
-    console.log('--------------获取基本数据和柱状图以及2个表格---------------');
-    console.log(jsonData);
+    //console.log('--------------获取基本数据和柱状图以及2个表格---------------');
+    //console.log(jsonData);
 	// 基本数据和柱状图以及2个表格的接口 getxsdc
 	ajaxReq("getxsdc",jsonData,function(data) {
-        console.log('getxsdc接口返回的数据：');
-		console.log(data);
+        //console.log('getxsdc接口返回的数据：');
+		//console.log(data);
 		//判断json是否为空
         var flagJSON=JSON.stringify(data)=="{}";
         if(!flagJSON) {
             /***基本数据 S***/
 
             //日折前收入
-            $("#daybefore").html(formatNumber(data.top.daybefore,2,1));
 
+            $("#daybefore").html(formatNumber(data.top.daybefore,2,1));
             //日账面收入
             $("#daybook").html(formatNumber(data.top.daybook,2,1));
 
@@ -312,69 +312,141 @@ function getxsdc(jsonData){
                 y2_data.push(formatNumber(v.monthZMCompletePercent,1,0));
                 //液态奶事业部
                 if(k==0){
-                    var chart_arr=[{
 
-                                     x: "10%",
-                                     yAxis: v.jzx,
-                                     value:formatNumber(v.jzx,1,0)+"%"
-                                 },
-                                 {
-                                     x: "26.5%",
-                                     yAxis: v.jzx
-                                 }];
-                    data_bs.push(chart_arr);
+                	if(v.jzx!=0){
+                        var chart_arr=[{
+                            x: "10%",
+                            yAxis: v.jzx,
+                            value:formatNumber(v.jzx,1,0)+"%"
+                        },
+                            {
+                                x: "26.5%",
+                                yAxis: v.jzx
+                            }];
+                        data_bs.push(chart_arr);
+					}else{
+                        var chart_arr=[{
+
+                            x: "10%",
+                            yAxis: v.jzx,
+                            value:"0%"
+                            },
+                            {
+                                x: "26.5%",
+                                yAxis: '0%'
+                            }];
+                        data_bs.push(chart_arr);
+					}
                 }
                 //奶粉事业部
                 else if(k==1){
-                    var chart_arr=[{
-                                    x: "26.5%",
-                                    yAxis: v.jzx,
-                                    value:formatNumber(v.jzx,1,0)+"%"
-                                },
-                                {
-                                    x: "43%",
-                                    yAxis: v.jzx
-                                }];
-                    data_bs.push(chart_arr);
+                	if(v.jzx!=0){
+                        var chart_arr=[{
+                            x: "26.5%",
+                            yAxis: v.jzx,
+                            value:formatNumber(v.jzx,1,0)+"%"
+                        },
+                            {
+                                x: "43%",
+                                yAxis: v.jzx
+                            }];
+                        data_bs.push(chart_arr);
+					}else{
+                        var chart_arr=[{
+                            x: "26.5%",
+                            yAxis: v.jzx,
+                            value:"0%"
+                        },
+                            {
+                                x: "43%",
+                                yAxis: '0%'
+                            }];
+                        data_bs.push(chart_arr);
+					}
+
                 }
                 //酸奶事业部
                 else if(k==2){
-                    var chart_arr=[{
-                                    x: "43%",
-                                    yAxis: v.jzx,
-                                    value:formatNumber(v.jzx,1,0)+"%"
-                                },
-                                {
-                                    x: "59.5%",
-                                    yAxis:v.jzx
-                                }];
-                    data_bs.push(chart_arr);
+
+                    if(v.jzx!=0){
+                        var chart_arr=[{
+                            x: "43%",
+                            yAxis: v.jzx,
+                            value:formatNumber(v.jzx,1,0)+"%"
+                        },
+                            {
+                                x: "59.5%",
+                                yAxis: v.jzx
+                            }];
+                        data_bs.push(chart_arr);
+                    }else{
+                        var chart_arr=[{
+                            x: "43%",
+                            yAxis: v.jzx,
+                            value:"0%"
+                        },
+                            {
+                                x: "59.5%",
+                                yAxis: '0%'
+                            }];
+                        data_bs.push(chart_arr);
+                    }
+
                 }
                 //冷饮事业部
                 else if(k==3){
-                    var chart_arr=[{
-                                    x: "59.5%",
-                                    yAxis: v.jzx,
-                                    value:formatNumber(v.jzx,1,0)+"%"
-                                },
-                                {
-                                    x: "76%",
-                                    yAxis: v.jzx
-                                }];
-                    data_bs.push(chart_arr);
+
+                    if(v.jzx!=0){
+                        var chart_arr=[{
+                            x: "59.5%",
+                            yAxis: v.jzx,
+                            value:formatNumber(v.jzx,1,0)+"%"
+                        },
+                            {
+                                x: "76%",
+                                yAxis: v.jzx
+                            }];
+                        data_bs.push(chart_arr);
+                    }else{
+                        var chart_arr=[{
+                            x: "59.5%",
+                            yAxis: v.jzx,
+                            value:"0%"
+                        },
+                            {
+                                x: "76%",
+                                yAxis: '0%'
+                            }];
+                        data_bs.push(chart_arr);
+                    }
+
                 }
                 //电商
                 else if(k==4){
-                    var chart_arr=[{
-                                    x: "76%",
-                                    yAxis: v.jzx,
-                                    value:formatNumber(v.jzx,1,0)+"%"
-                                },
-                                {
-                                    x: "92.5%",
-                                    yAxis: v.jzx
-                                }];
-                    data_bs.push(chart_arr);
+
+                    if(v.jzx!=0){
+                        var chart_arr=[{
+                            x: "76%",
+                            yAxis: v.jzx,
+                            value:formatNumber(v.jzx,1,0)+"%"
+                        },
+                            {
+                                x: "92.5%",
+                                yAxis: v.jzx
+                            }];
+                        data_bs.push(chart_arr);
+                    }else{
+                        var chart_arr=[{
+                            x: "76%",
+                            yAxis: v.jzx,
+                            value:"0%"
+                        },
+                            {
+                                x: "92.5%",
+                                yAxis: '0%'
+                            }];
+                        data_bs.push(chart_arr);
+                    }
                 }
             });
             myChart.setOption(getChart1(x_data,y1_data,y2_data,data_bs));
@@ -524,7 +596,6 @@ function getxsdc(jsonData){
 						nljzmsr  = '';
 					}
 					if('undefined'==typeof(v.yearZMIncomeCompletePercent)){
-						console.log('****')
 						nzmdcl   = '';
 					}
 					if('undefined'==typeof(v.yearZMLJIncomeIncrease)){
@@ -575,7 +646,9 @@ function getMap(jsonData){
          * data_zq : 折前收入
          *
          * **/
-		var data_sjjd = [],data_yjdcl=[],data_zq=[];
+		var data_sjjd = [],//实际达成进度放在数组中
+			data_yjdcl=[], //预计达成率
+			data_zq=[];    //折前收入
 
 		//map 地图
 		//areaName 大区名称
