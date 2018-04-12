@@ -217,45 +217,6 @@ $("#sr_typeselect").on("change",function(){
 			"bigAreaMapName":bigAreaMapName
 	};
 
-
-    /*var  x1_data= $("#sr_typeselect").attr('x1_data').split(',');
-    var  y_total_data=$("#sr_typeselect").attr('y_total_data').split(',');
-    var  y_budget_data=$("#sr_typeselect").attr('y_budget_data').split(',');
-    //这个是折前收入
-    if(x1_data == undefined && isName=='折前收入'){
-        getRightBottom(jsondata3,isName);
-    }
-
-    if(x1_data != undefined && isName=='折前收入'){
-
-        console.log('折前收入从缓存拿数据');
-        var x1_data=x1_data,y_total_data=y_total_data,y_budget_data=y_budget_data;
-        // 渲染右侧的折线图
-        var N = Number(jsondata3.day.split("-")[2]);
-        x1_data.push(x1_data);
-        y_budget_data.push(formatNumber(y_total_data,1,0));
-        var k=x1_data.length;
-        if(k < N){
-            y_total_data.push(formatNumber(y_budget_data,1,0));
-        }
-
-        $("#sr_typeselect").attr('x1_data',x1_data);
-        $("#sr_typeselect").attr('y_total_data',y_total_data);
-        $("#sr_typeselect").attr('y_budget_data',y_budget_data);
-        // 设置折线图的数据
-        myChart2.setOption(getJson2(x1_data,y_total_data,y_budget_data,isName,jsondata3.businessMapName));
-
-
-    }
-    var  x1_ZM__data= $("#sr_typeselect").attr('x1_ZM__data');
-    //这个是账面收入
-    if(x1_ZM__data == undefined && isName=='账面收入'){
-        getRightBottom(jsondata3,isName);
-    }else{
-        console.log('账面收入从缓存拿数据');
-    }*/
-
-
     getRightBottom(jsondata3,isName);
 
 });
@@ -793,9 +754,6 @@ function getRightBottom(jsonData,isName){
                      y_total_data.push(formatNumber(v.dayZQIncome,1,0));
                  }
              });
-             $("#sr_typeselect").attr('x1_data',x1_data);
-             $("#sr_typeselect").attr('y_total_data',y_total_data);
-             $("#sr_typeselect").attr('y_budget_data',y_budget_data);
              // 设置折线图的数据
              myChart2.setOption(getJson2(x1_data,y_total_data,y_budget_data,isName,jsonData.businessMapName));
 
@@ -812,9 +770,6 @@ function getRightBottom(jsonData,isName){
                      y_ZM_total_data.push(formatNumber(v.dayZMIncome,1,0));
                  }
              });
-             $("#sr_typeselect").attr('x1_ZM__data',x1_ZM__data);
-             $("#sr_typeselect").attr('y_ZM_total_data',y_ZM_total_data);
-             $("#sr_typeselect").attr('y_ZM_budget_data',y_ZM_budget_data);
              // 设置折线图的数据
              myChart2.setOption(getJson2(x1_ZM__data,y_ZM_total_data,y_ZM_budget_data,isName,jsonData.businessMapName));
 
@@ -871,12 +826,8 @@ function getRightBottom(jsonData,isName){
             str_zdcp += '<tr>'
                 +'<td onclick="cause_click($(this),"1")">'+v.bg_name+'</td>'  //事业部名称
                 +'<td class="hide">0</td>'  //SKU
-
                 +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthZQIncome,1,1)+'</td>'  //月折前收入
-
-
                 +'<td>'+formatNumber(v.cellPercent,2,0)+'%</td>'  //销售占比
-
                 +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthZQCompletePercent,2,0)+'%</td>'  //月折前达成进度
                 +'<td>'+formatNumber(v.monthZQIncomeIncrease,1,0)+'%'+str_img+'</td>'  //月增长
                 +'</tr>'
@@ -899,14 +850,9 @@ function getRightBottom(jsonData,isName){
 
         $(".d_xpsr").text(data.zpxpIncome.monthNewProductCompletePercent+"%");
         var tiaos2=[];
-
-
-
         $.each(data.zpxpIncome.newProduct,function(k,v){
             tiaos2.push(v.monthZQIncome);
         });
-
-
         //求全部新品折前收入的最大值
         var tiaomaxs2 = Math.max.apply(null,tiaos2);
         //填充表格的头部
@@ -919,7 +865,6 @@ function getRightBottom(jsonData,isName){
             +'<th>月折前达成进度</th>'
             +'</tr>';
         $(".d_xpT thead").html(str_head2);
-
         //填充表格的数据
         var str_xp = "";
         $.each(data.zpxpIncome.newProduct,function(k,v){
@@ -1452,6 +1397,9 @@ function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
 		};
 	return option3;
 }
+
+
+
 
 
 /*******重点产品下钻的功能的加号  S ****************/
