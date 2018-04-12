@@ -42,9 +42,9 @@ myChart.setOption(getChart1(x_data,y1_data,y2_data,[]));
 var x_data =  ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
 
 //预算目标的y轴
-var y_total_data = ["30","10","20","40"];
+var y_total_data = ["0","0","0","0"];
 //累计收入的y轴
-var y_budget_data = ["40","10","40","10","450","20","10","20","50","60","80","50","20","10","10"];
+var y_budget_data = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];
 myChart2.setOption(getJson2(x_data,y_total_data,y_budget_data,"折前收入","全部"));
 
 //中国地图
@@ -216,6 +216,24 @@ $("#sr_typeselect").on("change",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName
 	};
+
+
+	/*
+    var  x1_data= $("#sr_typeselect").attr('x1_data');
+    //这个是折前收入
+    if(x1_data == undefined && isName=='折前收入'){
+        getRightBottom(jsondata3,isName);
+    }else{
+         console.log('折前收入从缓存拿数据');
+    }
+    var  x1_ZM__data= $("#sr_typeselect").attr('x1_ZM__data');
+    //这个是账面收入
+    if(x1_ZM__data == undefined && isName=='账面收入'){
+        getRightBottom(jsondata3,isName);
+    }else{
+        console.log('账面收入从缓存拿数据');
+    }
+    */
 
     getRightBottom(jsondata3,isName);
 
@@ -726,9 +744,9 @@ function getMap(jsonData){
  * businessMapName   事业部名称  若为空   则默认全部
  * */
 function getRightBottom(jsonData,isName){
+	    console.log('取右下角的3块的数据-------->');
+	    console.log(jsonData);
 
-     console.log('取右下角的3块的数据-------->');
-	 console.log(jsonData);
 	 //请求下面的表格的数据
      ajaxReq("getRightBottom",jsonData,function(data){
 
@@ -1721,9 +1739,8 @@ function getstr2(data){
 }
 /*******重点产品下钻的功能的加号  E ****************/
 
-
-
 /*******全部新品折前收入下钻的加号 S****************/
+
 //新品的事业部下钻的加号
 $(".T_xp").on("click",".add_xp",function(){
 	loadHide1("h_xp","hide4");
@@ -1866,6 +1883,7 @@ $(".T_xp").on("click",".remove_xp",function(){
         $("#hide4").remove();
     });
 });
+
 /*******全部新品折前收入下钻的加号 E****************/
 
 //新品的表格的内容
@@ -1977,9 +1995,9 @@ function ajaxReq(urlSuffix,jsonData,func) {
 		 },
 		 error:function(){
 			 //alert("数据查询错误");
-			 //$("#hide1").remove();
-			 //$("#hide2").remove();
-			 //$("#hide3").remove();
+			 $("#hide1").remove();
+			 $("#hide2").remove();
+			 $("#hide3").remove();
 		 }
 	});
 }
