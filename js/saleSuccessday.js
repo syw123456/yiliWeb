@@ -1398,10 +1398,6 @@ function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
 	return option3;
 }
 
-
-
-
-
 /*******重点产品下钻的功能的加号  S ****************/
 //事业部的加号
 $(".T_zd").on("click",".add_zp",function(){
@@ -1975,7 +1971,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 			 func(data);
 		 },
 		 error:function(){
-			 //alert("数据查询错误");
+			 alert("数据查询错误");
 			 //$("#hide1").remove();
 			 //$("#hide2").remove();
 			 //$("#hide3").remove();
