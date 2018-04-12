@@ -40,10 +40,10 @@
 Request URL: http://10.60.138.106/yiliReport/SalesReached/getRightBottom
 
 everyDayLJIncome  当月折前收入进度
-budget:215660115.3356986
+budget:215660115.3356986  预算
 day:"1"  天
 income:74520003.10947725  收入
-ljBudget:21566  预算目标
+ljBudget:21566  累计预算
 ljIncome:7452   累计收入
 
 

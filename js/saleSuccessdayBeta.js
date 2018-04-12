@@ -216,9 +216,7 @@ $("#sr_typeselect").on("change",function(){
 			"businessMapName":businessMapName,
 			"bigAreaMapName":bigAreaMapName
 	};
-
-    getRightBottom(jsondata3,isName);
-
+	getRightBottom(jsondata3,isName);
 });
 //获取基本数据和柱状图
 function getxsdc(jsonData){
@@ -726,9 +724,9 @@ function getMap(jsonData){
  * businessMapName   事业部名称  若为空   则默认全部
  * */
 function getRightBottom(jsonData,isName){
+	    console.log('取右下角的3块的数据-------->');
+	    console.log(jsonData);
 
-     console.log('取右下角的3块的数据-------->');
-	 console.log(jsonData);
 	 //请求下面的表格的数据
      ajaxReq("getRightBottom",jsonData,function(data){
 
@@ -757,39 +755,44 @@ function getRightBottom(jsonData,isName){
              $("#sr_typeselect").attr('x1_data',x1_data);
              $("#sr_typeselect").attr('y_total_data',y_total_data);
              $("#sr_typeselect").attr('y_budget_data',y_budget_data);
+             // 设置折线图的数据
+             myChart2.setOption(getJson2(x1_data,y_total_data,y_budget_data,isName,jsonData.businessMapName));
+             /****当月全部折前收入进度(折线图)everyDayLJIncome  E****/
 
 
          }
+
          //折面收入的渲染
          else{
-             var x1_ZM__data=[],y_ZM_total_data=[],y_ZM_budget_data=[];
+             var x1_data=[],y_total_data=[],y_budget_data=[];
              // 渲染右侧的折线图
              $.each(data.everyDayLJIncome,function(k,v){
                  var N = Number(jsonData.day.split("-")[2]);
-                 x1_ZM__data.push(v.day);
-                 y_ZM_budget_data.push(formatNumber(v.dayZMBudget,1,0));
+                 x1_data.push(v.day);
+                 y_budget_data.push(formatNumber(v.dayZMBudget,1,0));
                  if(k < N){
-                     y_ZM_total_data.push(formatNumber(v.dayZMIncome,1,0));
+                     y_total_data.push(formatNumber(v.dayZMIncome,1,0));
                  }
              });
-             $("#sr_typeselect").attr('x1_ZM__data',x1_ZM__data);
-             $("#sr_typeselect").attr('y_ZM_total_data',y_ZM_total_data);
-             $("#sr_typeselect").attr('y_ZM_budget_data',y_ZM_budget_data);
+             $("#sr_typeselect").attr('x1_data',x1_data);
+             $("#sr_typeselect").attr('y_total_data',y_total_data);
+             $("#sr_typeselect").attr('y_budget_data',y_budget_data);
 
+             // 设置折线图的数据
+             myChart2.setOption(getJson2(x1_data,y_total_data,y_budget_data,isName,jsonData.businessMapName));
+             /****当月全部折前收入进度(折线图)everyDayLJIncome  E****/
          }
-         // 设置折线图的数据
-         myChart2.setOption(getJson2(x1_ZM__data,y_ZM_total_data,y_ZM_budget_data,isName,jsonData.businessMapName));
-         /****当月全部折前收入进度(折线图)everyDayLJIncome  E****/
          $("#hide3").remove();
 
 
 
-         /*************************全部重点折前收入 S**************************************/
         if(jsonData.businessMapName == ""){
             jsonData.businessMapName = "全部";
         }
         //重点产品的折前收入的文本
         $(".businessMapName").text(jsonData.businessMapName);
+
+        /*************************全部重点折前收入 S**************************************/
         //  data.zpxpIncome.monthMainProductCompletePercent    全部重点产品折前收入  月达成率
         //  mainProduct 全部重点折前收入 表格的内容
         //  bgName 事业部名称
@@ -1721,9 +1724,8 @@ function getstr2(data){
 }
 /*******重点产品下钻的功能的加号  E ****************/
 
-
-
 /*******全部新品折前收入下钻的加号 S****************/
+
 //新品的事业部下钻的加号
 $(".T_xp").on("click",".add_xp",function(){
 	loadHide1("h_xp","hide4");
@@ -1866,6 +1868,7 @@ $(".T_xp").on("click",".remove_xp",function(){
         $("#hide4").remove();
     });
 });
+
 /*******全部新品折前收入下钻的加号 E****************/
 
 //新品的表格的内容
@@ -1976,7 +1979,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 			 func(data);
 		 },
 		 error:function(){
-			 //alert("数据查询错误");
+			 alert("数据查询错误");
 			 //$("#hide1").remove();
 			 //$("#hide2").remove();
 			 //$("#hide3").remove();
