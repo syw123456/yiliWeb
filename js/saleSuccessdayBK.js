@@ -413,6 +413,8 @@ function getRightBottom(jsonData,isName){
                 +'</tr>'
         });
         $(".d_zdcpT tbody").html(str_zdcp);
+
+
         //全部新品折前收入
         $(".d_xpsr").text(data.zpxpIncome.monthNewProductCompletePercent+"%");
         var tiaos2=[];

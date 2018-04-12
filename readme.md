@@ -4,6 +4,12 @@ kj_fujl/yili2017!!
 mac地址：18:65:90:d5:f8:d1
 IP地址：10.1.150.144
 
+
+echarts 版本报表部署需求：
+前后端独立部署，需要开启前端端口（默认开启80或者8080）
+前端服务器需要访问后端，后端需要开启端口（同一台服务器部署不用新开）
+
+
 页面构成
 saleSuccess          销售达成
 saleIncrease         销售增长
@@ -63,5 +69,13 @@ http://10.60.138.106/trusted/MnysXKyUQ-a1NdIoBe1JDw==:3yS21__9Q7xcyJkOBJfOPb8e/v
 Echarts
 BIEE集成echats
 TableAU的使用可以做表格和柱状图的结合的图形化
+
+BIEE的开发
+
+http://10.119.1.179:9502/analytics/saw.dll?PortalPages&PortalPath=/shared/POC/_portal/POC&Page=page1&NQUser=weblogic&NQPassword=admin123&lang=zh
+
+
+
+
 
 

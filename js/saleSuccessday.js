@@ -1,5 +1,4 @@
-<!--集团销售达成日报-->
-
+//集团销售达成日报的逻辑
 //获取日期,填充日期
 var now = new Date();
 now = new Date(now.getTime() - 86400000);
@@ -81,7 +80,8 @@ function init(){
 	//地图的显示  day是当前的日期,businessMapName是事业部的名称默认的是液态奶事业部
 	var jsondata2 = {
 			"day":time,
-			"businessMapName":"液态奶事业部"
+			//"businessMapName":encodeURI("液态奶事业部")
+             "businessMapName":"液态奶事业部"
 	};
 	getMap(jsondata2);
 
@@ -103,7 +103,7 @@ function init(){
 			"businessMapName":"",
 			"bigAreaMapName":""
 	};
-	//getRightBottom(jsondata3,"折前收入");
+	getRightBottom(jsondata3,"折前收入");
 }
 var businessMapName = "",bigAreaMapName="";
 //选择日期查询数据
@@ -676,8 +676,6 @@ function getMap(jsonData){
                 data_sjjd.push(jsons);//实际达成进度放在数组中
             }
 
-
-
             //异常数据的处理
             if(v.areaZQIncomeShouldCompletePercent == 'NaN'||v.areaZQIncomeShouldCompletePercent == 'Infinity'){
                 var jsons1 = {"name":v.areaName,"value":'暂无数据'}; //NaN
@@ -740,11 +738,15 @@ function getRightBottom(jsonData,isName){
 		//ljBudget 预算目标
 		//ljIncome 累计收入
         /*
-        * x1_data:     //当月全部折前收入进度的x轴
-        * y_total_data://预算目标的y轴
-        * y_budget_data://累计收入的y轴
+        * x1_data:     //当月全部折前收入进度的x轴   表示的日期
+        * y_total_data://预算目标的y轴    累计收入
+        * y_budget_data://累计收入的y轴   预算目标
+        *
         * */
+
+
 		var x1_data=[],y_total_data=[],y_budget_data=[];
+		// 渲染右侧的折线图
 		$.each(data.everyDayLJIncome,function(k,v){
 			var N = Number(jsonData.day.split("-")[2]);
 			x1_data.push(v.day);
@@ -753,14 +755,14 @@ function getRightBottom(jsonData,isName){
 				y_total_data.push(formatNumber(v.ljIncome,1,0));
 			}
 		});
+
+		// 设置折线图的数据
 		myChart2.setOption(getJson2(x1_data,y_total_data,y_budget_data,isName,jsonData.businessMapName));
 		/****当月全部折前收入进度(折线图)everyDayLJIncome  E****/
 
-		if(isName == "折前收入"){
-			
-		}
+		if(isName == "折前收入"){}
 
-		/***全部重点折前收入 S****/
+		/*************************全部重点折前收入 S**************************************/
 		//  data.zpxpIncome.monthMainProductCompletePercent    全部重点产品折前收入  月达成率
 		//  mainProduct 全部重点折前收入 表格的内容
 		//  bgName 事业部名称
@@ -769,12 +771,10 @@ function getRightBottom(jsonData,isName){
 		//  monthCompletePercent  月折前达成进度
 		//  monthIncreasePercent  月增长
 
-		//全部重点产品折前收入  月达成率
-		$(".d_zdcpsr").text(data.zpxpIncome.monthMainProductCompletePercent+"%");
+		 //全部重点产品折前收入  月达成率
+		 $(".d_zdcpsr").text(data.zpxpIncome.monthMainProductCompletePercent+"%");
 
-
-		//
-		var tiaos1=[];
+		 var tiaos1=[];
          $.each(data.zpxpIncome.mainProduct,function(k,v){
          	tiaos1.push(v.monthLJIncome);         	
          });
@@ -794,22 +794,24 @@ function getRightBottom(jsonData,isName){
 
 		//填充表格的内容
 		var str_zdcp = "";
-            $.each(data.zpxpIncome.mainProduct,function(k,v){
+		   $.each(data.zpxpIncome.mainProduct,function(k,v){
                 var widths = tiaomaxs1 === 0 ? 0 : (v.monthLJIncome/tiaomaxs1)*100 ;
                 var imgs = v.monthIncreasePercent < 0 ? "down" : v.monthIncreasePercent===0 ? "" : "up";
                 var color = bgColor2(v.monthCompletePercent);
                 var str_img = imgs ==="" ? "" : '<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;">'
+
                 str_zdcp += '<tr>'
-                    +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'
-                    +'<td class="hide">0</td>'
-                    +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'
-                    +'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'
-                    +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'
-                    +'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%'+str_img+'</td>'
+                    +'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>'  //事业部名称
+                    +'<td class="hide">0</td>'  //SKU
+                    +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'  //月折前收入
+                    +'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'  //销售占比
+                    +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'  //月折前达成进度
+                    +'<td>'+formatNumber(v.monthIncreasePercent,1,0)+'%'+str_img+'</td>'  //月增长
                     +'</tr>'
             });
 		$(".d_zdcpT tbody").html(str_zdcp);
-		/***全部重点折前收入 E****/
+
+		/********************************全部重点折前收入 E********************************/
 
 		 /*******全部新品折前收入  E *******/
 		 // data.zpxpIncome.monthNewProductCompletePercent  全部新品折前收入
@@ -828,7 +830,6 @@ function getRightBottom(jsonData,isName){
 
 		 //求全部新品折前收入的最大值
 		 var tiaomaxs2 = Math.max.apply(null,tiaos2);
-
 		 //填充表格的头部
 		 var str_head2 = '<tr>'
 							+'<th>事业部名称<span class="add_xp">+</span></th>'
@@ -842,11 +843,11 @@ function getRightBottom(jsonData,isName){
 		 //填充表格的数据
 		 var str_xp = "";
 		 $.each(data.zpxpIncome.newProduct,function(k,v){
-			var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100 ; //月折前收入的最大值
+			var widths = tiaomaxs2 === 0 ? 0 : (v.monthLJIncome/tiaomaxs2)*100; //月折前收入的最大值
 			var color = bgColor2(v.monthCompletePercent);  //月折前达成进度的颜色
 			str_xp += '<tr>'
 						+'<td onclick="cause_click($(this),"1")">'+v.bgName+'</td>' //事业部名称
-						+'<td class="hide">0</td>'
+						+'<td class="hide">0</td>'  //SKU
 						+'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthLJIncome,1,1)+'</td>'  //月折前收入
 						+'<td>'+formatNumber(v.sellPercent,2,0)+'%</td>'  //销售占比
 						+'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthCompletePercent,2,0)+'%</td>'  //月折前达成进度
@@ -859,6 +860,7 @@ function getRightBottom(jsonData,isName){
 }
 //获取柱形图样式  各事业部收成情况
 function getChart1(x_data,y1_data,y2_data,data_bs){
+    console.log(data_bs);
 	var option = {
 	        title: {
 	            text: '各事业部收成情况',
@@ -1365,7 +1367,10 @@ function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
 		};
 	return option3;
 }
-//重点产品下钻   下钻的功能的加号
+
+
+/*******重点产品下钻的功能的加号  S ****************/
+//事业部的加号
 $(".T_zd").on("click",".add_zp",function(){
 
     console.log('进入重点产品的加号的点击事件');
@@ -1399,13 +1404,13 @@ $(".T_zd").on("click",".add_zp",function(){
 	*
 	* */
 
-    var   add_zp_data =$(".add_zp").attr("data");
+    var   add_zp_data =$(".add_zp").attr("add_zp_data");
     console.log(add_zp_data);
-    if( undefined == add_zp_data){
+    if(undefined == add_zp_data){
 
         console.log('进入重点产品的加号的ajax');
-        //var data={'name':'1'};
-        //$(".add_zp").attr("data",data);
+        /*var data={'name':'1'};
+        $(".add_zp").attr("data",data);*/
         // 重点产品的下钻的功能   加号getProductByBusinessName 调用 getstr2方法
         ajaxReq("getProductByBusinessName",jsonData,function(data) {
 
@@ -1429,7 +1434,7 @@ $(".T_zd").on("click",".add_zp",function(){
                 var thats = $(this);
                 $(".d_zdcpT tbody").html("");
                 //把数据储存在重点产品的下钻的span上
-                $(".add_zp").attr("data",data);
+                $(".add_zp").attr("add_zp_data",data);
                 //重点产品获取SKU的数据的接口数据
                 ajaxReq("getSkuByProductName",jsonData,function(data) {
                     var head_str1 = "<tr>"
@@ -1447,16 +1452,16 @@ $(".T_zd").on("click",".add_zp",function(){
                 });
             });
         });
-
     }else{
         console.log('进入重点产品的加号的缓存');
-        var cache_data =$(".add_zp").attr("data");
+        var add_zp_cache_data =$(".add_zp").attr("add_zp_data");
         console.log('进入重点产品的加号的缓存的数据');
-        console.log(cache_data);
+        console.log(add_zp_cache_data);
     }
 
 
 });
+//SKU的减号
 $(".T_zd").on("click",".remove_zp_sku",function(){
 	loadHide1("h_zp","hide4");
 	var timess = $("#startTime").val();
@@ -1569,7 +1574,7 @@ $(".T_zd").on("click",".remove_zp",function(){
 		$("#hide4").remove();
     });
 });
-//重点产品的下钻的表格
+//重点产品的下钻的表格的渲染
 function getStr1(data){
 	var arr_width = [];
 	$.each(data,function(k,v){
@@ -1625,8 +1630,7 @@ function getStr1(data){
 	});	
 	return str;
 }
-
-//SKU的表格渲染
+//重点产品的SKU的表格渲染
 function getstr2(data){
     var str1 = "";
     var arr_width=[];
@@ -1681,7 +1685,11 @@ function getstr2(data){
     });
     return str1;
 }
-//全部新品折前收入下钻的加号
+/*******重点产品下钻的功能的加号  E ****************/
+
+/*******全部新品折前收入下钻的加号 S****************/
+
+//新品的事业部下钻的加号
 $(".T_xp").on("click",".add_xp",function(){
 	loadHide1("h_xp","hide4");
 	//当前的日期
@@ -1743,7 +1751,7 @@ $(".T_xp").on("click",".add_xp",function(){
 		});			
 	});
 });
-//新品下钻一级
+//新品下钻的SKU的减号
 $(".T_xp").on("click",".remove_xp_sku",function(){
 	loadHide1("h_xp","hide4");
 	var timess = $("#startTime").val();
@@ -1769,7 +1777,7 @@ $(".T_xp").on("click",".remove_xp_sku",function(){
         $("#hide4").remove();
     });
 });
-//新品的减号
+//新品的事业部的减号
 $(".T_xp").on("click",".remove_xp",function(){
 	loadHide1("h_xp","hide4");
 	var timess = $("#startTime").val();
@@ -1823,6 +1831,8 @@ $(".T_xp").on("click",".remove_xp",function(){
         $("#hide4").remove();
     });
 });
+
+/*******全部新品折前收入下钻的加号 E****************/
 
 //新品的表格的内容
 function getStr3(data){
@@ -1910,7 +1920,6 @@ function getstr4(data){
 	});
 	return str1;
 }
-
 //获取json对象的length,用于合并单元格
 function getJsonLength(jsonData) {  
 	var length=0;  
@@ -1942,8 +1951,8 @@ function ajaxReq(urlSuffix,jsonData,func) {
 }
 //地图点击事件的查询
 myChart3.on('click', function (params) {
-    //移除重点产品的加号的data
-    $(".add_zp").removeAttr("data");
+    //重点产品的加号的data点击地图前移除
+    $(".add_zp").removeAttr("add_zp_data");
 
 	loadHide1("h_rightB","hide3");
 	bigAreaMapName = params.name;

@@ -37,4 +37,57 @@
        yearZQLJIncome:1980427489   1980427488.5485213 年折前累计收入                   四舍五入
        years:"2017" //年份                                                           不用动
 
+Request URL: http://10.60.138.106/yiliReport/SalesReached/getRightBottom
+
+everyDayLJIncome  当月折前收入进度
+budget:215660115.3356986
+day:"1"  天
+income:74520003.10947725  收入
+ljBudget:21566  预算目标
+ljIncome:7452   累计收入
+
+
+zpxpIncome  重点产品和新品折前收入
+
+
+mainProduct 重点产品
+bgName:"液态奶事业部"                 事业部的名称
+monthBudget:2627472268.967765       月预算
+monthCompletePercent:81.94          月完成进度
+monthCompletePercentColor:81.94     月完成进度的颜色
+monthIncome:2153052945.057306       月收入
+monthIncomeSamePeriod:2137119017.1781437
+monthIncreasePercent:0.7            月增长进度
+monthLJAllBudget:2627472268.967765  月累计全部预算
+monthLJAllIncome:4661246651.823835  月累计全部收入
+monthLJBudget:2627472268.967765     月累计预算
+monthLJIncome:215305.3              月累计收入
+sellPercent:46.19                   销售占比
+
+
+
+newProduct  新品折前收入
+bgName:"液态奶事业部"                 事业部的名称
+monthBudget:397469888.2686359       月预算
+monthCompletePercent:117.45         月完成的进度
+monthCompletePercentColor:117.45    月完成的进度的颜色
+monthIncome:466810883.99028623      月收入
+monthIncomeSamePeriod:309528885.9090363
+monthIncreasePercent:50.8           月增长的进度
+monthLJAllBudget:397469888.2686359  月累计全部的预算
+monthLJAllIncome:4661246651.823835  月累计全部的收入
+monthLJBudget:397469888.2686359     月累计预算
+monthLJIncome:46681.1               月累计收入
+sellPercent:10.01                   销售占比
+
+
+monthMainProductCompletePercent  重点产品的完成进度
+monthNewProductCompletePercent   新品的完成的进度
+
+
+
+
+
+
+
 
