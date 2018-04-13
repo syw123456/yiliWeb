@@ -1,6 +1,6 @@
 
-var basepath = 'http://10.1.150.143:8080';
-//var basepath = 'http://10.1.150.147:8080';
+//var basepath = 'http://10.1.150.143:8080';
+var basepath = 'http://10.1.150.147:8080';
 
 //数据加载中图片
 var img_mT = $("#Mask").height()/2-25;
