@@ -1,5 +1,5 @@
 
-接口
+接口的调用
        http://10.60.138.106/yiliReport/SalesReached/getxsdc
        bgIncome 基本数据和柱状图以及2个表格（各事业部折前收入指标和各事业部账面收入指标）的接口
        bg_name:"电商"   事业部名称
@@ -37,7 +37,7 @@
        yearZQLJIncome:1980427489   1980427488.5485213 年折前累计收入                   四舍五入
        years:"2017" //年份                                                           不用动
 
-Request URL: http://10.60.138.106/yiliReport/SalesReached/getRightBottom
+接口的调用  http://10.60.138.106/yiliReport/SalesReached/getRightBottom
 
 everyDayLJIncome  当月折前收入进度
 budget:215660115.3356986  预算
@@ -51,6 +51,7 @@ zpxpIncome  重点产品和新品折前收入
 
 
 mainProduct 重点产品
+
 bgName:"液态奶事业部"                 事业部的名称
 monthBudget:2627472268.967765       月预算
 monthCompletePercent:81.94          月完成进度
@@ -67,6 +68,7 @@ sellPercent:46.19                   销售占比
 
 
 newProduct  新品折前收入
+
 bgName:"液态奶事业部"                 事业部的名称
 monthBudget:397469888.2686359       月预算
 monthCompletePercent:117.45         月完成的进度
@@ -81,6 +83,7 @@ monthLJIncome:46681.1               月累计收入
 sellPercent:10.01                   销售占比
 
 
+这个是2个完成度
 monthMainProductCompletePercent  重点产品的完成进度
 monthNewProductCompletePercent   新品的完成的进度
 

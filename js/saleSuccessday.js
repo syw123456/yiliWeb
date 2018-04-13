@@ -20,10 +20,8 @@ $("#startTime").val(time);
 
 //各事业部的收成的情况
 var myChart = echarts.init(document.getElementById('main'));
-
 //当月全部折前收入进度
 var myChart2 = echarts.init(document.getElementById('main2'));
-
 //地图的显示
 var myChart3 = echarts.init(document.getElementById('main_map'));
 
@@ -52,7 +50,6 @@ $.get('../json/china.json', function (chinaJson) {
     echarts.registerMap('china', chinaJson);
     myChart3.setOption(getMapchart("液态奶事业部",[],[],[]),true);
 });
-
 //图标内容大小自适应
 setTimeout(function () {
     window.onresize = function () {
@@ -835,8 +832,6 @@ function getRightBottom(jsonData,isName){
         $(".d_zdcpT tbody").html(str_zdcp);
 
         /********************************全部重点折前收入 E********************************/
-
-
 
         /*******全部新品折前收入  E *******/
         // data.zpxpIncome.monthNewProductCompletePercent  全部新品折前收入
@@ -1860,8 +1855,8 @@ $(".T_xp").on("click",".remove_xp",function(){
         $("#hide4").remove();
     });
 });
-
 /*******全部新品折前收入下钻的加号 E****************/
+
 
 //新品的表格的内容
 function getStr3(data){
@@ -1901,6 +1896,7 @@ function getStr3(data){
 	});	
 	return str;
 }
+//新品的事业部下钻的表格
 function getstr4(data){
 	var str1 = "";
 	var arr_width=[];
@@ -1949,6 +1945,7 @@ function getstr4(data){
 	});
 	return str1;
 }
+
 //获取json对象的length,用于合并单元格
 function getJsonLength(jsonData) {  
 	var length=0;  
@@ -2000,4 +1997,6 @@ myChart3.on('click', function (params) {
 	};
 	getRightBottom(jsondata3,isName);
 });
+
+
  

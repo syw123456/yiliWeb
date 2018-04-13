@@ -1018,7 +1018,7 @@ $("#productItem").on({
 
 // 在原来的json上面添加新的json
 function setDataJson(newDataJson) {
-    //console.log('扩充后的JSON：  ');
-    //console.log($.extend(dataJson, newDataJson));
+    console.log('扩充后的JSON：  ');
+    console.log($.extend(dataJson, newDataJson));
 	return $.extend(dataJson, newDataJson);
 }
