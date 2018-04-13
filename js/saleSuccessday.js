@@ -813,8 +813,7 @@ function getRightBottom(jsonData,isName){
         //填充表格的内容
         var str_zdcp = "";
         $.each(data.zpxpIncome.mainProduct,function(k,v){
-            console.log('****');
-            console.log(v.cellpercent);
+
             var widths = tiaomaxs1 === 0 ? 0 : (v.monthZQIncome/tiaomaxs1)*100 ;
             var imgs = v.monthZQIncomeIncrease < 0 ? "down" : v.monthZQIncomeIncrease ===0 ? "" : "up";
             var color = bgColor2(v.monthZQCompletePercent);
@@ -882,7 +881,6 @@ function getRightBottom(jsonData,isName){
 }
 //获取柱形图样式  各事业部收成情况
 function getChart1(x_data,y1_data,y2_data,data_bs){
-    console.log(data_bs);
 
 	var option = {
 	        title: {
