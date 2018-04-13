@@ -514,4 +514,21 @@ table.a_keytable tbody tr td:nth-child(7){
 .font16.font_w700{
 	font-size:17px!important;
 }
-
+.bulb {
+	width: 20px;
+	vertical-align: middle;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.bulb_box{
+	display:none;
+	width:55%;
+	padding:10px;
+	position:absolute;
+	top:85px;
+	right:40px;
+	background-color:#fff;
+	z-index:10;
+	font-size:14px;
+	line-height:25px;
+}

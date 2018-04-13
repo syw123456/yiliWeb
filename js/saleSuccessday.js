@@ -77,8 +77,7 @@ function init(){
 	//地图的显示  day是当前的日期,businessMapName是事业部的名称默认的是液态奶事业部
 	var jsondata2 = {
 			"day":time,
-			//"businessMapName":encodeURI("液态奶事业部")
-             "businessMapName":"液态奶事业部"
+            "businessMapName":"液态奶事业部"
 	};
 	getMap(jsondata2);
 
@@ -665,7 +664,6 @@ function getMap(jsonData){
 
 
             console.log(v.areaZQIncomeCompletePercent);
-
 		    //异常数据的处理
 		    if(v.areaZQIncomeCompletePercent == 'NaN' || v.areaZQIncomeCompletePercent == 'Infinity'){
                 var jsons = {"name":v.areaName, "value":'暂无数据'};//NaN
@@ -865,6 +863,7 @@ function getRightBottom(jsonData,isName){
         //填充表格的数据
         var str_xp = "";
         $.each(data.zpxpIncome.newProduct,function(k,v){
+
             var widths = tiaomaxs2 === 0 ? 0 : (v.monthZQIncome/tiaomaxs2)*100; //月折前收入的最大值
             var color = bgColor2(v.monthZQCompletePercent);  //月折前达成进度的颜色
             str_xp += '<tr>'
@@ -905,9 +904,9 @@ function getChart1(x_data,y1_data,y2_data,data_bs){
                    for (var i = 0, l = params.length; i < l; i++) {  
                         relVal += '<br/>' + params[i].marker +  params[i].seriesName + ' : ' + params[i].value+"%";
                         if(i==1){
-                            console.log(data_bs[params[i].dataIndex][0]);
-                            console.log(data_bs[params[i].dataIndex][0].value);
 
+                            //console.log(data_bs[params[i].dataIndex][0]);
+                            //console.log(data_bs[params[i].dataIndex][0].value);
                             relVal +='<br/>当月计划进度：'+data_bs[params[i].dataIndex][0].value;
                         }
                    }  
@@ -1600,6 +1599,7 @@ $(".T_zd").on("click",".remove_zp",function(){
 		$("#hide4").remove();
     });
 });
+
 //重点产品的下钻的表格的渲染
 function getStr1(data){
 	var arr_width = [];

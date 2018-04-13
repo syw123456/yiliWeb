@@ -1,44 +1,42 @@
 
-接口的调用
-       http://10.60.138.106/yiliReport/SalesReached/getxsdc
-       bgIncome 基本数据和柱状图以及2个表格（各事业部折前收入指标和各事业部账面收入指标）的接口
-       bg_name:"电商"   事业部名称
-       bg_wid:3 //事业部编号
-       dayZMIncome:20624        2.1      日账面收入                                   万 四舍五入
-       dayZQIncome:-17027     -1.7       日折前收入                                   万 四舍五入
-       monthZMBudget:87867300  87867300  月账面预算                                   不用动
-       monthZMCompletePercent:1.0712378760926986  107.12  月账面达成进度               乘100保留2位小数
-       monthZMCompletePercentColor:1.0712378760926986 107.12  月账面达成进度的颜色      乘100保留2位小数
-       monthZMIncome:94126780  9412.7 月账面收入                                      万 四舍五入
-       monthZMIncomeIncrease:-4.1026162251592  -410.3月账面收入增长                    乘100保留2位小数
-       monthZMLJBudget:87867300  87867300 月账面累计预算                               不用动
-       monthZMLJIncome:94126780  94126779.83  月账面累计收入                           四舍五入
-       monthZQBudget:113758045   113758045.38804996  月折前预算                       四舍五入
-       monthZQCompletePercent:1.2586186342443046   125.86  月折前达成进度              乘100保留2位小数
-       monthZQCompletePercentColor:1.2586186342443046   125.86  月折前达成进度颜色      乘100保留2位小数
-       monthZQIncome:143177995.7206084     14317.8   月度折前收入                      万 四舍五入
-       monthZQIncomeIncrease:1.9318152291031363    193.2月折前收入增长                 乘100保留2位小数
-       monthZQLJBudget:113758045  113758045.38804996月折前累计预算                     四舍五入
-       monthZQLJIncome:143177996  143177995.72060832月折前累计收入                     四舍五入
-       months:"201712"   月份                                                        不用动
-       yearZMBudget:1003031700   1003031700 年账面预算                                不用动
-       yearZMCompletePercent:1.4395994397385448    143.96 年账面达成进度               乘100保留2位小数
-       yearZMCompletePercentColor:1.4395994397385448   143.96年账面达成进度颜色         乘100保留2位小数
-       yearZMIncome:1443963873   144396.4 年折面收入                                  万 四舍五入
-       yearZMIncomeIncrease:1.636963457101884  163.7 年折面收入增长                    乘100保留2位小数
-       yearZMLJBudget:1003031700   1003031700  年折面累计预算                          不用动
-       yearZMLJIncome:1443963873   1443963873.36 年折面累计收入                        四舍五入
-       yearZQBudget:1316882188   1316882187.62683年折前预算                           四舍五入
-       yearZQCompletePercent:1.5038759785470868       150.39 年折前达成进度            乘100保留2位小数
-       yearZQCompletePercentColor:1.5038759785470868  150.39 年折前达成进度颜色         乘100保留2位小数
-       yearZQIncome:1980427488.5485182   1980427488.5485213  年折前收入               不用动
-       yearZQIncomeIncrease:1.3144298969367925  131.4 年折前收入增长                   乘100保留2位小数
-       yearZQLJBudget:1316882188   1316882187.62683 年折前累计预算                     四舍五入
-       yearZQLJIncome:1980427489   1980427488.5485213 年折前累计收入                   四舍五入
-       years:"2017" //年份                                                           不用动
+接口的调用http://10.60.138.106/yiliReport/SalesReached/getxsdc
+bgIncome 基本数据和柱状图以及2个表格（各事业部折前收入指标和各事业部账面收入指标）的接口
+bg_name:"电商"   事业部名称
+bg_wid:3 //事业部编号
+dayZMIncome:20624        2.1      日账面收入                                   万 四舍五入
+dayZQIncome:-17027     -1.7       日折前收入                                   万 四舍五入
+monthZMBudget:87867300  87867300  月账面预算                                   不用动
+monthZMCompletePercent:1.0712378760926986  107.12  月账面达成进度               乘100保留2位小数
+monthZMCompletePercentColor:1.0712378760926986 107.12  月账面达成进度的颜色      乘100保留2位小数
+monthZMIncome:94126780  9412.7 月账面收入                                      万 四舍五入
+monthZMIncomeIncrease:-4.1026162251592  -410.3月账面收入增长                    乘100保留2位小数
+monthZMLJBudget:87867300  87867300 月账面累计预算                               不用动
+monthZMLJIncome:94126780  94126779.83  月账面累计收入                           四舍五入
+monthZQBudget:113758045   113758045.38804996  月折前预算                       四舍五入
+monthZQCompletePercent:1.2586186342443046   125.86  月折前达成进度              乘100保留2位小数
+monthZQCompletePercentColor:1.2586186342443046   125.86  月折前达成进度颜色      乘100保留2位小数
+monthZQIncome:143177995.7206084     14317.8   月度折前收入                      万 四舍五入
+monthZQIncomeIncrease:1.9318152291031363    193.2月折前收入增长                 乘100保留2位小数
+monthZQLJBudget:113758045  113758045.38804996月折前累计预算                     四舍五入
+monthZQLJIncome:143177996  143177995.72060832月折前累计收入                     四舍五入
+months:"201712"   月份                                                        不用动
+yearZMBudget:1003031700   1003031700 年账面预算                                不用动
+yearZMCompletePercent:1.4395994397385448    143.96 年账面达成进度               乘100保留2位小数
+yearZMCompletePercentColor:1.4395994397385448   143.96年账面达成进度颜色         乘100保留2位小数
+yearZMIncome:1443963873   144396.4 年折面收入                                  万 四舍五入
+yearZMIncomeIncrease:1.636963457101884  163.7 年折面收入增长                    乘100保留2位小数
+yearZMLJBudget:1003031700   1003031700  年折面累计预算                          不用动
+yearZMLJIncome:1443963873   1443963873.36 年折面累计收入                        四舍五入
+yearZQBudget:1316882188   1316882187.62683年折前预算                           四舍五入
+yearZQCompletePercent:1.5038759785470868       150.39 年折前达成进度            乘100保留2位小数
+yearZQCompletePercentColor:1.5038759785470868  150.39 年折前达成进度颜色         乘100保留2位小数
+yearZQIncome:1980427488.5485182   1980427488.5485213  年折前收入               不用动
+yearZQIncomeIncrease:1.3144298969367925  131.4 年折前收入增长                   乘100保留2位小数
+yearZQLJBudget:1316882188   1316882187.62683 年折前累计预算                     四舍五入
+yearZQLJIncome:1980427489   1980427488.5485213 年折前累计收入                   四舍五入
+years:"2017" //年份                                                           不用动
 
-接口的调用  http://10.60.138.106/yiliReport/SalesReached/getRightBottom
-
+接口的调用http://10.60.138.106/yiliReport/SalesReached/getRightBottom
 everyDayLJIncome  当月折前收入进度
 budget:215660115.3356986  预算
 day:"1"  天
@@ -64,7 +62,6 @@ monthLJAllIncome:4661246651.823835  月累计全部收入
 monthLJBudget:2627472268.967765     月累计预算
 monthLJIncome:215305.3              月累计收入
 sellPercent:46.19                   销售占比
-
 
 
 newProduct  新品折前收入

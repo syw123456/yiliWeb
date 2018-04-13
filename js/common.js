@@ -146,4 +146,16 @@ function getJsonLength(jsonData) {
 	    length++;  
 	}  
 	return length;  
-} 
+}
+//小灯泡内容展示隐藏
+$(".bulb").off("mouseover").on("mouseover",function(){
+    $(".bulb_box").show();
+});
+$(".bulb_box").on({
+    "mouseover":function(){
+        $(".bulb_box").show();
+    },
+    "mouseout":function(){
+        $(".bulb_box").hide();
+    }
+});
