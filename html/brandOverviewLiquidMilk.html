@@ -17,7 +17,7 @@
     <script type="text/javascript" src='../My97DatePicker/WdatePicker.js'></script>
 </head>
 <body id='h_body'>
-<div class="w100b  over-hide">
+<div id='h_top' style="position: relative" class="w100b  over-hide">
     <p class="bule1 margin-top5 paddinglr5">液奶区域日达成总览</p>
     <div class="ulpf4t text-fff w100b over-hide line25 paddinglr5 padding-top5 ">
         <ul class="w100b">
@@ -34,8 +34,8 @@
                 <select name="" id="businessIndicators" class="bg-808080">
                    <!-- <option value="销售量(件)">销售量(件)</option>
                     <option value="销售量(吨)">销售量(吨)</option>-->
-                    <option value="折前收入">折前收入</option>
-                    <option value="账面收入">账面收入</option>
+                    <option value="销售量(吨)">折前收入</option>
+                    <option value="销售量(吨)">账面收入</option>
                 </select>
             </li>
             <!--经营指标 E-->
@@ -108,39 +108,39 @@
     <ul class="ulpf6s w100b over-hide text-fff margin-top10">
         <li>
             <span>日销售</span>
-            <span><b class="ppzl-summary">36.61亿</b></span>
+            <span><b id="daybefore" class="ppzl-summary">36.61亿</b></span>
         </li>
         <li>
             <span>月累计</span>
-            <span><b class="ppzl-summary">11.09亿</b></span>
+            <span><b id="monthbefore" class="ppzl-summary">11.09亿</b></span>
         </li>
         <li>
             <span>月目标</span>
-            <span><b class="ppzl-summary">6.84亿</b></span>
+            <span><b id="monthLJbefore" class="ppzl-summary">6.84亿</b></span>
         </li>
         <li>
             <span>月达成</span>
-            <span><b class="ppzl-summary">10.13%</b></span>
+            <span><b id="monthbefore_reach" class="ppzl-summary">10.13%</b></span>
         </li>
         <li>
             <span>同期月累计</span>
-            <span><b class="ppzl-summary">10.13%</b></span>
+            <span><b id="YAGO_monthLJbefore" class="ppzl-summary">10.13%</b></span>
         </li>
         <li>
             <span>月同比</span>
-            <span><b class="ppzl-summary">10.13%</b></span>
+            <span><b id="monthLJbefore_TB" class="ppzl-summary">10.13%</b></span>
         </li>
         <li>
             <span>月时间进度</span>
-            <span><b class="ppzl-summary">10.13%</b></span>
+            <span><b id="monthTimePercentBefore" class="ppzl-summary">10.13%</b></span>
         </li>
         <li>
             <span>年累计</span>
-            <span><b class="ppzl-summary">10.13%</b></span>
+            <span><b id="yearbefore" class="ppzl-summary">10.13%</b></span>
         </li>
         <li>
             <span>年达成</span>
-            <span><b class="ppzl-summary">10.13%</b></span>
+            <span><b id="yearbefore_reach" class="ppzl-summary">10.13%</b></span>
         </li>
 
         <li>
@@ -165,7 +165,7 @@
     </ul>
     <!--基本数据  E-->
 </div>
-<div class="w100b over-hide border_s paddingAll text-fff">
+<div id='h_middle' style="position: relative" class="w100b over-hide border_s paddingAll text-fff">
 
     <div>
         <!--大区折前收入增长及达成 S-->
@@ -370,7 +370,7 @@
         <!--大区及区域折前收入增长及达成 E-->
     </div>
 </div>
-<div class="w100b over-hide border_s paddingAll text-fff margin-top10">
+<div id='h_bottom' style="position: relative" class="w100b over-hide border_s paddingAll text-fff margin-top10">
 
 
     <div>

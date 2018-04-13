@@ -10,24 +10,78 @@ if (dd.length == 1) {
     dd = '0' + dd;
 }
 var time =yyyy+ "-" + mm+ "-" + dd;
+var isName =$("#businessIndicators").val();
 //time = "2018-04-01";
 //当前的时间今天
 $("#startTime").val(time);
 //console.log(time);
-$(".newyearday").text(time);
-/****获取日期 E***/
 
-var dataJson = {
-    year: time.split("-")[0], // 年
-    month: time.split("-")[1], //月
-    day: time.split("-")[2],  //日
-    businessIndicators: "折前收入", //折前收入
-};
-//选择日期查询数据
+//达成进度的折线图
+var myChart2 = echarts.init(document.getElementById('eBar2'));
+
+//日销售趋势折线图
+var myChart4 = echarts.init(document.getElementById('eBar4'));
+
+//地图的显示
+var myChart3 = echarts.init(document.getElementById('eMap'));
+
+//中国地图
+$.get('../json/china.json', function (chinaJson) {
+    echarts.registerMap('china', chinaJson);
+    myChart3.setOption(getMapchart("西南",[],[],[]),true);
+});
+
+//图标内容大小自适应
+setTimeout(function () {
+    window.onresize = function () {
+        myChart4.resize();
+        myChart2.resize();
+        myChart3.resize();
+    }
+}, 1);
+
+
+
+//页面初始化加载数据
+init();
+function init(){
+
+    console.log('------------进入初始化的方法-----------------');
+    //默认的加载的头部的loading图
+    // loadHide1("h_top","hide1");
+    //默认的加载的中间的loading图
+    //loadHide1("h_middle","hide2");
+    //默认的加载的底部的loading图
+    //loadHide1("h_bottom","hide3");
+
+
+    //默认的初始化的json   传参  日期
+    var jsondata1 = {"day": time};//day: 2017-12-31
+    console.log('页面初始化的json');
+    console.log(jsondata1);
+    //基本数据的,    达成进度  日销售趋势 的2个折线图  chart图
+    getxsdc(jsondata1);
+
+    /******地图 S*******/
+    //地图   传参  时间  大区
+    var jsondata2 = {"day":time};
+    getMap(jsondata2);
+    /******地图 E*******/
+
+
+    //大区及区域折前收入增长及达成的表格的填充这个与地图联动
+    getRightBottom(jsondata1);
+
+    // 最后的表格   最下面的table  产品折前收入增长及达成
+    getDataBottom(jsondata1);
+
+}
+
+
+
 /***日期的点击事件S***/
 var times1 = $("#startTime").val();
-var businessMapName = "",//事业部名称
-    bigAreaMapName=""; //大区名称
+var bigAreaMapName=""; //大区名称
 $("#startTime").off("click").on("click",function(){
     var that = $(this);
     WdatePicker({
@@ -46,15 +100,13 @@ $("#startTime").off("click").on("click",function(){
 
 
                 var dataJson = {
-                    year: time.split("-")[0], // 年
-                    month: time.split("-")[1], //月
-                    day: time.split("-")[2],  //日
-                    businessIndicators: "折前收入", //折前收入
+                    day: time  //日
+
                 };
                 //扩充json对象
                 setDataJson({ year: times.split("-")[0], month: times.split("-")[1], day: times.split("-")[2]});
                 //基本数据的,达成进度chart图,日销售趋势
-                getData1(dataJson);
+                getxsdc(dataJson);
 
                 //请求地图的数据
                 var jsondata2 = {
@@ -67,11 +119,11 @@ $("#startTime").off("click").on("click",function(){
                 getMap(jsondata2);
 
                 //大区及区域折前收入增长及达成的表格的填充（待完成）
-                getData2(dataJson);
+                getRightBottom(dataJson);
 
 
                 //产品折前收入增长及达成
-                getData3(dataJson);
+                getDataBottom(dataJson);
 
 
             }
@@ -82,7 +134,7 @@ $("#startTime").off("click").on("click",function(){
 
 
 /*****  达成进度的折线图  S****/
-var myChart2 = echarts.init(document.getElementById('eBar2'));
+
 option2 = {
     title: {
         text: '',
@@ -277,11 +329,13 @@ option2 = {
         }
     },
 };
-myChart2.setOption(option2);
+//myChart2.setOption(option2);
 /*****  达成进度的折线图  E****/
 
+
+
 /*****  日销售趋势折线图  S****/
-var myChart4 = echarts.init(document.getElementById('eBar4'));
+
 option4 = {
     title: {
         text: '',
@@ -332,7 +386,7 @@ option4 = {
     xAxis: [{
         show: true,
         type: 'category',
-        data: ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],
+        data: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],
         axisLine: {//x轴
             lineStyle: {
                 color: '#fff'
@@ -449,9 +503,9 @@ myChart4.setOption(option4);
 
 
 /*****    地图 S  *******/
-var myChart5 = echarts.init(document.getElementById('eMap'));
+
 function getMapchart(data,datas1){
-	var option5 = {
+	var option3 = {
 		    title: {
 		        text: '', //'液态奶事业部折前收入',
 		        x: 'left',
@@ -482,7 +536,7 @@ function getMapchart(data,datas1){
 		            //定义一个res变量来保存最终返回的字符结果,并且先把地区名称放到里面
 		            var res="大区名称:"+params.name+'<br />';
 		            //定义一个变量来保存series数据系列
-		            var myseries=option5.series;
+		            var myseries=option3.series;
 		            //循环遍历series数据系列
 		            for(var i=0;i<myseries.length;i++){
 		                //在内部继续循环series[i],从data中判断：当地区名称等于params.name的时候就将当前数据和名称添加到res中供显示
@@ -545,7 +599,7 @@ function getMapchart(data,datas1){
                  ]
 		    }]
 		};
-	return option5;
+	return option3;
 }
 //地图
 
@@ -553,38 +607,9 @@ function getMapchart(data,datas1){
 // 测试的接口中国地图
 $.get('../ynjson/china.json', function (chinaJson) {
     echarts.registerMap('china', chinaJson);
-    myChart5.setOption(getMapchart([]),true);
+    myChart3.setOption(getMapchart([]),true);
 });
 /*****地图 E*   ******/
-
-
-//页面初始化加载数据
-init();
-function init(){
-    //默认出现加载的loading图片
-    loadHide1("h_body","hide1");
-    //默认的初始化的json
-    
-    console.log('页面初始化的json');
-    console.log(dataJson);
-    //基本数据的,达成进度chart图,日销售趋势
-    getData1(dataJson);
-
-    //地图
-    var jsondata2 = {
-        "day":time,
-        "bigAreaMapName":"西南"
-    };
-    getMap(jsondata2);
-    loadHide1("h_bottom","hide3");
-
-    //大区及区域折前收入增长及达成的表格的填充（待完成）
-    getData2(dataJson);
-
-    //产品折前收入增长及达成
-    getData3(dataJson);
-
-}
 
 
 // 提取ajax公用代码  urlSuffix这个是请求的子路径 , 请求成功的回调函数 succFun
@@ -605,101 +630,504 @@ function ajaxReq(urlSuffix,jsonData,succFun) {
 		    //如果失败的情况提示信息
 			//alert("数据查询失败");
             //弹窗删除
-			$("#hide1").remove();
+			//$("#hide1").remove();
 		}
 	});
 }
-//数据的颜色
-function bgColor3(num) {
-    num = parseFloat(num);
-    return num >= 0 ? '#58A14E' : '#E15658';
-}
+
 //基本数据的,达成进度chart图,日销售趋势
-function getData1(jsonData) {
-    console.log('基本数据的达成进度chart图日销售趋势的传递参数: ');
+function getxsdc(jsonData) {
+    console.log('基本数据、达成进度、日销售趋势的传递参数: ');
     console.log(jsonData);
     // 这个接口是液奶日达成总额的头部和达成进度的接口
-    ajaxReq("summary",jsonData,function(data) {
-
+    ajaxReq("getxsdc",jsonData,function(data) {
 
         console.log('基本数据的,达成进度chart图,日销售趋势 成功的回调---succeed--->');
         console.log(data);
         /****基本数据的填充页面 S　*****/
-        //注意 i表示当前的编号 r 是标签 <b class="ppzl-summary">36.61亿</b>
-        //bgColor2   获取对比后的颜色 3种颜色  红  黄  绿
-        $(".ppzl-summary").each(function(i, r) {
-            console.log('基本数据的渲染:' +i);
-            //给数据添加颜色
-            $(r).css("background-color", bgColor2(data.summary[i]));
-            //给b标签填充数据
-            $(r).text(data.summary[i]);
+        if(isName =='折前收入'){
+            //日销售
+            $("#daybefore").html(formatNumber(data.top.daybefore,2,1));
+            //月累计
+            $("#monthbefore").html(formatNumber(data.top.monthbefore,2,1));
+            //月目标
+            $("#monthLJbefore").html(formatNumber(data.top.monthLJbefore,2,1));
+            //月达成
+            $("#monthbefore_reach").html(formatNumber(data.top.monthbefore_reach,2,1));
+            //同期月累计
+            $("#YAGO_monthLJbefore").html(formatNumber(data.top.YAGO_monthLJbefore,2,1));
+            //月同比
+            $("#monthLJbefore_TB").html(formatNumber(data.top.monthLJbefore_TB,2,1));
+            //月时间进度
+            $("#monthTimePercentBefore").html(formatNumber(data.top.monthTimePercentBefore,2,1));
+            //年累计
+            $("#yearbefore").html(formatNumber(data.top.yearbefore,2,1));
+            //年达成
+            $("#yearbefore_reach").html(formatNumber(data.top.yearbefore_reach,2,1));
 
-        });
+        }else{
+            //日销售
+            $("#daybefore").html(formatNumber(data.top.daybook,2,1));
+            //月累计
+            $("#monthbefore").html(formatNumber(data.top.monthbook,2,1));
+            //月目标
+            $("#monthLJbefore").html(formatNumber(data.top.monthLJbook,2,1));
+            //月达成
+            $("#monthbefore_reach").html(formatNumber(data.top.monthbook_reach,2,1));
+            //同期月累计
+            $("#YAGO_monthLJbefore").html(formatNumber(data.top.YAGO_monthLJbook,2,1));
+            //月同比
+            $("#monthLJbefore_TB").html(formatNumber(data.top.monthLJbook_TB,2,1));
+            //月时间进度
+            $("#monthTimePercentBefore").html(formatNumber(data.top.monthTimePercentBook,2,1));
+            //年累计
+            $("#yearbefore").html(formatNumber(data.top.yearbook,2,1));
+            //年达成
+            $("#yearbefore_reach").html(formatNumber(data.top.yearbook_reach,2,1));
+
+        }
         /****基本数据的填充页面 E　*****/
 
+        /******************        日销售趋势的折线图  everyDayLJIncome  S*******/
 
-        /****填充达成进度的图表  需要改动 S *****/
-        option2.title.text = data.year + '年'+ data.month +'月{a|'+ data.businessName +'}折前收入趋势';
-        option2.series[0].name = (data.year - 1) + "年";
-        option2.series[1].name = data.year + "年";
-        option2.series[0].data = data.prevYear;
-        option2.series[1].data = data.yearData;
-        option2.series[2].data = data.yearTarget;
-        option2.tooltip.formatter = function(params){
-            var relVal = jsonData.year+'年'+jsonData.month+'月'+params[0].name+"日";
-            for (var i = 0, l = params.length; i < l; i++) {
-                if(i==2){
-                    relVal += '<br/>' + params[i].marker +  "目标 : " +formatNumber(params[i].value,1,1);
-                }else{
-                    relVal += '<br/>' + params[i].marker +  "销售指标 : " +formatNumber(params[i].value,1,1);
+
+        //day 天
+        //dayZQIncome   折前本期销售
+        //YAGO_dayZQIncome 折前同期销售
+        //dayZMIncome   账面本期销售
+        //YAGO_dayZMIncome 账面同期销售
+
+
+        /*
+        * x1_data:     //当月全部折前收入进度的x轴   表示的日期
+        * y_total_data://预算目标的y轴    累计收入
+        * y_budget_data://累计收入的y轴   预算目标
+        *
+        * */
+        //折前收入的渲染
+        if(isName == "折前收入"){
+            var x1_data=[],y_total_data=[],y_budget_data=[];
+            // 渲染右侧的折线图
+            $.each(data.everyDayLJIncome,function(k,v){
+
+                var N = Number(jsonData.day.split("-")[2]);
+                x1_data.push(v.day);
+                y_budget_data.push(formatNumber(v.YAGO_dayZQIncome,1,0));
+                if(k < N){
+                    y_total_data.push(formatNumber(v.dayZQIncome,1,0));
                 }
-            }
-            return relVal;
-        };
-        myChart2.setOption(option2);
+            });
+
+            // 设置折线图的数据
+            myChart4.setOption(getJson4(x1_data,y_total_data,y_budget_data,isName,jsonData.businessMapName));
+
+        }
+        //折面收入的渲染
+        else{
+            var x1_ZM__data=[],y_ZM_total_data=[],y_ZM_budget_data=[];
+            // 渲染右侧的折线图
+            $.each(data.everyDayLJIncome,function(k,v){
+                var N = Number(jsonData.day.split("-")[2]);
+                x1_ZM__data.push(v.day);
 
 
-        /****填充达成进度的图表 E *****/
-
-        /****填充日销售趋势的图表 需要改动 S *****/
-        option4.title.text = data.year + '年'+ data.month +'月{a|'+ data.businessName +'}折前收入趋势';
-        option4.series[0].name = (data.year - 1) + "年";
-        option4.series[1].name = data.year + "年";
-        option4.series[0].data = data.prevYear;
-        option4.series[1].data = data.yearData;
-        option4.series[2].data = data.yearTarget;
-        option4.tooltip.formatter = function(params){
-            var relVal = jsonData.year+'年'+jsonData.month+'月'+params[0].name+"日";
-            for (var i = 0, l = params.length; i < l; i++) {
-                if(i==2){
-                    relVal += '<br/>' + params[i].marker +  "目标 : " +formatNumber(params[i].value,1,1);
-                }else{
-                    relVal += '<br/>' + params[i].marker +  "销售指标 : " +formatNumber(params[i].value,1,1);
+                y_ZM_budget_data.push(formatNumber(v.YAGO_dayZMIncome,1,0));
+                if(k < N){
+                    y_ZM_total_data.push(formatNumber(v.dayZMIncome,1,0));
                 }
-            }
-            return relVal;
-        };
-        myChart4.setOption(option4);
-        /****填充日销售趋势的图表 E *****/
-        //隐藏loading
-        $("#hide1").remove();
+            });
+            // 设置折线图的数据
+            myChart4.setOption(getJson4(x1_ZM__data,y_ZM_total_data,y_ZM_budget_data,isName,jsonData.businessMapName));
+
+        }
+
+        /*****************  日销售趋势的折线图  (折线图)everyDayLJIncome  E****/
+
+        /*****************  达成进度的折线图 (折线图) S*********/
+
+        //myChart2.setOption(getJson2());
+
+        /***************** 达成进度的折线图 (折线图) E*********/
+
     });
+    myChart2.setOption(getJson2());
+
 }
+
+/******日销售趋势的折线图  S*********/
+function getJson4(x_data,y_total_data,y_budget_data,isName,businessMapName){
+    var option4 = {
+        title: {
+            text: '当月'+businessMapName+isName+'进度  单位：万元',
+            textStyle: {
+                color: '#fff',
+                fontSize:16,
+                fontWeight:600,
+                fontFamily:'冬青黑体简体中文'
+            },
+            subtext: '',
+            subtextStyle: {
+                coloe: '#fff'
+            },
+            padding: 30,
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            icon:'rect',
+            //data: ['累计收入', '预算目标'],
+            textStyle: {
+                color: ['#fff']
+            },
+            itemWidth: 10,
+            itemHeight: 10,
+            y: 'top',
+            x: 'middle',
+            orient: 'horizontal'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: x_data,
+            axisLine: { //x轴
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: { //x轴小标记显示
+                show: true,
+            },
+            axisLabel: { //x轴文字
+                textStyle: {
+                    color: '#fff'
+                },
+                interval: 0
+            },
+            clickable: { //x轴文字是否可以点击
+                show: true,
+            },
+            splitLine: { //分隔线
+                show: false,
+            },
+            splitArea: { //x轴分段的横线
+                show: false
+            },
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: { //x轴
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: { //x轴小标记不显示
+                show: true,
+            },
+            axisLabel: { //x轴文字
+                textStyle: {
+                    color: '#fff'
+                },
+                interval: 0,
+            },
+            splitLine: { //分隔线
+                show: false,
+            }
+        },
+        series: [{
+            name: '预算目标',
+            type: 'line',
+            //stack: '总量',
+            symbol:'circle',
+            smooth:true,
+            itemStyle: {
+                normal: {
+                    lineStyle: {
+                        width:8,
+                        color: '#76b7b2'
+                    },
+                    color: '#76b7b2'
+                }
+            },
+//	                label:{
+//	                	show:true,
+//	                	formatter:function(params){
+//	                           /*var relVal = params[0].name;
+//	                           for (var i = 0, l = params.length; i < l; i++) {
+//	                                relVal += '<br/>' + params[i].marker +  params[i].seriesName + ' : ' + params[i].value+"%";
+//	                            }*/
+//	                           return console.log(params);
+//	                        }
+//	                },
+            data: y_budget_data
+        },{
+            name: '累计收入',
+            type: 'line',
+            //stack: '总量',
+            symbol:'circle',
+            smooth:true,
+            itemStyle: {
+                normal: {
+                    lineStyle: {
+                        color: '#f28e2b',
+                        width:3
+                    },
+                    color: '#f28e2b'
+                }
+            },
+            label:{
+                show:false/*,
+	                	formatter:function(){
+	                           var relVal = option2.series[1].data;
+	                           var datas = "";
+	                           for (var i = 0; i<relVal.length; i++) {
+	                        	   datas =  relVal[i];
+	                            }
+	                           return datas;
+	                        } */
+            },
+            data: y_total_data
+        }
+        ]
+    };
+    return option4;
+}
+/******日销售趋势的折线图  E*********/
+
+/******达成进度的折线图  S*********/
+function  getJson2() {
+    console.log('********************------>>>>>');
+    var option2 = {
+        title: {
+            text: '',
+            textStyle: {
+                color: '#fff',
+                rich:{
+                    a: {
+                        color: '#ffaa00',
+                        fontSize:16,
+                        fontWeight:700
+                    }
+                }
+            },
+            subtext:"单位:万元",
+            subtextStyle:{
+                color:"#fff",
+                fontSize:16,
+                fontWeight:700
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            },
+            formatter:function(params){
+
+            }
+        },
+        legend: {
+            icon:'rect',
+            // data: ['2017', '2018'],
+            textStyle: {
+                color: ['#fff']
+            },
+            itemWidth: 10,
+            itemHeight: 10,
+            y: 'top',
+            x: 'right'/*,
+         orient: 'horizontal',*/
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true,
+        },
+        xAxis: [{
+            show: true,
+            type: 'category',
+            data: x_data,
+            //["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],
+            axisLine: {//x轴
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {//x轴小标记不显示
+                show: false,
+            },
+            axisLabel: {//x轴文字
+                textStyle: {
+                    color: '#fff'
+                },
+                interval: 0,
+                margin: 10,
+            },
+            clickable: {//x轴文字是否可以点击
+                show: true,
+            },
+            splitLine: {//分隔线
+                show: false
+            },
+            splitArea: {//x轴分段的横线
+                show: false
+            },
+        }],
+        yAxis: [{
+
+            type: 'value',
+            axisLine: {//y轴
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            clickable: {//x轴文字是否可以点击
+                show: true,
+            },
+            axisTick: {//y轴小标记不显示
+                show: true,
+            },
+            axisLabel: {//y轴文字
+                textStyle: {
+                    color: '#fff'
+                },
+                interval: 0,
+                formatter: '{value}',
+            },
+            splitLine: {//分隔线
+                show: false,
+            }
+        }],
+        series: [
+            {
+                name: '实际完成率',
+                type: 'line',
+                symbol:'circle',
+                //smooth:true,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            color: '#4e79ab',
+                            width:7,
+                            borderColor: '#4e79ab'
+                        },
+                        color: '#4e79ab'
+                    }
+                },
+                data: ["50","70","80","10","5","19","20","10","40","20","70","40","30","10","3","3","6","10"]
+            },
+            {
+                name: '计划完成率',
+                type: 'line',
+                symbol:'circle',
+                //smooth:true,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            color: '#f28e2b',
+                            width:3,
+                            borderColor: '#f28e2b'
+                        },
+                        color: '#f28e2b'
+                    }
+                },
+                data: ["40","60","10","40","20","10"]/*,
+         //系列中的数据标线内容
+         markLine: {
+         symbol:"circle",
+         symbolSize:0,
+         lineStyle:{
+         color:"#8cd17d",
+         width:2,
+         type:"solid"
+         },
+         data: [
+         // {type: 'average', name: '平均值'},
+         {name: '标注1',symbolSize:0, yAxis: 13}
+
+         ]
+
+         } */
+            },
+            {
+                name: '预计计划完成率',
+                type: 'line',
+                symbol:'circle',
+                //smooth:true,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            color: '#e15759',
+                            width:2,
+                            borderColor: '#e15759'
+                        },
+                        color: '#e15759'
+                    }
+                },
+                data: ["100","40","50","70","0","0","10","30","20","60","80","30"]
+            }
+
+        ],
+        itemStyle: {
+            normal: {
+                label: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+            },
+            emphasis: {
+                label: {
+                    show: false,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                nodeStyle: {
+                    // r: 30
+                },
+                linkStyle: {}
+            }
+        },
+    }
+    return  option2;
+}
+
+
+/******达成进度的折线图  E*********/
+
+
+
+
+
+
+
+
 /*
  * 这个请求包含map的数据，参数isLineageMap表示是否联动地图数据 初始加载时 联动地图数据，
  * 地图数据显示未添加
  */
 function getMap(jsonData) {
-    console.log('地图的接口的传递参数:');
-    console.log(jsonData);
+
+
+    console.log('中国地图的显示的后台的返回的数据：');
     ajaxReq("getMap", jsonData,function(data) {
         console.log('地图的接口-------succeed--->');
         console.log(data);
         if (jsonData) { // 如果存在数据
 
-
             //地图
-            var data_sjjd = [],data_yjdcl=[],data_zq=[];
+            var data_sjjd = [],//实际达成进度放在数组中
+                data_yjdcl=[],//预计达成率
+                data_zq=[];//折前收入
             //map 地图
             //areaName 大区名称
             //areaZQIncomeCompletePercent 实际达成进度
@@ -707,46 +1135,51 @@ function getMap(jsonData) {
             //areaZQIncome 折前收入
 
             $.each(data.map,function(k,v){
-                var jsons = {
-                    "name":v.areaName,
-                    "value":v.areaZQIncomeCompletePercent
-                };
-                data_sjjd.push(jsons);
-                var jsons1 = { "name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent };
-                data_yjdcl.push(jsons1);
+
+                console.log(v.areaZQIncomeCompletePercent);
+                //异常数据的处理
+                if(v.areaZQIncomeCompletePercent == 'NaN' || v.areaZQIncomeCompletePercent == 'Infinity'){
+                    var jsons = {"name":v.areaName, "value":'暂无数据'};//NaN
+                    data_sjjd.push(jsons);//实际达成进度放在数组中
+                }else{
+                    var jsons = {"name":v.areaName, "value":v.areaZQIncomeCompletePercent};//NaN
+                    data_sjjd.push(jsons);//实际达成进度放在数组中
+                }
+
+                //异常数据的处理
+                if(v.areaZQIncomeShouldCompletePercent == 'NaN'||v.areaZQIncomeShouldCompletePercent == 'Infinity'){
+                    var jsons1 = {"name":v.areaName,"value":'暂无数据'}; //NaN
+                    data_yjdcl.push(jsons1);//预计达成率
+                }else{
+                    var jsons1 = {"name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent }; //NaN
+                    data_yjdcl.push(jsons1);//预计达成率
+                }
+
                 var jsons2 = { "name":v.areaName,"value":v.areaZQIncome };
-                data_zq.push(jsons2);
+                data_zq.push(jsons2);  //折前收入
+
             });
+
+
             myChart3.clear();
 
             //得到是事务部的名称
             var b_name = jsonData.businessMapName;
-            var json = "ynjson";
-            if(b_name.indexOf("液态奶事业部")!=-1){
-                json = "ynjson";
-            }else if(b_name.indexOf("奶粉事业部")!=-1){
-                json = "nfjson";
-            }else if(b_name.indexOf("酸奶事业部")!=-1){
-                json = "snjson";
-            }else if(b_name.indexOf("冷饮事业部")!=-1){
-                json = "lyjson";
-            }else{
-                json = "json";
-            }
 
+            var json = "ynjson";//只是液奶事业部
             //请求不同的地图的接口,渲染地图
             $.get(basepath+'/web/'+json+'/china.json', function (chinaJson) {
                 echarts.registerMap('china', chinaJson);
-                myChart5.setOption(getMapchart(b_name,data_sjjd,data_yjdcl,data_zq),true);
+                myChart3.setOption(getMapchart(b_name,data_sjjd,data_yjdcl,data_zq),true);
             });
         }
         //关闭loading
-        $("#hide1").remove();
+        $("#hide2").remove();
     });
 }
 
 //大区及区域折前收入增长及达成的表格的填充（待完成）
-function getData2(jsonData){
+function getRightBottom(jsonData){
     console.log('大区及区域折前收入增长及达成的表格的填充的传递参数: ');
     console.log(jsonData);
     ajaxReq("bigArea",jsonData,function(data) {
@@ -791,7 +1224,7 @@ function getData2(jsonData){
 }
 
 //产品折前收入增长及达成(未完成)
-function getData3(jsonData){
+function getDataBottom(jsonData){
     console.log('产品折前收入增长及达成传递参数: ');
     console.log(jsonData);
     ajaxReq("ZQData",jsonData,function(data) {
@@ -835,29 +1268,6 @@ function getData3(jsonData){
 
 }
 
-// 绑定切换 经营指标 下拉框事件  刷新页面数据
-$("#businessIndicators").on({
-    change: function (event) {
-        //加载的loading图片
-        loadHide1("h_body","hide1");
-        //得到当前选择的经营指标的名称
-        var businessIndicators = this.value;
-        console.log('用户选择的经营指标的名称：  '+businessIndicators);
-        //扩充json对象
-        setDataJson({businessIndicators: businessIndicators});
-        //请求填充达成进度chart图
-        getData1(dataJson);
-        console.log('经营指标 下拉框事件的json');
-        console.log(dataJson);
-        //请求地图的数据
-        getMap(dataJson);
-        //大区及区域折前收入增长及达成的表格的填充（待完成）
-        getData2(dataJson);
-        //产品折前收入增长及达成
-        getData3(dataJson);
-
-    }
-});
 
 // 在原来的json上面添加新的json
 function setDataJson(newDataJson) {
