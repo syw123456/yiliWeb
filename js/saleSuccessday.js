@@ -793,7 +793,7 @@ function getRightBottom(jsonData,isName){
         $(".d_zdcpsr").text(data.zpxpIncome.monthMainProductCompletePercent+"%");
 
         var tiaos1=[];
-        console.log(data.zpxpIncome.mainProduct);
+
         $.each(data.zpxpIncome.mainProduct,function(k,v){
             tiaos1.push(v.monthZQIncome);
         });
@@ -815,6 +815,8 @@ function getRightBottom(jsonData,isName){
         //填充表格的内容
         var str_zdcp = "";
         $.each(data.zpxpIncome.mainProduct,function(k,v){
+            console.log('****');
+            console.log(v.cellpercent);
             var widths = tiaomaxs1 === 0 ? 0 : (v.monthZQIncome/tiaomaxs1)*100 ;
             var imgs = v.monthZQIncomeIncrease < 0 ? "down" : v.monthZQIncomeIncrease ===0 ? "" : "up";
             var color = bgColor2(v.monthZQCompletePercent);
@@ -824,7 +826,7 @@ function getRightBottom(jsonData,isName){
                 +'<td onclick="cause_click($(this),"1")">'+v.bg_name+'</td>'  //事业部名称
                 +'<td class="hide">0</td>'  //SKU
                 +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthZQIncome,1,1)+'</td>'  //月折前收入
-                +'<td>'+formatNumber(v.cellPercent,2,0)+'%</td>'  //销售占比
+                +'<td>'+formatNumber(v.cellpercent,2,0)+'%</td>'  //销售占比
                 +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthZQCompletePercent,2,0)+'%</td>'  //月折前达成进度
                 +'<td>'+formatNumber(v.monthZQIncomeIncrease,1,0)+'%'+str_img+'</td>'  //月增长
                 +'</tr>'
@@ -869,7 +871,7 @@ function getRightBottom(jsonData,isName){
                 +'<td onclick="cause_click($(this),"1")">'+v.bg_name+'</td>' //事业部名称
                 +'<td class="hide">0</td>'  //SKU
                 +'<td><span class="table_bg4A7EBE" style="width:'+widths+'%;"></span>'+formatNumber(v.monthZQIncome,1,1)+'</td>'  //月折前收入
-                +'<td>'+formatNumber(v.cellPercent,2,0)+'%</td>'  //销售占比
+                +'<td>'+formatNumber(v.cellpercent,2,0)+'%</td>'  //销售占比
                 +'<td style="font-weight:bold;color:'+color+';">'+formatNumber(v.monthZQCompletePercent,2,0)+'%</td>'  //月折前达成进度
                 +'</tr>'
         });
@@ -1945,7 +1947,6 @@ function getstr4(data){
 	});
 	return str1;
 }
-
 //获取json对象的length,用于合并单元格
 function getJsonLength(jsonData) {  
 	var length=0;  
@@ -1975,11 +1976,12 @@ function ajaxReq(urlSuffix,jsonData,func) {
 		 }
 	});
 }
-//地图点击事件的查询
+
+//地图的每一项点击事件，点击每一个区域然后当月的折前的收入进度
+//和重点产品的和新品的收入跟着进行更新
 myChart3.on('click', function (params) {
     //重点产品的加号的data点击地图前移除
     $(".add_zp").removeAttr("add_zp_data");
-
 	loadHide1("h_rightB","hide3");
 	bigAreaMapName = params.name;
 	console.log(bigAreaMapName);
