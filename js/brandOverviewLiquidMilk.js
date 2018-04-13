@@ -21,14 +21,7 @@ var dataJson = {
     year: time.split("-")[0], // 年
     month: time.split("-")[1], //月
     day: time.split("-")[2],  //日
-    businessIndicators: "销售量(件)", //经营指标
-    salesTarget: "销售任务", // 销售目标
-    productType: "全部", // 产品类型
-    subbrand: "全部", // 子品牌
-    classBrandFourth: "全部", // 品类四级
-    classBrandFifth: "全部", // 品类五级
-    productItem: "全部", // 品项
-    isCurrentMonth: "true" //是否是当前的月份
+    businessIndicators: "折前收入", //折前收入
 };
 //选择日期查询数据
 /***日期的点击事件S***/
@@ -51,18 +44,12 @@ $("#startTime").off("click").on("click",function(){
                 //数据截止时间设置时间
                 $(".newyearday").text(times.split("-")[0]+"年"+times.split("-")[1]+"月"+times.split("-")[2]+"日");
 
+
                 var dataJson = {
                     year: time.split("-")[0], // 年
                     month: time.split("-")[1], //月
                     day: time.split("-")[2],  //日
-                    businessIndicators: "销售量(件)", //经营指标
-                    salesTarget: "销售任务", // 销售目标
-                    productType: "全部", // 产品类型
-                    subbrand: "全部", // 子品牌
-                    classBrandFourth: "全部", // 品类四级
-                    classBrandFifth: "全部", // 品类五级
-                    productItem: "全部", // 品项
-                    isCurrentMonth: "true" //是否是当前的月份
+                    businessIndicators: "折前收入", //折前收入
                 };
                 //扩充json对象
                 setDataJson({ year: times.split("-")[0], month: times.split("-")[1], day: times.split("-")[2]});
