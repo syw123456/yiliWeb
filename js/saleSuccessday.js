@@ -1969,7 +1969,7 @@ function ajaxReq(urlSuffix,jsonData,func) {
 			 func(data);
 		 },
 		 error:function(){
-			 alert("数据查询错误");
+			 //alert("数据查询错误");
 			 //$("#hide1").remove();
 			 //$("#hide2").remove();
 			 //$("#hide3").remove();
