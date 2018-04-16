@@ -1280,8 +1280,6 @@ function getDataBottom(jsonData){
         console.log('产品折前收入增长及达成-------succeed--->');
         console.log(data);
 
-
-
         //产品折前收入增长及达成   9个字段
         $("#table4 tr").remove();
 
@@ -1323,11 +1321,24 @@ function getDataBottom(jsonData){
          *
          */
 
-        /**求月销售目标的最大值和日销售的最大值**/
+
+
+        /**求  折前的   月销售目标的最大值和日销售的最大值**/
         var tiao1 = [],tiao2 = [];
         $.each(data.bgIncome, function (k, v) {
-            tiao1.push(v.monthZMBudget);//月销售目标的最大值
-            tiao2.push(v.dayZQIncome);//日销售的最大值
+
+            //折前收入
+            if(isName =='折前收入'){
+                tiao1.push(v.monthZQBudget);//月销售目标的最大值
+                tiao2.push(v.dayZQIncome);//日销售的最大值
+            }
+
+            //账面收入
+            else{
+                tiao1.push(v.monthZMBudget);//月销售目标的最大值
+                tiao2.push(v.dayZMIncome);//日销售的最大值
+            }
+
         });
         //求月度折前收入的最大值和日销售的最大值
         var tiaomax1 = Math.max.apply(null, tiao1);//月度折前收入的最大值
@@ -1336,13 +1347,27 @@ function getDataBottom(jsonData){
         var str_zqsr = "";
         $.each(data.bgIncome, function (k, v) {
 
-            var ydzmsr = v.monthZQBudget,          //monthZQBudget  月销售目标
-                rzmsr = v.dayZQIncome,             //dayZQIncome 日销售
-                mljzmsr = v.monthZQIncome,         //monthZQIncome 月累计销售
-                yzmdcjd = v.monthZQCompletePercent,//monthZQCompletePercent 月销售达成进度
-                yljzz = v.monthZQIncomeIncrease,   //monthZQIncomeIncrease月同比增长
-                nljzz = v.yearZQIncome;            //yearZQIncome年累计销售
-                nzmdcl = v.yearZQCompletePercent   //yearZQCompletePercent年销售达成进度
+            //折前的收入
+            if(isName =='折前收入') {
+                var ydzmsr = v.monthZQBudget,          //monthZQBudget  月销售目标
+                    rzmsr = v.dayZQIncome,             //dayZQIncome 日销售
+                    mljzmsr = v.monthZQIncome,         //monthZQIncome 月累计销售
+                    yzmdcjd = v.monthZQCompletePercent,//monthZQCompletePercent 月销售达成进度
+                    yljzz = v.monthZQIncomeIncrease,   //monthZQIncomeIncrease月同比增长
+                    nljzz = v.yearZQIncome;            //yearZQIncome年累计销售
+                    nzmdcl = v.yearZQCompletePercent   //yearZQCompletePercent年销售达成进度
+            }
+
+            //折面的收入
+            else{
+                var ydzmsr = v.monthZMBudget,          //monthZQBudget  月销售目标
+                    rzmsr = v.dayZMIncome,             //dayZQIncome 日销售
+                    mljzmsr = v.monthZMIncome,         //monthZQIncome 月累计销售
+                    yzmdcjd = v.monthZMCompletePercent,//monthZQCompletePercent 月销售达成进度
+                    yljzz = v.monthZMIncomeIncrease,   //monthZQIncomeIncrease月同比增长
+                    nljzz = v.yearZMIncome;            //yearZQIncome年累计销售
+                    nzmdcl = v.yearZMCompletePercent   //yearZQCompletePercent年销售达成进度
+            }
 
             var color1 = bgColor2(yzmdcjd); //月销售达成进度
             var color2 = bgColor2(nzmdcl);  //年折前达成率的颜色
@@ -1363,7 +1388,10 @@ function getDataBottom(jsonData){
                 + '<td style="font-weight:bold;color:' + color2 + ';">' + formatNumber(nzmdcl, 2, 0) + '%</td>'  //年销售达成进度
                 + '</tr>'
         });
-        $(".d_zqsrT tbody").html(str_zqsr);
+        $(".d_zqsrT").html(str_zqsr);
+
+
+
 
     });
 
