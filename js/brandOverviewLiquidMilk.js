@@ -48,7 +48,7 @@ function init(){
 
     console.log('------------进入初始化的方法-----------------');
     //默认的加载的头部的loading图
-    loadHide1("h_top","hide1");
+    //loadHide1("h_top","hide1");
     //默认的加载的中间的loading图
     //loadHide1("h_middle","hide2");
     //默认的加载的底部的loading图
