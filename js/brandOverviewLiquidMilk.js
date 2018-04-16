@@ -507,9 +507,9 @@ function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
 
     console.log('地图的初始化的数据');
     console.log(b);  //大区的名称
-    console.log(data_sjjd);//
-    console.log(data_yjdcl);
-    console.log(data_zq);
+    console.log(data_sjjd);//实际达成进度
+    console.log(data_yjdcl);//预计达成率
+    console.log(data_zq); //   折前或者账面的收入
 
     /**
      * 参数含义：
@@ -1198,37 +1198,63 @@ function getMap(jsonData) {
 
 
 
-                //折前的数据
-                console.log(v.areaZQIncomeCompletePercent);
-                //异常数据的处理
-                if(v.areaZQIncomeCompletePercent == 'NaN' || v.areaZQIncomeCompletePercent == 'Infinity'){
-                    var jsons = {"name":v.areaName, "value":'暂无数据'};//NaN
-                    data_sjjd.push(jsons);//实际达成进度放在数组中
-                }else{
-                    var jsons = {"name":v.areaName, "value":v.areaZQIncomeCompletePercent};//NaN
-                    data_sjjd.push(jsons);//实际达成进度放在数组中
-                }
+                /*****折前的数据  S*******/
+                if(isName =='折前收入') {
+                    console.log(v.areaZQIncomeCompletePercent);
+                    //异常数据的处理
+                    if (v.areaZQIncomeCompletePercent == 'NaN' || v.areaZQIncomeCompletePercent == 'Infinity') {
+                        var jsons = {"name": v.areaName, "value": '暂无数据'};//NaN
+                        data_sjjd.push(jsons);//实际达成进度放在数组中
+                    } else {
+                        var jsons = {"name": v.areaName, "value": v.areaZQIncomeCompletePercent};//NaN
+                        data_sjjd.push(jsons);//实际达成进度放在数组中
+                    }
 
-                //异常数据的处理
-                if(v.areaZQIncomeShouldCompletePercent == 'NaN'||v.areaZQIncomeShouldCompletePercent == 'Infinity'){
-                    var jsons1 = {"name":v.areaName,"value":'暂无数据'}; //NaN
-                    data_yjdcl.push(jsons1);//预计达成率
-                }else{
-                    var jsons1 = {"name":v.areaName,"value":v.areaZQIncomeShouldCompletePercent }; //NaN
-                    data_yjdcl.push(jsons1);//预计达成率
-                }
+                    //异常数据的处理
+                    if (v.areaZQIncomeShouldCompletePercent == 'NaN' || v.areaZQIncomeShouldCompletePercent == 'Infinity') {
+                        var jsons1 = {"name": v.areaName, "value": '暂无数据'}; //NaN
+                        data_yjdcl.push(jsons1);//预计达成率
+                    } else {
+                        var jsons1 = {"name": v.areaName, "value": v.areaZQIncomeShouldCompletePercent}; //NaN
+                        data_yjdcl.push(jsons1);//预计达成率
+                    }
 
-                var jsons2 = { "name":v.areaName,"value":v.areaZQIncome };
-                data_zq.push(jsons2);  //折前收入
+                    var jsons2 = {"name": v.areaName, "value": v.areaZQIncome};
+                    data_zq.push(jsons2);  //折前收入
+                }
+                /*****折前的数据  E*******/
+
+
+                /*****账面的数据  S*******/
+                if(isName !='折前收入') {
+                    console.log(v.areaZMIncomeCompletePercent);
+                    //异常数据的处理
+                    if (v.areaZMIncomeCompletePercent == 'NaN' || v.areaZMIncomeCompletePercent == 'Infinity') {
+                        var jsons = {"name": v.areaName, "value": '暂无数据'};//NaN
+                        data_sjjd.push(jsons);//实际达成进度放在数组中
+                    } else {
+                        var jsons = {"name": v.areaName, "value": v.areaZMIncomeCompletePercent};//NaN
+                        data_sjjd.push(jsons);//实际达成进度放在数组中
+                    }
+
+                    //异常数据的处理
+                    if (v.areaZMIncomeShouldCompletePercent == 'NaN' || v.areaZMIncomeShouldCompletePercent == 'Infinity') {
+                        var jsons1 = {"name": v.areaName, "value": '暂无数据'}; //NaN
+                        data_yjdcl.push(jsons1);//预计达成率
+                    } else {
+                        var jsons1 = {"name": v.areaName, "value": v.areaZMIncomeShouldCompletePercent}; //NaN
+                        data_yjdcl.push(jsons1);//预计达成率
+                    }
+
+                    var jsons2 = {"name": v.areaName, "value": v.areaZMIncome};
+                    data_zq.push(jsons2);  //折前收入
+                }
+                /*****账面的数据  E*******/
 
             });
-
-
             myChart3.clear();
-
             //得到是大区的名称
             var b_name = jsonData.businessMapName;
-
             var json = "ynjson";//只是液奶事业部
             //请求不同的地图的接口,渲染地图
             $.get(basepath+'/web/'+json+'/china.json', function (chinaJson) {
