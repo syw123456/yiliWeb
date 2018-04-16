@@ -1829,7 +1829,6 @@ $(".T_xp").on("click",".remove_xp",function(){
 });
 /*******全部新品折前收入下钻的加号 E****************/
 
-
 //新品的表格的内容
 function getStr3(data){
 	var arr_width = [];
