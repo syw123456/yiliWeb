@@ -1,6 +1,5 @@
-史跃伟
-http://10.60.138.210/yili/login
-kj_fujl/yili2017!!
+
+
 mac地址：18:65:90:d5:f8:d1
 IP地址：10.1.150.144
 
@@ -13,6 +12,9 @@ echarts 版本报表部署需求：
  http://10.60.138.106/yili/login
  账号 admin
  密码 yili2017!!
+ 正式库
+ http://10.60.138.210/yili/login
+ kj_fujl/yili2017!!
 
 
 
