@@ -1,65 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d155697c-fbc3-439c-961a-52276f18cda8" name="Default" comment="">
+    <list id="fb9bd054-98ad-46e7-8cb2-ea1fa1ff4257" name="修改液奶总览的JS" comment="修改液奶总览的JS&#10;&#10;(cherry picked from commit 17a72c7)">
+      <changelist_data name="yuewei shi" email="2671523019@qq.com" date="1523271833000">
+        <option name="date" value="1523271833000" />
+        <option name="email" value="2671523019@qq.com" />
+        <option name="name" value="yuewei shi" />
+      </changelist_data>
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/js/brandOverviewLiquidMilk.js" afterPath="$PROJECT_DIR$/js/brandOverviewLiquidMilk.js" />
+    </list>
+    <list id="c73da993-15dd-43c4-933d-e07ac4daff5e" name="添加提示信息的功能" comment="添加提示信息的功能&#10;&#10;(cherry picked from commit 8d8cb00)">
+      <changelist_data name="yuewei shi" email="2671523019@qq.com" date="1523599221000">
+        <option name="date" value="1523599221000" />
+        <option name="email" value="2671523019@qq.com" />
+        <option name="name" value="yuewei shi" />
+      </changelist_data>
+    </list>
+    <list id="22640daf-6845-4c4c-9389-410eb7dd8a8e" name="添加提示信息的功能-2" comment="添加提示信息的功能&#10;&#10;(cherry picked from commit 8d8cb00)">
+      <changelist_data name="yuewei shi" email="2671523019@qq.com" date="1523599221000">
+        <option name="date" value="1523599221000" />
+        <option name="email" value="2671523019@qq.com" />
+        <option name="name" value="yuewei shi" />
+      </changelist_data>
+      <change beforePath="$PROJECT_DIR$/html/saleSuccessday.html" afterPath="$PROJECT_DIR$/html/saleSuccessday.html" />
+    </list>
+    <list default="true" id="d155697c-fbc3-439c-961a-52276f18cda8" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/html/brandOverviewLiquidMilk.html" afterPath="$PROJECT_DIR$/html/brandOverviewLiquidMilk.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
+    <file path="$PROJECT_DIR$/html/saleSuccessday.html" ignored="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="yiliWeb" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="brandOverviewLiquidMilk.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/brandOverviewLiquidMilk.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2955">
-              <caret line="363" column="18" lean-forward="true" selection-start-line="363" selection-start-column="18" selection-end-line="363" selection-end-column="18" />
-              <folding>
-                <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#table#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="brandOverviewLiquidMilk.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/brandOverviewLiquidMilk.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6685">
-              <caret line="64" column="53" lean-forward="false" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
-              <folding>
-                <element signature="e#2992#7601#0" expanded="false" />
-                <element signature="e#7756#11607#0" expanded="false" />
-                <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-                <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
-                <marker date="1523271756007" expanded="true" signature="21756:21791" ph="..." />
-                <marker date="1523271756007" expanded="true" signature="21913:21933" ph="..." />
-                <marker date="1523271756007" expanded="true" signature="23664:23699" ph="..." />
-                <marker date="1523271756007" expanded="true" signature="23821:23841" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>basepath</find>
-      <find>alert</find>
+      <find>bgColor</find>
       <find>getMap</find>
-      <find>getData1</find>
-      <find>ppzl-summary</find>
-      <find>getMapchart</find>
-      <find>getData2</find>
-      <find>table1</find>
+      <find>onclick</find>
+      <find>sr_typeselect</find>
+      <find>cellPercent</find>
+      <find>monthZQCompletePercent</find>
+      <find>getstr4</find>
+      <find>****</find>
+      <find>option5</find>
+      <find>myChart5</find>
+      <find>option3</find>
       <find>dataJson</find>
+      <find>getData1</find>
+      <find>getData2</find>
+      <find>getData3</find>
+      <find>jsons</find>
+      <find>myChart3</find>
+      <find>style=&quot;position: relative&quot;</find>
+      <find>businessIndicators</find>
+      <find>myChart4</find>
+      <find>getJson2</find>
+      <find>getxsdc</find>
+      <find>y_ZM_budget_data</find>
+      <find>sjdayZQIncomeCompletePercent</find>
+      <find>rzmsr</find>
+      <find>d_zqsrT</find>
+      <find>nzmdcl</find>
+      <find>getMapchart</find>
+      <find>data_yjdcl</find>
+      <find>ajaxReq</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -74,12 +96,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/html/saleSuccessday.html" />
-        <option value="$PROJECT_DIR$/js/common.js" />
-        <option value="$PROJECT_DIR$/js/saleSuccessday.js" />
+        <option value="$PROJECT_DIR$/html/Test.html" />
+        <option value="$PROJECT_DIR$/html/tableTest.html" />
+        <option value="$PROJECT_DIR$/js/saleSuccessdayBK.js" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/html/brandOverviewLiquidMilk.html" />
+        <option value="$PROJECT_DIR$/wordTable" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/js/common.js" />
+        <option value="$PROJECT_DIR$/js/brandOverviewLiquidMilkBK.js" />
+        <option value="$PROJECT_DIR$/html/saleSuccessday.html" />
+        <option value="$PROJECT_DIR$/js/saleSuccessday.js" />
         <option value="$PROJECT_DIR$/js/brandOverviewLiquidMilk.js" />
+        <option value="$PROJECT_DIR$/html/brandOverviewLiquidMilk.html" />
       </list>
     </option>
   </component>
@@ -89,9 +117,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="199" />
+    <option name="y" value="54" />
+    <option name="width" value="877" />
+    <option name="height" value="830" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -108,7 +138,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,15 +145,11 @@
               <item name="yiliWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="yiliWeb" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="yiliWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yiliWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
@@ -135,6 +160,22 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="" />
+    <property name="nodejs.protractor.protractor_package" value="" />
+    <property name="javascript.karma.karma_node_package_dir" value="" />
+    <property name="nodejs.jest.jest_package" value="" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="/usr/local/lib/node_modules/gulp" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/yueweishi/Documents/伊利/yiliWeb/yiliWeb.iml" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
+      <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -526,6 +567,10 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -549,7 +594,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523260866662</updated>
       <workItem from="1523260869716" duration="4271000" />
-      <workItem from="1523267299931" duration="4409000" />
+      <workItem from="1523267299931" duration="7135000" />
+      <workItem from="1523321729481" duration="33531000" />
+      <workItem from="1523408757005" duration="24333000" />
+      <workItem from="1523495010635" duration="25080000" />
+      <workItem from="1523581698638" duration="22742000" />
+      <workItem from="1523840439937" duration="11662000" />
     </task>
     <task id="LOCAL-00001" summary="修改液奶总览的JS">
       <created>1523271176161</created>
@@ -558,11 +608,277 @@
       <option name="project" value="LOCAL" />
       <updated>1523271176161</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改液奶总览的JS">
+      <created>1523271833408</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1523271833408</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修改液奶总览页面">
+      <created>1523272618264</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523272618264</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修改液奶总览页面">
+      <created>1523273452431</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1523273452431</updated>
+    </task>
+    <task id="LOCAL-00005" summary="修改日报表的JS代码">
+      <created>1523347758642</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1523347758642</updated>
+    </task>
+    <task id="LOCAL-00006" summary=" 开始调用接口">
+      <created>1523352272713</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1523352272713</updated>
+    </task>
+    <task id="LOCAL-00007" summary="添加字段的说明">
+      <created>1523358210694</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523358210694</updated>
+    </task>
+    <task id="LOCAL-00008" summary="添加对空数据的判断">
+      <created>1523359738395</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1523359738395</updated>
+    </task>
+    <task id="LOCAL-00009" summary="添加页面的注释">
+      <created>1523361530954</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1523361530954</updated>
+    </task>
+    <task id="LOCAL-00010" summary="添加表格">
+      <created>1523366767027</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1523366767027</updated>
+    </task>
+    <task id="LOCAL-00011" summary="表格的异常的处理">
+      <created>1523367593295</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1523367593295</updated>
+    </task>
+    <task id="LOCAL-00012" summary="完成柱状图的时间的进度">
+      <created>1523423089673</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1523423089677</updated>
+    </task>
+    <task id="LOCAL-00013" summary="修改集团销售日报">
+      <created>1523426302641</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1523426302641</updated>
+    </task>
+    <task id="LOCAL-00014" summary="修改集团销售日报">
+      <created>1523435105969</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1523435105969</updated>
+    </task>
+    <task id="LOCAL-00015" summary="更新进度颜色的字段">
+      <created>1523437988964</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1523437988964</updated>
+    </task>
+    <task id="LOCAL-00016" summary="更新地图的echarts">
+      <created>1523441981506</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1523441981506</updated>
+    </task>
+    <task id="LOCAL-00017" summary="添加重点产品和新品">
+      <created>1523511598426</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1523511598426</updated>
+    </task>
+    <task id="LOCAL-00018" summary="添加重点产品和新品">
+      <created>1523517746481</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1523517746481</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修改集团日报的JS">
+      <created>1523519039642</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1523519039642</updated>
+    </task>
+    <task id="LOCAL-00020" summary="完成下面的2个表格">
+      <created>1523526295988</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1523526295988</updated>
+    </task>
+    <task id="LOCAL-00021" summary="修改代码">
+      <created>1523526589793</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1523526589793</updated>
+    </task>
+    <task id="LOCAL-00022" summary="修改代码">
+      <created>1523527448049</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1523527448049</updated>
+    </task>
+    <task id="LOCAL-00023" summary="修改日报">
+      <created>1523586903114</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1523586903114</updated>
+    </task>
+    <task id="LOCAL-00024" summary="修改2个表格的销售占比">
+      <created>1523590351141</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1523590351141</updated>
+    </task>
+    <task id="LOCAL-00025" summary="修改2个表格的销售占比">
+      <created>1523590753126</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1523590753126</updated>
+    </task>
+    <task id="LOCAL-00026" summary="添加提示信息的功能">
+      <created>1523599221261</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1523599221261</updated>
+    </task>
+    <task id="LOCAL-00027" summary="优化代码">
+      <created>1523599619118</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1523599619118</updated>
+    </task>
+    <task id="LOCAL-00028" summary="修改液奶区域日达成总览">
+      <created>1523600656685</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1523600656685</updated>
+    </task>
+    <task id="LOCAL-00029" summary="修改液奶区域日达成总览">
+      <created>1523600967030</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1523600967030</updated>
+    </task>
+    <task id="LOCAL-00030" summary="添加提示信息的功能&#10;&#10;(cherry picked from commit 8d8cb008477c89f1614e0031848509f3feb5b3af)">
+      <created>1523603766027</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1523603766027</updated>
+    </task>
+    <task id="LOCAL-00031" summary="添加提示信息的功能&#10;&#10;(cherry picked from commit 8d8cb008477c89f1614e0031848509f3feb5b3af)">
+      <created>1523612907879</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1523612907879</updated>
+    </task>
+    <task id="LOCAL-00032" summary="添加提示信息的功能&#10;&#10;(cherry picked from commit 8d8cb008477c89f1614e0031848509f3feb5b3af)">
+      <created>1523842541875</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1523842541875</updated>
+    </task>
+    <task id="LOCAL-00033" summary=" 修改液奶的最下面的表格的JS">
+      <created>1523845411377</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1523845411377</updated>
+    </task>
+    <task id="LOCAL-00034" summary=" 添加折前和账面的收入">
+      <created>1523845874528</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1523845874528</updated>
+    </task>
+    <task id="LOCAL-00035" summary="修改地图的JS">
+      <created>1523846921583</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1523846921583</updated>
+    </task>
+    <task id="LOCAL-00036" summary="修改地图的JS">
+      <created>1523847146617</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1523847146617</updated>
+    </task>
+    <task id="LOCAL-00037" summary="修改地图的JS">
+      <created>1523847820418</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1523847820418</updated>
+    </task>
+    <task id="LOCAL-00038" summary="删除无用的文件">
+      <created>1523847915243</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1523847915243</updated>
+    </task>
+    <task id="LOCAL-00039" summary="删除无用的文件">
+      <created>1523850552279</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1523850552279</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8680000" />
+    <option name="totallyTimeSpent" value="128754000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -574,22 +890,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="199" y="54" width="877" height="830" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46553808" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23130842" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4517007" sideWeight="0.10359408" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31564626" sideWeight="0.89640594" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963504" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.49753347" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -599,16 +915,20 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -616,6 +936,8 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="LONG_EDGES_VISIBLE" value="true" />
+              <option name="BEK_SORT_TYPE" value="1" />
               <option name="RECENTLY_FILTERED_USER_GROUPS">
                 <collection />
               </option>
@@ -631,14 +953,22 @@
                       </list>
                     </value>
                   </entry>
+                  <entry key="date">
+                    <value>
+                      <list>
+                        <option value="1522832258988" />
+                        <option value="" />
+                      </list>
+                    </value>
+                  </entry>
                 </map>
               </option>
               <option name="COLUMN_ORDER">
                 <list>
                   <option value="0" />
                   <option value="1" />
-                  <option value="2" />
                   <option value="3" />
+                  <option value="2" />
                 </list>
               </option>
             </State>
@@ -651,24 +981,179 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="提交" />
-    <MESSAGE value="修改液奶总览的JS" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改液奶总览的JS" />
+    <MESSAGE value="修改日报表的JS代码" />
+    <MESSAGE value=" 开始调用接口" />
+    <MESSAGE value="添加字段的说明" />
+    <MESSAGE value="添加对空数据的判断" />
+    <MESSAGE value="添加页面的注释" />
+    <MESSAGE value="添加表格" />
+    <MESSAGE value="表格的异常的处理" />
+    <MESSAGE value="完成柱状图的时间的进度" />
+    <MESSAGE value="修改集团销售日报" />
+    <MESSAGE value="更新进度颜色的字段" />
+    <MESSAGE value="更新地图的echarts" />
+    <MESSAGE value="添加重点产品和新品" />
+    <MESSAGE value="修改集团日报的JS" />
+    <MESSAGE value="完成下面的2个表格" />
+    <MESSAGE value="修改代码" />
+    <MESSAGE value="修改日报" />
+    <MESSAGE value="修改2个表格的销售占比" />
+    <MESSAGE value="添加提示信息的功能" />
+    <MESSAGE value="优化代码" />
+    <MESSAGE value="修改液奶区域日达成总览" />
+    <MESSAGE value="添加提示信息的功能&#10;&#10;(cherry picked from commit 8d8cb008477c89f1614e0031848509f3feb5b3af)" />
+    <MESSAGE value=" 修改液奶的最下面的表格的JS" />
+    <MESSAGE value=" 添加折前和账面的收入" />
+    <MESSAGE value="修改地图的JS" />
+    <MESSAGE value="删除无用的文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除无用的文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="39" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/html/saleSuccessday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6834">
+          <caret line="402" column="31" lean-forward="true" selection-start-line="402" selection-start-column="31" selection-end-line="402" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#13752#13758#0" expanded="true" />
+            <element signature="e#13758#13764#0" expanded="true" />
+            <element signature="e#13832#13838#0" expanded="true" />
+            <element signature="e#13838#13844#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#16455#16461#0" expanded="true" />
+            <element signature="e#16461#16467#0" expanded="true" />
+            <element signature="e#16533#16539#0" expanded="true" />
+            <element signature="e#16539#16545#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/saleSuccessday.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14246">
+          <caret line="838" column="0" lean-forward="true" selection-start-line="838" selection-start-column="0" selection-end-line="838" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2577#4225#0" expanded="false" />
+            <element signature="e#4331#5196#0" expanded="false" />
+            <element signature="e#5272#5617#0" expanded="false" />
+            <element signature="n#!!block;n#getxsdc#0" expanded="false" />
+            <element signature="e#8599#13500#0" expanded="false" />
+            <element signature="n#!!block;n#getMap#0" expanded="false" />
+            <element signature="n#!!block;n#getRightBottom#0" expanded="false" />
+            <element signature="e#25997#26050#0" expanded="false" />
+            <element signature="n#!!block;n#getChart1#0" expanded="false" />
+            <element signature="e#31269#32190#0" expanded="false" />
+            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
+            <element signature="e#45971#48812#0" expanded="false" />
+            <element signature="e#46669#48615#0" expanded="false" />
+            <element signature="e#48873#49572#0" expanded="false" />
+            <element signature="e#49630#52315#0" expanded="false" />
+            <element signature="n#!!block;n#getStr1#0" expanded="false" />
+            <element signature="n#!!block;n#getstr2#0" expanded="false" />
+            <element signature="e#56604#58263#0" expanded="false" />
+            <element signature="e#58329#59093#0" expanded="false" />
+            <element signature="e#59153#61145#0" expanded="false" />
+            <element signature="n#!!block;n#getStr3#0" expanded="false" />
+            <element signature="n#!!block;n#getstr4#0" expanded="false" />
+            <element signature="n#!!block;n#getJsonLength#0" expanded="false" />
+            <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/saleSuccessday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#13752#13758#0" expanded="true" />
+            <element signature="e#13758#13764#0" expanded="true" />
+            <element signature="e#13832#13838#0" expanded="true" />
+            <element signature="e#13838#13844#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#16455#16461#0" expanded="true" />
+            <element signature="e#16461#16467#0" expanded="true" />
+            <element signature="e#16533#16539#0" expanded="true" />
+            <element signature="e#16539#16545#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/saleSuccessday.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14569">
+          <caret line="857" column="19" lean-forward="true" selection-start-line="857" selection-start-column="19" selection-end-line="857" selection-end-column="19" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2577#4225#0" expanded="false" />
+            <element signature="e#4331#5196#0" expanded="false" />
+            <element signature="e#5272#5617#0" expanded="false" />
+            <element signature="n#!!block;n#getxsdc#0" expanded="false" />
+            <element signature="e#8599#13500#0" expanded="false" />
+            <element signature="n#!!block;n#getMap#0" expanded="false" />
+            <element signature="n#!!block;n#getRightBottom#0" expanded="false" />
+            <element signature="e#25997#26050#0" expanded="false" />
+            <element signature="n#!!block;n#getChart1#0" expanded="false" />
+            <element signature="e#31269#32190#0" expanded="false" />
+            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
+            <element signature="e#45971#48812#0" expanded="false" />
+            <element signature="e#46669#48615#0" expanded="false" />
+            <element signature="e#48873#49572#0" expanded="false" />
+            <element signature="e#49630#52315#0" expanded="false" />
+            <element signature="n#!!block;n#getStr1#0" expanded="false" />
+            <element signature="n#!!block;n#getstr2#0" expanded="false" />
+            <element signature="e#56604#58263#0" expanded="false" />
+            <element signature="e#58329#59093#0" expanded="false" />
+            <element signature="e#59153#61145#0" expanded="false" />
+            <element signature="n#!!block;n#getStr3#0" expanded="false" />
+            <element signature="n#!!block;n#getstr4#0" expanded="false" />
+            <element signature="n#!!block;n#getJsonLength#0" expanded="false" />
+            <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html/brandOverviewLiquidMilk.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7020">
           <caret line="468" column="47" lean-forward="false" selection-start-line="468" selection-start-column="47" selection-end-line="468" selection-end-column="47" />
           <folding>
-            <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#li#9;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#table#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -678,29 +1163,31 @@
         <state relative-caret-position="2550">
           <caret line="170" column="39" lean-forward="false" selection-start-line="170" selection-start-column="39" selection-end-line="170" selection-end-column="39" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2577#4225#0" expanded="false" />
+            <element signature="e#4331#5196#0" expanded="false" />
+            <element signature="e#5272#5617#0" expanded="false" />
             <element signature="n#!!block;n#getxsdc#0" expanded="false" />
+            <element signature="e#8599#13500#0" expanded="false" />
+            <element signature="n#!!block;n#getMap#0" expanded="false" />
+            <element signature="n#!!block;n#getRightBottom#0" expanded="false" />
+            <element signature="e#25997#26050#0" expanded="false" />
             <element signature="n#!!block;n#getChart1#0" expanded="false" />
-            <element signature="n#!!block;n#getJson2#0" expanded="false" />
+            <element signature="e#31269#32190#0" expanded="false" />
             <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-            <marker date="1523263548765" expanded="true" signature="38727:38745" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="38874:38907" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="39078:39098" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="39995:40011" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="40049:40067" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="40181:40215" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="40345:40365" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41447:41475" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41551:41569" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41685:41719" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41850:41870" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="45580:45598" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="45727:45760" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="46633:46649" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="46687:46705" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="46819:46853" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="47916:47944" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="48020:48038" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="48154:48188" ph="..." />
+            <element signature="e#45971#48812#0" expanded="false" />
+            <element signature="e#46669#48615#0" expanded="false" />
+            <element signature="e#48873#49572#0" expanded="false" />
+            <element signature="e#49630#52315#0" expanded="false" />
+            <element signature="n#!!block;n#getStr1#0" expanded="false" />
+            <element signature="n#!!block;n#getstr2#0" expanded="false" />
+            <element signature="e#56604#58263#0" expanded="false" />
+            <element signature="e#58329#59093#0" expanded="false" />
+            <element signature="e#59153#61145#0" expanded="false" />
+            <element signature="n#!!block;n#getStr3#0" expanded="false" />
+            <element signature="n#!!block;n#getstr4#0" expanded="false" />
+            <element signature="n#!!block;n#getJsonLength#0" expanded="false" />
+            <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -718,24 +1205,68 @@
         <state relative-caret-position="10200">
           <caret line="680" column="9" lean-forward="false" selection-start-line="680" selection-start-column="9" selection-end-line="680" selection-end-column="9" />
           <folding>
-            <element signature="e#2992#7601#0" expanded="false" />
-            <element signature="e#7756#11607#0" expanded="false" />
+            <element signature="e#1914#3254#0" expanded="false" />
+            <element signature="e#3312#7921#0" expanded="false" />
+            <element signature="e#8016#11858#0" expanded="false" />
             <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-            <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
-            <marker date="1523271756007" expanded="true" signature="21756:21791" ph="..." />
-            <marker date="1523271756007" expanded="true" signature="21913:21933" ph="..." />
-            <marker date="1523271756007" expanded="true" signature="23664:23699" ph="..." />
-            <marker date="1523271756007" expanded="true" signature="23821:23841" ph="..." />
+            <element signature="n#!!block;n#getJson4#0" expanded="false" />
+            <element signature="n#!!block;n#getJson2#0" expanded="false" />
+            <element signature="n#!!block;n#getMap#0" expanded="false" />
+            <element signature="n#!!block;n#getRightBottom#0" expanded="false" />
+            <element signature="n#!!block;n#getDataBottom#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/loading.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/My97DatePicker/lang/en.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
+    <entry file="file://$PROJECT_DIR$/My97DatePicker/WdatePicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/saleDaily.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/saleIncrease.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/tableTest.html" />
+    <entry file="file://$PROJECT_DIR$/js/echarts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-350395">
+          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/init.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -743,121 +1274,352 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/js/saleSuccessdayBK.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-947">
-          <caret line="46" column="1" lean-forward="false" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+        <state relative-caret-position="1576">
+          <caret line="710" column="75" lean-forward="false" selection-start-line="710" selection-start-column="75" selection-end-line="710" selection-end-column="75" />
+          <folding>
+            <element signature="e#2081#3477#0" expanded="false" />
+            <element signature="e#3530#4335#0" expanded="false" />
+            <element signature="e#4402#4766#0" expanded="false" />
+            <element signature="n#!!block;n#getxsdc#0" expanded="false" />
+            <element signature="n#!!block;n#getChart1#0" expanded="false" />
+            <element signature="n#!!block;n#getJson2#0" expanded="false" />
+            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
+            <element signature="e#34346#36028#0" expanded="false" />
+            <element signature="e#43695#45309#0" expanded="false" />
+            <element signature="e#45370#46176#0" expanded="false" />
+            <element signature="e#46224#48287#0" expanded="false" />
+            <element signature="n#!!block;n#getStr3#0" expanded="false" />
+            <element signature="n#!!block;n#getstr4#0" expanded="false" />
+            <element signature="n#!!block;n#getJsonLength#0" expanded="false" />
+            <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
+            <element signature="e#52222#52685#0" expanded="false" />
+            <marker date="1523502701825" expanded="true" signature="16830:16850" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="17062:17080" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="17227:17260" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="18485:18503" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="18650:18683" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="38872:38890" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="39037:39070" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="39365:39385" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="40644:40664" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="40749:40765" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="40803:40821" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="40971:41005" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="42809:42829" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="42890:42918" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="43015:43033" ph="..." />
+            <marker date="1523502701825" expanded="true" signature="43191:43225" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ynjson/china.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snjson/china.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15045">
+          <caret line="885" column="10" lean-forward="true" selection-start-line="885" selection-start-column="10" selection-end-line="885" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/productRepresent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="50" lean-forward="false" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/img/down1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/down.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/up.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/loading.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="97" column="9" lean-forward="false" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+        <state relative-caret-position="153">
+          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding>
-            <marker date="1523262077512" expanded="true" signature="2575:2602" ph="..." />
-            <marker date="1523262077512" expanded="true" signature="2629:2664" ph="..." />
-            <marker date="1523262077512" expanded="true" signature="2881:2908" ph="..." />
-            <marker date="1523262077512" expanded="true" signature="2935:2970" ph="..." />
-            <marker date="1523262077512" expanded="true" signature="3529:3556" ph="..." />
-            <marker date="1523262077512" expanded="true" signature="3583:3618" ph="..." />
+            <marker date="1523602351248" expanded="true" signature="3127:3154" ph="..." />
+            <marker date="1523602351248" expanded="true" signature="3181:3216" ph="..." />
+            <marker date="1523602351248" expanded="true" signature="3474:3501" ph="..." />
+            <marker date="1523602351248" expanded="true" signature="3528:3563" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/saleSuccess.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="357" column="35" lean-forward="false" selection-start-line="357" selection-start-column="35" selection-end-line="357" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/brandOverview.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2409">
+        <state relative-caret-position="558">
           <caret line="234" column="36" lean-forward="false" selection-start-line="234" selection-start-column="36" selection-end-line="234" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/saleSuccessday.html">
+    <entry file="file://$PROJECT_DIR$/js/brandOverview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="370" column="46" lean-forward="true" selection-start-line="370" selection-start-column="46" selection-end-line="370" selection-end-column="46" />
+        <state relative-caret-position="17">
+          <caret line="797" column="38" lean-forward="true" selection-start-line="797" selection-start-column="38" selection-end-line="797" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/saleSuccessday.js">
+    <entry file="file://$PROJECT_DIR$/js/productRepresent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="146" column="31" lean-forward="false" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!block;n#getxsdc#0" expanded="false" />
-            <element signature="n#!!block;n#getChart1#0" expanded="false" />
-            <element signature="n#!!block;n#getJson2#0" expanded="false" />
-            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-            <marker date="1523263548765" expanded="true" signature="38727:38745" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="38874:38907" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="39078:39098" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="39995:40011" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="40049:40067" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="40181:40215" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="40345:40365" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41447:41475" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41551:41569" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41685:41719" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="41850:41870" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="45580:45598" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="45727:45760" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="46633:46649" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="46687:46705" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="46819:46853" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="47916:47944" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="48020:48038" ph="..." />
-            <marker date="1523263548765" expanded="true" signature="48154:48188" ph="..." />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/brandOverview.js">
+    <entry file="file://$PROJECT_DIR$/js/saleDaily.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-598">
-          <caret line="797" column="38" lean-forward="true" selection-start-line="797" selection-start-column="38" selection-end-line="797" selection-end-column="38" />
-          <folding>
-            <element signature="e#900#5470#0" expanded="false" />
-            <element signature="e#5592#9107#0" expanded="false" />
-            <element signature="e#9224#11550#0" expanded="false" />
-            <element signature="e#11666#14867#0" expanded="false" />
-            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
-            <element signature="n#!!block;n#getData1#0" expanded="false" />
-            <element signature="n#!!block;n#getData3#0" expanded="false" />
-            <element signature="e#22963#23535#0" expanded="false" />
-            <element signature="e#23586#23810#0" expanded="false" />
-            <marker date="1523181826985" expanded="true" signature="21330:21365" ph="..." />
-            <marker date="1523181826985" expanded="true" signature="21468:21488" ph="..." />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/brandOverviewLiquidMilk.html">
+    <entry file="file://$PROJECT_DIR$/js/saleIncrease.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2955">
-          <caret line="363" column="18" lean-forward="true" selection-start-line="363" selection-start-column="18" selection-end-line="363" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/saleSuccess.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/saleSuccessdayBeta.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/brandOverviewLiquidMilkBK.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="677">
+          <caret line="867" column="0" lean-forward="true" selection-start-line="867" selection-start-column="0" selection-end-line="867" selection-end-column="0" />
           <folding>
-            <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#table#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1523605545047" expanded="true" signature="21487:21522" ph="..." />
+            <marker date="1523605545047" expanded="true" signature="21644:21664" ph="..." />
+            <marker date="1523605545047" expanded="true" signature="23393:23428" ph="..." />
+            <marker date="1523605545047" expanded="true" signature="23550:23570" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/brandOverviewLiquidMilk.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6685">
-          <caret line="64" column="53" lean-forward="false" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
+        <state relative-caret-position="175">
+          <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
           <folding>
-            <element signature="e#2992#7601#0" expanded="false" />
-            <element signature="e#7756#11607#0" expanded="false" />
+            <element signature="e#1914#3254#0" expanded="false" />
+            <element signature="e#3312#7921#0" expanded="false" />
+            <element signature="e#8016#11858#0" expanded="false" />
             <element signature="n#!!block;n#getMapchart#0" expanded="false" />
+            <element signature="n#!!block;n#getJson4#0" expanded="false" />
+            <element signature="n#!!block;n#getJson2#0" expanded="false" />
+            <element signature="n#!!block;n#getMap#0" expanded="false" />
+            <element signature="n#!!block;n#getRightBottom#0" expanded="false" />
+            <element signature="n#!!block;n#getDataBottom#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/productRepresent.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/saleDaily.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/saleIncrease.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/brandOverview.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/saleSuccess.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/brandOverviewLiquidMilk.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/saleSuccessday.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2873">
+          <caret line="1951" column="1" lean-forward="true" selection-start-line="1951" selection-start-column="1" selection-end-line="1951" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2577#4225#0" expanded="false" />
+            <element signature="e#4331#5196#0" expanded="false" />
+            <element signature="e#5272#5617#0" expanded="false" />
+            <element signature="n#!!block;n#getxsdc#0" expanded="false" />
+            <element signature="e#8599#13500#0" expanded="false" />
+            <element signature="n#!!block;n#getMap#0" expanded="false" />
+            <element signature="n#!!block;n#getRightBottom#0" expanded="false" />
+            <element signature="n#!!block;n#getChart1#0" expanded="false" />
+            <element signature="e#31269#32190#0" expanded="false" />
+            <element signature="n#!!block;n#getJson2#0" expanded="false" />
+            <element signature="n#!!block;n#getMapchart#0" expanded="false" />
+            <element signature="e#45971#48812#0" expanded="false" />
+            <element signature="e#46669#48615#0" expanded="false" />
+            <element signature="e#48873#49572#0" expanded="false" />
+            <element signature="e#49630#52315#0" expanded="false" />
+            <element signature="n#!!block;n#getStr1#0" expanded="false" />
+            <element signature="n#!!block;n#getstr2#0" expanded="false" />
+            <element signature="e#56604#58263#0" expanded="false" />
+            <element signature="e#58329#59093#0" expanded="false" />
+            <element signature="e#59153#61145#0" expanded="false" />
+            <element signature="n#!!block;n#getStr3#0" expanded="false" />
+            <element signature="n#!!block;n#getstr4#0" expanded="false" />
+            <element signature="n#!!block;n#getJsonLength#0" expanded="false" />
             <element signature="n#!!block;n#ajaxReq#0" expanded="false" />
-            <marker date="1523271756007" expanded="true" signature="21756:21791" ph="..." />
-            <marker date="1523271756007" expanded="true" signature="21913:21933" ph="..." />
-            <marker date="1523271756007" expanded="true" signature="23664:23699" ph="..." />
-            <marker date="1523271756007" expanded="true" signature="23821:23841" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="511" column="1" lean-forward="true" selection-start-line="511" selection-start-column="1" selection-end-line="511" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yiliWeb.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wordTable">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-598">
+          <caret line="22" column="22" lean-forward="false" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/brandOverviewLiquidMilk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="620" column="7" lean-forward="false" selection-start-line="620" selection-start-column="7" selection-end-line="620" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#9;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/saleSuccessday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#13752#13758#0" expanded="true" />
+            <element signature="e#13758#13764#0" expanded="true" />
+            <element signature="e#13832#13838#0" expanded="true" />
+            <element signature="e#13838#13844#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#16455#16461#0" expanded="true" />
+            <element signature="e#16461#16467#0" expanded="true" />
+            <element signature="e#16533#16539#0" expanded="true" />
+            <element signature="e#16539#16545#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

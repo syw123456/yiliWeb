@@ -13,7 +13,7 @@ if (dd.length == 1) {
 var time =yyyy+ "-" + mm+ "-" + dd;
 
 //测试的日期时间
-time = "2017-12-31";
+//time = "2017-12-31";
 $("#startTime").val(time);
 
 //定义echart 插件到页面
@@ -279,17 +279,13 @@ function getxsdc(jsonData){
             $("#ytn_daybefore").html(data.ytn_daybefore);
             //奶粉事业部
             $("#nf_daybefore").html(data.nf_daybefore);
-
             //酸奶事业部
             $("#sn_daybefore").html(data.sn_daybefore);
-
             //冷饮事业部
             $("#ly_daybefore").html(data.ly_daybefore);
-
             //电商
             $("#ds_daybefore").html(data.ds_daybefore);
             */
-
 
             /******各事业部收成情况 S******/
             /*

@@ -1494,7 +1494,6 @@ function getDataBottom(jsonData){
                 + '</tr>'
         });
         $(".d_zqsrT").html(str_zqsr);
-
     });
 
 }
