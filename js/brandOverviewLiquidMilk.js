@@ -503,105 +503,116 @@ myChart4.setOption(option4);
 
 
 /*****    地图 S  *******/
+function getMapchart(b,data_sjjd,data_yjdcl,data_zq){
 
-function getMapchart(data,datas1){
-	var option3 = {
-		    title: {
-		        text: '', //'液态奶事业部折前收入',
-		        x: 'left',
-		        textStyle: {
-		            color: '#fff'
-		        },
-		        padding: [30, 10],
-		    },
-		    dataRange: {
-		        x: 'left',
-		        y: 'top',
-		        itemWidth: 10,
-		        itemHeight: 10,
-		        textStyle: {
-		            color: '#fff'
-		        },
-		        orient: 'horizontal',
-		        splitList:[
-		            {end: 95.99999, label: '达成率<96%', color:'#b44647'},
-		            {start: 95.99999, end: 99.99999, label: '96%<=达成率<100%', color: '#bea13a'},
-		            {start: 99.99999, end:100000000,label: '达成率=>100%', color: '#47813f'}   
-		        ]
-		    },
-		    tooltip: {
-		        trigger: 'item',
-		        //formatter:"{b0}: {c0}<br />{b1}: {c1}"
-		        formatter:function(params){
-		            //定义一个res变量来保存最终返回的字符结果,并且先把地区名称放到里面
-		            var res="大区名称:"+params.name+'<br />';
-		            //定义一个变量来保存series数据系列
-		            var myseries=option3.series;
-		            //循环遍历series数据系列
-		            for(var i=0;i<myseries.length;i++){
-		                //在内部继续循环series[i],从data中判断：当地区名称等于params.name的时候就将当前数据和名称添加到res中供显示
-		                for(var k=0;k<myseries[i].data.length;k++){
-		                    //console.log(myseries[i].data[k].name);
-		                    //如果data数据中的name和地区名称一样
-		                    if(myseries[i].data[k].name==params.name){
-		                        //将series数据系列每一项中的name和数据系列中当前地区的数据添加到res中
-		                    	if(i ==0){
-		                    		res+= "折前剔税收入"+'：'+formatNumber(datas1[k].value,0,1)+'<br />'
-		                    		    +myseries[i].name+'：'+formatNumber(myseries[i].data[k].value,1,0)+'%<br />';
-		                    	}		                        
-		                    }
-		                }
-		            }
-		            //返回res
-		            //console.log(res);
-		            return res;                
-		        }
-		    },
-		    series: [{
-		        name: "实际达成率",
-		        type: 'map',
-		        map: 'china',
-		        itemStyle: {
-		            //normal 是图形在默认状态下的样式
-		            normal: {
-		                show: true,
-		                areaColor:"#59a14f",
-		                // borderColor:"#FCFCFC",
-		                borderWidth: "0",
-		                label: {
-		                    show: true,
-		                    textStyle: {
-		                        color: "#fff"
-		                    }
-		                }
-		            },
-		            //emphasis 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
-		            emphasis: {
-		                show: true,
-		                areaColor: "#C8A5DF",
-		                label: {
-		                    show: true,
-		                    textStyle: {
-		                        color: "#fff"
-		                    }
-		                }
-		            }
-		        },
-		        // data: data
-                data: [
-                 {name:"东北",value:73},
-                 {name:"京津",value:98},
-                 {name:"河南",value:95.6},
-                 {name:"山东",value:99},
-                 {name:"西南",value:101},
-                 {name:"西北",value:100},
-                 {name:"晋冀蒙",value:73}
-                 ]
-		    }]
-		};
-	return option3;
+    console.log('地图的初始化的数据');
+    console.log(b);  //大区的名称
+    console.log(data_sjjd);//
+    console.log(data_yjdcl);
+    console.log(data_zq);
+
+    /**
+     * 参数含义：
+     * b :表示事业部
+     * data_sjjd : 实际达成进度
+     * data_yjdcl : 预计达成率
+     * data_zq : 折前收入
+     *
+     * **/
+    var option3 = {
+        title: {
+
+            x: 'left',
+            textStyle: {
+                color: '#fff',
+                fontSize:16,
+                fontWeight:600,
+                fontFamily:'冬青黑体简体中文'
+            },
+            padding: [30, 10],
+        },
+        dataRange: {
+            x: 'left',
+            y: 'top',
+            itemWidth: 10,
+            itemHeight: 10,
+            textStyle: {
+                color: '#fff'
+            },
+            orient: 'horizontal',
+            splitList:[
+                {end: 95.99999, label: '96%>预计达成率', color: '#e15759'},
+                {start: 95.99999, end: 99.99999, label: '96%<=预计达成率<100%', color: '#bfa23a'},
+                {start: 99.99999,label: '预计达成率>=100%', color: '#488140'}
+            ]
+        },
+        tooltip: {
+            trigger: 'item',
+            //formatter:"{b0}: {c0}<br />{b1}: {c1}"
+            formatter:function(params){
+                //定义一个res变量来保存最终返回的字符结果,并且先把地区名称放到里面
+                var res="大区名称："+params.name+'<br />';
+                //定义一个变量来保存series数据系列
+                var myseries=option3.series;
+                //循环遍历series数据系列
+                for(var i=0;i<myseries.length;i++){
+                    //在内部继续循环series[i],从data中判断：当地区名称等于params.name的时候就将当前数据和名称添加到res中供显示
+                    for(var k=0;k<myseries[i].data.length;k++){
+                        //console.log(myseries[i].data[k].name);
+                        //如果data数据中的name和地区名称一样
+                        if(myseries[i].data[k].name==params.name){
+                            //将series数据系列每一项中的name和数据系列中当前地区的数据添加到res中
+                            if(i ==0){
+                                res+='折前收入：'+formatNumber(data_zq[k].value,2,1)+'<br />'
+                                    +'实际达成进度：'+data_sjjd[k].value+'%<br />'
+                                    +myseries[i].name+'：'+formatNumber(myseries[i].data[k].value,1,0)+'%<br />'
+                            }
+
+                        }
+                    }
+                }
+                //返回res
+                //console.log(res);
+                return res;
+            }
+        },
+        series: [{
+            name: "预计达成率",
+            type: 'map',
+            mapType: 'china',
+            data: data_yjdcl,
+            itemStyle: {
+                //normal 是图形在默认状态下的样式
+                normal: {
+                    show: true,
+                    areaColor:"#59a14f",
+                    // borderColor:"#FCFCFC",
+                    borderWidth: "0",
+                    label: {
+                        show: true,
+                        textStyle: {
+                            color: "#fff"
+                        }
+                    }
+                },
+                //emphasis 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+                emphasis: {
+                    show: true,
+                    areaColor: "#C8A5DF",
+                    label: {
+                        show: true,
+                        textStyle: {
+                            color: "#fff"
+                        }
+                    }
+                }
+            }
+        }]
+    };
+    return option3;
 }
-//地图
+
+/*****    地图 E ********/
 
 
 // 测试的接口中国地图
@@ -1185,6 +1196,9 @@ function getMap(jsonData) {
 
             $.each(data.map,function(k,v){
 
+
+
+                //折前的数据
                 console.log(v.areaZQIncomeCompletePercent);
                 //异常数据的处理
                 if(v.areaZQIncomeCompletePercent == 'NaN' || v.areaZQIncomeCompletePercent == 'Infinity'){
@@ -1212,13 +1226,14 @@ function getMap(jsonData) {
 
             myChart3.clear();
 
-            //得到是事务部的名称
+            //得到是大区的名称
             var b_name = jsonData.businessMapName;
 
             var json = "ynjson";//只是液奶事业部
             //请求不同的地图的接口,渲染地图
             $.get(basepath+'/web/'+json+'/china.json', function (chinaJson) {
                 echarts.registerMap('china', chinaJson);
+                // b_name得到是大区的名称    data_sjjd实际达成进度  data_yjdcl预计达成率    data_zq折前收入
                 myChart3.setOption(getMapchart(b_name,data_sjjd,data_yjdcl,data_zq),true);
             });
         }
@@ -1227,7 +1242,7 @@ function getMap(jsonData) {
     });
 }
 
-//大区及区域折前收入增长及达成的表格的填充（待完成）
+/*****地图的右边的表格   大区及区域折前收入增长及达成的表格的填充  S  *********/
 function getRightBottom(jsonData){
     console.log('大区及区域折前收入增长及达成的表格的填充的传递参数: ');
     console.log(jsonData);
@@ -1235,42 +1250,112 @@ function getRightBottom(jsonData){
 
         console.log('大区及区域折前收入增长及达成的表格-------succeed--->');
         console.log(data);
-       //大区及区域折前收入增长及达成的表格的填充  8个字段
+
+        //大区及区域折前收入增长及达成的表格的填充  8个字段
         $("#table2 tr").remove();
-        //data.salesDetail 后台的返回的值（待确定）
-        $.each(data.salesDetail, function(i, r) {
-            var color = bgColor2(r[3]);
-            var imgs = r[4]<0 ? "down" :"up";
-            var tr = '<tr>'
-                +'<td onclick="cause_click($(this),1)">'+ r[0] +'</td>' //大区
-                +'<td class="hide">0</td>'
-                +'<td>'+ formatNumber(r[1],1,1) +'</td>' //月销售目标
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //日销售
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //月累计销售
-                +'<td style="color:'+color+'; font-weight: bold;">'+ r[3] +'%</td>' //月销售达成进度
-                +'<td>'+ r[4] +'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>'//月同比增长
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //年累计销售
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //年销售达成进度
+        //大区	月销售目标	日销售	月累计销售	月销售达成进度	月同比增长	年累计销售	年销售达成进度
+        /***
+         *  账面收入
+         * PRODUCT_TYPE 产品类型
+         * PRODUCT_CHILD_BRAND    子品牌
+         * monthZMBudget  月销售目标
+         * dayZMIncome  日销售
+         * monthZMIncome 月累计销售
+         * monthZMCompletePercent 月销售达成进度
+         * monthZMIncomeIncrease 月同比增长
+         * yearZMIncome (yearZMLJIncome)年累计销售
+         * yearZMCompletePercent年销售达成进度
+         *
+         *
+         *
+         *  折前收入
+         * PRODUCT_CHILD_BRAND    子品牌
+         * monthZQBudget  月销售目标
+         * dayZQIncome  日销售
+         * monthZQIncome 月累计销售
+         * monthZQCompletePercent 月销售达成进度
+         * monthZQIncomeIncrease 月同比增长
+         * yearZQIncome (yearZMLJIncome)年累计销售
+         * yearZQCompletePercent  年销售达成进度
+         *
+         *
+         */
 
-                +'</tr>';
-            $("#table2").append(tr);
 
-            //设置表格的宽度
-            for(var i=0;i<$("#table1 tr th").length;i++){
-                var widths = $("#table2 tr td").eq(i).width();
-                var height1 = $("#table2").height();
-                var height2 = $("#table2_d").height();
-                if(i == $("#table1 tr th").length-1 && height1>height2){
-                    $("#table1 tr").find("th").eq(i).css("width",(widths+17)+"px");
-                }else{
-                    $("#table1 tr").find("th").eq(i).css("width",widths+"px");
-                }
+
+        /**求  折前的   月销售目标的最大值和日销售的最大值**/
+        var tiao1 = [],tiao2 = [];
+        $.each(data.bgIncome, function (k, v) {
+
+            //折前收入
+            if(isName =='折前收入'){
+                tiao1.push(v.monthZQBudget);//月销售目标的最大值
+                tiao2.push(v.dayZQIncome);//日销售的最大值
             }
-        });
-        $("#hide1").remove()
-    });
 
+            //账面收入
+            else{
+                tiao1.push(v.monthZMBudget);//月销售目标的最大值
+                tiao2.push(v.dayZMIncome);//日销售的最大值
+            }
+
+        });
+        //求月度折前收入的最大值和日销售的最大值
+        var tiaomax1 = Math.max.apply(null, tiao1);//月度折前收入的最大值
+        var tiaomax2 = Math.max.apply(null, tiao2);//日销售的最大值
+
+        var str_zqsr = "";
+
+        // 返回表格的大对象是:  bgIncome
+        $.each(data.bgIncome, function (k, v) {
+
+            //折前的收入
+            if(isName =='折前收入') {
+                var ydzmsr = v.monthZQBudget,          //monthZQBudget  月销售目标
+                    rzmsr = v.dayZQIncome,             //dayZQIncome 日销售
+                    mljzmsr = v.monthZQIncome,         //monthZQIncome 月累计销售
+                    yzmdcjd = v.monthZQCompletePercent,//monthZQCompletePercent 月销售达成进度
+                    yljzz = v.monthZQIncomeIncrease,   //monthZQIncomeIncrease月同比增长
+                    nljzz = v.yearZQIncome;            //yearZQIncome年累计销售
+                nzmdcl = v.yearZQCompletePercent   //yearZQCompletePercent年销售达成进度
+            }
+
+            //折面的收入
+            else{
+                var ydzmsr = v.monthZMBudget,          //monthZQBudget  月销售目标
+                    rzmsr = v.dayZMIncome,             //dayZQIncome 日销售
+                    mljzmsr = v.monthZMIncome,         //monthZQIncome 月累计销售
+                    yzmdcjd = v.monthZMCompletePercent,//monthZQCompletePercent 月销售达成进度
+                    yljzz = v.monthZMIncomeIncrease,   //monthZQIncomeIncrease月同比增长
+                    nljzz = v.yearZMIncome;            //yearZQIncome年累计销售
+                nzmdcl = v.yearZMCompletePercent   //yearZQCompletePercent年销售达成进度
+            }
+
+            var color1 = bgColor2(yzmdcjd); //月销售达成进度
+            var color2 = bgColor2(nzmdcl);  //年折前达成率的颜色
+            var imgs1 = yljzz >= 0 ? "up" : "down";   //月同比增长的向上或者向下的箭头
+            var width1 = tiaomax1 === 0 ? 0 : (ydzmsr / tiaomax1) * 100; //月销售目标的宽度
+            var width2 = tiaomax2 === 0 ? 0 : (rzmsr / tiaomax2) * 100; //日销售的宽度
+
+            // 9个字段
+            str_zqsr += '<tr>'
+                + '<td>' + v.PRODUCT_TYPE + '</td>'  // 产品类型
+                + '<td>' + v.PRODUCT_CHILD_BRAND + '</td>'  //子品牌
+                + '<td align="left"><span class="table_bg4A7EBE" style="width:' +width1+'%;"></span>' + formatNumber(ydzmsr, 1, 1) + '</td>'  //月销售目标
+                + '<td align="left"><span class="table_bg4A7EBE" style="width:' +width2+'%;"></span>' + formatNumber(rzmsr, 1, 1) + '</td>'  //日销售
+                + '<td align="left">' + formatNumber(mljzmsr, 1, 1) + '</td>' //月累计销售
+                + '<td style="font-weight:bold;color:' + color1 + ';">' + formatNumber(yzmdcjd, 2, 0) + '%</td>'  //月销售达成进度
+                + '<td>' + formatNumber(yljzz, 1, 0) + '%<img src="../img/' + imgs1 + '.png" alt="" height="20px" style="vertical-align: top;"></td>' //月同比增长
+                + '<td>' + formatNumber(nljzz, 2, 0) + '%</td>'  //年累计销售
+                + '<td style="font-weight:bold;color:' + color2 + ';">' + formatNumber(nzmdcl, 2, 0) + '%</td>'  //年销售达成进度
+                + '</tr>'
+        });
+        $(".d_zqsrT").html(str_zqsr);
+
+
+    });
 }
+/*****地图的右边的表格   大区及区域折前收入增长及达成的表格的填充  E  *********/
 
 /*****        最后的表格产品折前收入增长及达成(未完成) S      ******/
 function getDataBottom(jsonData){
@@ -1279,20 +1364,9 @@ function getDataBottom(jsonData){
     ajaxReq("ZQData",jsonData,function(data) {
         console.log('产品折前收入增长及达成-------succeed--->');
         console.log(data);
-
         //产品折前收入增长及达成   9个字段
         $("#table4 tr").remove();
 
-        //bgIncome
-        //bgName事业部名称
-        //dayZQIncome 日折前收入
-        //monthZQIncome  月折前收入
-        //monthZQCompletePercent 月折前达成进度
-        //monthZQIncomeIncrease  月折前收入增长
-        //yearZQLJIncome 年折前累计收入
-        //yearZQIncomeCompletePercent 年折前达成率
-        //yearZQLJIncomeIncrease 年折前累计增长
-        //monthZQCompletePercentColor 月折前达成进度颜色
 
         /***
          *  账面收入
@@ -1345,6 +1419,8 @@ function getDataBottom(jsonData){
         var tiaomax2 = Math.max.apply(null, tiao2);//日销售的最大值
 
         var str_zqsr = "";
+
+        // 返回表格的大对象是:  bgIncome
         $.each(data.bgIncome, function (k, v) {
 
             //折前的收入
@@ -1389,9 +1465,6 @@ function getDataBottom(jsonData){
                 + '</tr>'
         });
         $(".d_zqsrT").html(str_zqsr);
-
-
-
 
     });
 
