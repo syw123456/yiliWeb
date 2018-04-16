@@ -48,7 +48,7 @@ function init(){
 
     console.log('------------进入初始化的方法-----------------');
     //默认的加载的头部的loading图
-    // loadHide1("h_top","hide1");
+    loadHide1("h_top","hide1");
     //默认的加载的中间的loading图
     //loadHide1("h_middle","hide2");
     //默认的加载的底部的loading图
@@ -69,7 +69,7 @@ function init(){
     /******地图 E*******/
 
 
-    //大区及区域折前收入增长及达成的表格的填充这个与地图联动
+    // 这个是地图的右侧的表格  大区及区域折前收入增长及达成的表格的填充这个与地图联动
     getRightBottom(jsondata1);
 
     // 最后的表格   最下面的table  产品折前收入增长及达成
@@ -624,26 +624,26 @@ $.get('../ynjson/china.json', function (chinaJson) {
 
 
 // 提取ajax公用代码  urlSuffix这个是请求的子路径 , 请求成功的回调函数 succFun
-function ajaxReq(urlSuffix,jsonData,succFun) {
+function ajaxReq(urlSuffix,jsonData,func) {
 
     //请求的接口 dataJson是默认的初始化的数据
-    var url ="/yiliReport/month/ppzl/" + urlSuffix;
-	$.ajax({
-		url: url,
+    $.ajax({
+        url: basepath+"/SalesReached/" + urlSuffix,
         type:"POST",
         contentType:'application/json;charset=utf-8',
         dataType:"json",
         data:JSON.stringify(jsonData),
-		success: function(data) {
-			succFun(data);
-		},
-		error: function(){
-		    //如果失败的情况提示信息
-			//alert("数据查询失败");
-            //弹窗删除
-			//$("#hide1").remove();
-		}
-	});
+        success: function(data) {
+            console.log('---AJAX请求成功----');
+            func(data);
+        },
+        error:function(){
+            //alert("数据查询错误");
+            //$("#hide1").remove();
+            //$("#hide2").remove();
+            //$("#hide3").remove();
+        }
+    });
 }
 
 //基本数据的,达成进度chart图,日销售趋势
@@ -676,7 +676,10 @@ function getxsdc(jsonData) {
             //年达成
             $("#yearbefore_reach").html(formatNumber(data.top.yearbefore_reach,2,1));
 
-        }else{
+        }
+
+        //账面收入
+        else{
             //日销售
             $("#daybefore").html(formatNumber(data.top.daybook,2,1));
             //月累计
