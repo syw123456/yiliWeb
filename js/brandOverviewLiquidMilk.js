@@ -1495,7 +1495,6 @@ function getDataBottom(jsonData){
         });
         $(".d_zqsrT").html(str_zqsr);
     });
-
 }
 /*****        最后的表格产品折前收入增长及达成(未完成) E     ******/
 
