@@ -329,7 +329,7 @@ option2 = {
         }
     },
 };
-//myChart2.setOption(option2);
+myChart2.setOption(option2);
 /*****  达成进度的折线图  E****/
 
 
@@ -688,7 +688,8 @@ function getxsdc(jsonData) {
         }
         /****基本数据的填充页面 E　*****/
 
-        /******************        日销售趋势的折线图  everyDayLJIncome  S*******/
+
+        /******************   日销售趋势的折线图  everyDayLJIncome  S*******/
 
 
         //day 天
@@ -696,8 +697,6 @@ function getxsdc(jsonData) {
         //YAGO_dayZQIncome 折前同期销售
         //dayZMIncome   账面本期销售
         //YAGO_dayZMIncome 账面同期销售
-
-
         /*
         * x1_data:     //当月全部折前收入进度的x轴   表示的日期
         * y_total_data://预算目标的y轴    累计收入
@@ -706,59 +705,124 @@ function getxsdc(jsonData) {
         * */
         //折前收入的渲染
         if(isName == "折前收入"){
-            var x1_data=[],y_total_data=[],y_budget_data=[];
-            // 渲染右侧的折线图
+            var x1_data=[],dayZQIncome=[],YAGO_dayZQIncome=[];
+            // 渲染右侧的折线图   大对象 everyDayLJIncome
             $.each(data.everyDayLJIncome,function(k,v){
 
                 var N = Number(jsonData.day.split("-")[2]);
                 x1_data.push(v.day);
-                y_budget_data.push(formatNumber(v.YAGO_dayZQIncome,1,0));
+                YAGO_dayZQIncome.push(formatNumber(v.YAGO_dayZQIncome,1,0));
                 if(k < N){
-                    y_total_data.push(formatNumber(v.dayZQIncome,1,0));
+                    dayZQIncome.push(formatNumber(v.dayZQIncome,1,0));
                 }
             });
 
             // 设置折线图的数据
-            myChart4.setOption(getJson4(x1_data,y_total_data,y_budget_data,isName,jsonData.businessMapName));
+            myChart4.setOption(getJson4(x1_data,dayZQIncome,YAGO_dayZQIncome));
 
         }
         //折面收入的渲染
         else{
-            var x1_ZM__data=[],y_ZM_total_data=[],y_ZM_budget_data=[];
-            // 渲染右侧的折线图
+            var x1_ZM__data=[],y_ZM_dayZMIncome=[],y_ZM_YAGO_dayZMIncome=[];
+            // 渲染右侧的折线图 大对象 everyDayLJIncome
             $.each(data.everyDayLJIncome,function(k,v){
                 var N = Number(jsonData.day.split("-")[2]);
                 x1_ZM__data.push(v.day);
 
 
-                y_ZM_budget_data.push(formatNumber(v.YAGO_dayZMIncome,1,0));
+                y_ZM_YAGO_dayZMIncome.push(formatNumber(v.YAGO_dayZMIncome,1,0));
                 if(k < N){
-                    y_ZM_total_data.push(formatNumber(v.dayZMIncome,1,0));
+                    y_ZM_dayZMIncome.push(formatNumber(v.dayZMIncome,1,0));
                 }
             });
             // 设置折线图的数据
-            myChart4.setOption(getJson4(x1_ZM__data,y_ZM_total_data,y_ZM_budget_data,isName,jsonData.businessMapName));
+            myChart4.setOption(getJson4(x1_ZM__data,y_ZM_dayZMIncome,y_ZM_YAGO_dayZMIncome));
 
         }
-
         /*****************  日销售趋势的折线图  (折线图)everyDayLJIncome  E****/
 
         /*****************  达成进度的折线图 (折线图) S*********/
 
         //myChart2.setOption(getJson2());
 
+        //折前收入的渲染
+        if(isName == "折前收入"){
+
+            var x1_data=[],  //x轴的天数
+                sjdayZQIncomeCompletePercent=[],  //实际完成率
+                jhdayZQIncomeCompletePercent=[];  //计划完成率
+                yjdayZQIncomeCompletePercent=[];  //预计完成率
+            // 渲染右侧的折线图   大对象 everyDayLJIncome
+            $.each(data.everyDayLJIncome,function(k,v){
+
+                var N = Number(jsonData.day.split("-")[2]);
+                x1_data.push(v.day);
+
+                //实际只到今天
+                if(k < N){
+                    sjdayZQIncomeCompletePercent.push(formatNumber(v.dayZQIncomeCompletePercent,1,0)); // 实际完成率
+                }
+
+                //计划完成率只到今天
+                if(k < N){
+                    jhdayZQIncomeCompletePercent.push(formatNumber(v.jhdayZQIncomeCompletePercent,1,0));
+                }
+                //预计完成率
+
+                yjdayZQIncomeCompletePercent.push(formatNumber(v.yjdayZQIncomeCompletePercent,1,0));
+
+            });
+
+            // 设置折线图的数据
+            myChart2.setOption(getJson2(x1_data,sjdayZQIncomeCompletePercent,jhdayZQIncomeCompletePercent,yjdayZQIncomeCompletePercent));
+
+        }
+
+        //账面收入
+        else{
+
+            var x1_ZM_data=[],  //x轴的天数
+                sjdayZMIncomeCompletePercent=[],  //实际完成率
+                jhdayZMIncomeCompletePercent=[];  //计划完成率
+                yjdayZMIncomeCompletePercent=[];  //预计完成率
+            // 渲染右侧的折线图   大对象 everyDayLJIncome
+            $.each(data.everyDayLJIncome,function(k,v){
+
+                var N = Number(jsonData.day.split("-")[2]);
+                x1_ZM_data.push(v.day);
+
+                //实际只到今天
+                if(k < N){
+                    sjdayZMIncomeCompletePercent.push(formatNumber(v.dayZQIncomeCompletePercent,1,0)); // 实际完成率
+                }
+
+                //计划完成率只到今天
+                if(k < N){
+                    jhdayZMIncomeCompletePercent.push(formatNumber(v.jhdayZQIncomeCompletePercent,1,0));
+                }
+                //预计完成率
+
+                yjdayZMIncomeCompletePercent.push(formatNumber(v.yjdayZQIncomeCompletePercent,1,0));
+
+            });
+
+            // 设置折线图的数据
+            myChart2.setOption(getJson2(x1_ZM_data,sjdayZMIncomeCompletePercent,jhdayZMIncomeCompletePercent,yjdayZMIncomeCompletePercent));
+
+        }
+
         /***************** 达成进度的折线图 (折线图) E*********/
 
     });
-    myChart2.setOption(getJson2());
+
 
 }
 
 /******日销售趋势的折线图  S*********/
-function getJson4(x_data,y_total_data,y_budget_data,isName,businessMapName){
+function getJson4(x_data,y_total_data,y_budget_data){
     var option4 = {
         title: {
-            text: '当月'+businessMapName+isName+'进度  单位：万元',
+            text:  '单位：万元',
             textStyle: {
                 color: '#fff',
                 fontSize:16,
@@ -901,8 +965,10 @@ function getJson4(x_data,y_total_data,y_budget_data,isName,businessMapName){
 /******日销售趋势的折线图  E*********/
 
 /******达成进度的折线图  S*********/
-function  getJson2() {
-    console.log('********************------>>>>>');
+function  getJson2(x_data,sjdayIncomeCompletePercent,jhdayIncomeCompletePercent,yjdayIncomeCompletePercent) {
+
+
+    console.log('***********达成进度的折线图*********');
     var option2 = {
         title: {
             text: '',
@@ -954,7 +1020,8 @@ function  getJson2() {
             show: true,
             type: 'category',
             data: x_data,
-            //["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],
+            //x轴的日期
+            //data: ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],
             axisLine: {//x轴
                 lineStyle: {
                     color: '#fff'
@@ -1021,7 +1088,9 @@ function  getJson2() {
                         color: '#4e79ab'
                     }
                 },
-                data: ["50","70","80","10","5","19","20","10","40","20","70","40","30","10","3","3","6","10"]
+                //y轴的实际完成率
+                data:sjdayIncomeCompletePercent
+                //data: ["50","70","80","10","5","19","20","10","40","20","70","40","30","10","3","3","6","10"]
             },
             {
                 name: '计划完成率',
@@ -1038,23 +1107,9 @@ function  getJson2() {
                         color: '#f28e2b'
                     }
                 },
-                data: ["40","60","10","40","20","10"]/*,
-         //系列中的数据标线内容
-         markLine: {
-         symbol:"circle",
-         symbolSize:0,
-         lineStyle:{
-         color:"#8cd17d",
-         width:2,
-         type:"solid"
-         },
-         data: [
-         // {type: 'average', name: '平均值'},
-         {name: '标注1',symbolSize:0, yAxis: 13}
-
-         ]
-
-         } */
+                //y轴的计划完成率
+                data:jhdayIncomeCompletePercent
+                //data: ["40","60","10","40","20","10"],
             },
             {
                 name: '预计计划完成率',
@@ -1071,7 +1126,9 @@ function  getJson2() {
                         color: '#e15759'
                     }
                 },
-                data: ["100","40","50","70","0","0","10","30","20","60","80","30"]
+                //预计计划完成率
+                data:yjdayIncomeCompletePercent
+                //data: ["100","40","50","70","0","0","10","30","20","60","80","30"]
             }
 
         ],
@@ -1100,15 +1157,7 @@ function  getJson2() {
     }
     return  option2;
 }
-
-
 /******达成进度的折线图  E*********/
-
-
-
-
-
-
 
 
 /*
