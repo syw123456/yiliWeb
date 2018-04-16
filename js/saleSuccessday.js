@@ -507,30 +507,6 @@ function getxsdc(jsonData){
                 var width2 = tiaomax2 === 0 ? 0 : (nljzmsr / tiaomax2) * 100; //年折前累计收入的宽度
                 var width5 = tiaomax5 === 0 ? 0 : (rzmsr/tiaomax5)*100;//日折前收入的宽度
 
-					if('undefined'==typeof(v.bgName)){
-                        v.bgName = '';
-					}
-					if('undefined'==typeof(rzmsr)){
-                        rzmsr    = '';
-					}
-					if('undefined'==typeof(ydzmsr)){
-                        ydzmsr   = '';
-					}
-					if('undefined'==typeof(yzmdcjd)){
-                        yzmdcjd  = '';
-					}
-					if('undefined'==typeof(yljzz)){
-                        yljzz    = '';
-					}
-					if('undefined'==typeof(nljzmsr)){
-                        nljzmsr  = '';
-					}
-					if('undefined'==typeof(nzmdcl)){
-                        nzmdcl   = '';
-					}
-					if('undefined'==typeof(nljzz)){
-                        nljzz    = '';
-					}
                   // 8个字段
                   str_zqsr += '<tr>'
 					+ '<td onclick="cause_click($(this),"1")">' + v.bgName + '</td>'  //事业部的名称

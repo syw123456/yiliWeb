@@ -1272,51 +1272,103 @@ function getRightBottom(jsonData){
 
 }
 
-//产品折前收入增长及达成(未完成)
+/*****        最后的表格产品折前收入增长及达成(未完成) S      ******/
 function getDataBottom(jsonData){
-    console.log('产品折前收入增长及达成传递参数: ');
+    console.log('最后的表格产品折前收入增长及达成: ');
     console.log(jsonData);
     ajaxReq("ZQData",jsonData,function(data) {
         console.log('产品折前收入增长及达成-------succeed--->');
         console.log(data);
+
+
+
         //产品折前收入增长及达成   9个字段
         $("#table4 tr").remove();
-        //data.salesDetail 后台的返回的值（待确定）
-        $.each(data.salesDetail, function(i, r) {
-            var color = bgColor2(r[3]);
-            var imgs = r[4]<0 ? "down" :"up";
-            var tr = '<tr>'
-                +'<td onclick="cause_click($(this),1)">'+ r[0] +'</td>' //产品类型
-                +'<td class="hide">0</td>'
-                +'<td>'+ formatNumber(r[1],1,1) +'</td>'  //子品牌
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //月销售目标
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //日销售
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //月累计销售
-                +'<td style="color:'+color+'; font-weight: bold;">'+ r[3] +'%</td>' //月销售达成进度
-                +'<td>'+ r[4] +'%<img src="../img/'+imgs+'.png" alt="" height="20px" style="vertical-align: top;"></td>'//月同比增长
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //年累计销售
-                +'<td>'+ formatNumber(r[2],2,0) +'%</td>' //年销售达成进度
 
-                +'</tr>';
-            $("#table4").append(tr);
+        //bgIncome
+        //bgName事业部名称
+        //dayZQIncome 日折前收入
+        //monthZQIncome  月折前收入
+        //monthZQCompletePercent 月折前达成进度
+        //monthZQIncomeIncrease  月折前收入增长
+        //yearZQLJIncome 年折前累计收入
+        //yearZQIncomeCompletePercent 年折前达成率
+        //yearZQLJIncomeIncrease 年折前累计增长
+        //monthZQCompletePercentColor 月折前达成进度颜色
 
-            //设置表格的宽度
-            for(var i=0;i<$("#table3 tr th").length;i++){
-                var widths = $("#table4 tr td").eq(i).width();
-                var height1 = $("#table4").height();
-                var height2 = $("#table4_d").height();
-                if(i == $("#table3 tr th").length-1 && height1>height2){
-                    $("#table3 tr").find("th").eq(i).css("width",(widths+17)+"px");
-                }else{
-                    $("#table3 tr").find("th").eq(i).css("width",widths+"px");
-                }
-            }
+        /***
+         *  账面收入
+         * PRODUCT_TYPE 产品类型
+         * PRODUCT_CHILD_BRAND    子品牌
+         * monthZMBudget  月销售目标
+         * dayZMIncome  日销售
+         * monthZMIncome 月累计销售
+         * monthZMCompletePercent 月销售达成进度
+         * monthZMIncomeIncrease 月同比增长
+         * yearZMIncome (yearZMLJIncome)年累计销售
+         * yearZMCompletePercent年销售达成进度
+         *
+         *
+         *
+         *  折前收入
+         * PRODUCT_CHILD_BRAND    子品牌
+         * monthZQBudget  月销售目标
+         * dayZQIncome  日销售
+         * monthZQIncome 月累计销售
+         * monthZQCompletePercent 月销售达成进度
+         * monthZQIncomeIncrease 月同比增长
+         * yearZQIncome (yearZMLJIncome)年累计销售
+         * yearZQCompletePercent  年销售达成进度
+         *
+         *
+         */
+
+        /**求月销售目标的最大值和日销售的最大值**/
+        var tiao1 = [],tiao2 = [];
+        $.each(data.bgIncome, function (k, v) {
+            tiao1.push(v.monthZMBudget);//月销售目标的最大值
+            tiao2.push(v.dayZQIncome);//日销售的最大值
         });
-        //$("#hide1").remove()
+        //求月度折前收入的最大值和日销售的最大值
+        var tiaomax1 = Math.max.apply(null, tiao1);//月度折前收入的最大值
+        var tiaomax2 = Math.max.apply(null, tiao2);//日销售的最大值
+
+        var str_zqsr = "";
+        $.each(data.bgIncome, function (k, v) {
+
+            var ydzmsr = v.monthZQBudget,          //monthZQBudget  月销售目标
+                rzmsr = v.dayZQIncome,             //dayZQIncome 日销售
+                mljzmsr = v.monthZQIncome,         //monthZQIncome 月累计销售
+                yzmdcjd = v.monthZQCompletePercent,//monthZQCompletePercent 月销售达成进度
+                yljzz = v.monthZQIncomeIncrease,   //monthZQIncomeIncrease月同比增长
+                nljzz = v.yearZQIncome;            //yearZQIncome年累计销售
+                nzmdcl = v.yearZQCompletePercent   //yearZQCompletePercent年销售达成进度
+
+            var color1 = bgColor2(yzmdcjd); //月销售达成进度
+            var color2 = bgColor2(nzmdcl);  //年折前达成率的颜色
+            var imgs1 = yljzz >= 0 ? "up" : "down";   //月同比增长的向上或者向下的箭头
+            var width1 = tiaomax1 === 0 ? 0 : (ydzmsr / tiaomax1) * 100; //月销售目标的宽度
+            var width2 = tiaomax2 === 0 ? 0 : (rzmsr / tiaomax2) * 100; //日销售的宽度
+
+            // 9个字段
+            str_zqsr += '<tr>'
+                + '<td>' + v.PRODUCT_TYPE + '</td>'  // 产品类型
+                + '<td>' + v.PRODUCT_CHILD_BRAND + '</td>'  //子品牌
+                + '<td align="left"><span class="table_bg4A7EBE" style="width:' +width1+'%;"></span>' + formatNumber(ydzmsr, 1, 1) + '</td>'  //月销售目标
+                + '<td align="left"><span class="table_bg4A7EBE" style="width:' +width2+'%;"></span>' + formatNumber(rzmsr, 1, 1) + '</td>'  //日销售
+                + '<td align="left">' + formatNumber(mljzmsr, 1, 1) + '</td>' //月累计销售
+                + '<td style="font-weight:bold;color:' + color1 + ';">' + formatNumber(yzmdcjd, 2, 0) + '%</td>'  //月销售达成进度
+                + '<td>' + formatNumber(yljzz, 1, 0) + '%<img src="../img/' + imgs1 + '.png" alt="" height="20px" style="vertical-align: top;"></td>' //月同比增长
+                + '<td>' + formatNumber(nljzz, 2, 0) + '%</td>'  //年累计销售
+                + '<td style="font-weight:bold;color:' + color2 + ';">' + formatNumber(nzmdcl, 2, 0) + '%</td>'  //年销售达成进度
+                + '</tr>'
+        });
+        $(".d_zqsrT tbody").html(str_zqsr);
+
     });
 
 }
-
+/*****        最后的表格产品折前收入增长及达成(未完成) E     ******/
 
 // 在原来的json上面添加新的json
 function setDataJson(newDataJson) {
