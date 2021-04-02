@@ -1,22 +1,5 @@
 
 
-mac地址：18:65:90:d5:f8:d1
-IP地址：10.1.150.144
-
-
-echarts 版本报表部署需求：
-前后端独立部署，需要开启前端端口（默认开启80或者8080）
-前端服务器需要访问后端，后端需要开启端口（同一台服务器部署不用新开）
-
- 测试库
- http://10.60.138.106/yili/login
- 账号 admin
- 密码 yili2017!!
- 正式库
- http://10.60.138.210/yili/login
- kj_fujl/yili2017!!
-
-
 
 页面构成
 
@@ -72,8 +55,6 @@ businessMapName: 事业部名称
 bigAreaMapName:  大区名称
 isMainProduct: true是否是重点的产品  ture是  false 不是
 返回--
-
-http://10.60.138.106/trusted/MnysXKyUQ-a1NdIoBe1JDw==:3yS21__9Q7xcyJkOBJfOPb8e/views/--_10/-?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no&:toolbar=no
 
 数据的展现
 Echarts  做报表
